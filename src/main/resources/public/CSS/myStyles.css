@@ -1,0 +1,46 @@
+.awesomeBlue {
+    background-color: blue; !important;
+}
+
+.awesomeBlue {
+    background-color: blue;
+}
+
+.awesomeAqua{
+    background-color: aqua;
+    padding: 50px;
+}
+
+.awesomeTextYellow{
+    color: yellow;
+}
+
+.awesomeFont{
+    font-style: italic;
+    font-family: "Comic Sans MS";
+    font-size: xxx-large;
+}
+
+.awesomeMargin{
+    margin: 5px 5px 5px 0px;
+}
+
+.awesomeTable{
+    background-color: brown;
+    color:yellow;
+}
+
+th,awesomeTable {
+    color: blue;
+}
+.awesomeContainerBorder{
+    border: 10px solid red;
+}
+
+.awesomeRowBorder{
+    border: 10px solid green;
+}
+
+.awesomeColumBorder{
+    border: 10px solid blue;
+}
