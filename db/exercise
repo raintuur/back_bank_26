@@ -1,0 +1,19 @@
+-- todo:
+--  c - create - insert
+-- r - read - select
+-- u - update - update
+-- d - delete - delete
+
+SELECT l.name, status
+FROM location l
+         JOIN city c ON c.id = l.city_id
+WHERE c.name = 'Tallinn';
+
+SELECT atm.serial_number, l.name, atm.status
+FROM atm
+         JOIN location l ON l.id = atm.location_id
+         JOIN city c ON c.id = l.city_id
+         JOIN atm_service_relation asr ON atm.id = asr.atm_id
+         JOIN atm_service "as" ON "as".id = asr.atm_service_id
+
+WHERE c.name = 'Tallinn' AND "as".name = 'maksed' ;
