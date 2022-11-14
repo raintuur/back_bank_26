@@ -1,29 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <link rel="stylesheet" href="css/myStyles.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .awsomeBlue {
+            background-color: blue;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
 
 </head>
-<body>
+<body class="awsomeAqua">
 
-<!--todo: elemendid-->
-<!--todo: headerid-->
-<!--todo: paragraph-->
-<!--todo: <span>-->
-<!--todo: list <ul> bullet points ja <ol> järjest numbrid -->
-<!--todo: <img>, external, internal, width-->
-<!--todo: <table>-->
-<!--todo: <input> text  (placeholder) -->
-<!--todo: <input> text  (placeholder) -->
-<!--todo: <input> text  (hidden) -->
-<!--todo: <select> (disabled, selected, label) -->
-<!--todo: <input> radio (label, name="group1" )-->
-<!--todo: <input> number (placeholder)-->
-<!--todo: <input> textarea (label, cols, rows)-->
-<!--todo: <input> password (placeholder)-->
-<!--todo: Link <a> external, internal, width-->
-<!--todo: <input> button (placeholder, onclick)-->
+</table>
+<h1 class="awsomeFont"></h1>
+<h3>See on
+    <span style="background-color: aqua; color: greenyellow">maailma parim</span>
+    pank
+</h3>
+<p>teretulemast kliendiks</p>
+<p>teretulemast kliendiks</p>
+<span class="awsomeBlue">mike peaks liituma</span>
+
+
+<span>Miks peaks liituma??</span>
+
+
+<ol></ol>
+<li>lihtne</li>
+<li>mugav</li>
+<li>kasutajasõbralik</li>
+</object>
+<img with="100" src="https://huntloc.com/wp-content/uploads/2020/09/Juhendi-pilt-384x600-1-e1612953502685.png">
+<img src="images/1245816.webp" height="100">
+<table class="awsomeTable">
+    <tr>
+        <th>Teenus</th>
+        <th>Hind</th>
+    </tr>
+    <tr>
+        <td>Kuutasu</td>
+        <td>€1</td>
+    </tr>
+    <tr>
+        <td>Ülekandetasu</td>
+        <td>€0.16</td>
+    </tr>
+    <tr>
+        <td>Ültasu</td>
+        <td>€0.16</td>
+        <td>€0.16</td>
+    </tr>
+</table>
+<br><br>
+
+
+<label for="firstName">Eesnimi</label>
+<input type="text" name="" id="firstName" placeholder="e.g. Mike">
+<br><br>
+<label for="lastName">Perenimi</label>
+<input type="text" name="" id="lastName" placeholder="e.g. Smith">
+
+<input type="hidden" name="hiddenInput" value="See on peidetud väärtus">
+<br><br>
+<br><br>
+<select id="citySelect" onchange="alert('On change' )">
+    <option value="0" disabled>--Linn--</option>
+    <option value="12">Tallinn</option>
+    <option value="3">Tatru</option>
+    <option value="21" selected>Aruküla</option>
+    <option value="9">Tapa</option>
+    <option value="7">Pärnu</option>
+</select>
+<br>
+<br>
+<label for="genderMale">Mees</label>
+<input type="radio" name="group1" id="genderMale">
+
+<label for="genderFemale">Naine</label>
+<input type="radio" name="group1" id="genderFemale">
+
+<br>
+<br>
+<input type="number" id="birthYear" placeholder="Sünniaasta">
+
+<br>
+<label for="comments">Kommentaarid</label>
+<br>
+<br>
+
+<textarea id="comments" cols="30" rows="10"></textarea>
+<br>
+<br>
+
+<input class="awsomeMargin" type="password" id="password" placeholder="parool">
+<br>
+<input type="password" id="passwordretype" placeholder="parool uuesti">
+<br>
+<br>
+<input type="checkbox" id="termaAndConditions">
+<label for="termaAndConditions">Olen nõus kõigi kasutustingimustega</label>
+<br>
+<br>
+
+
+<input type="button" value="Liitu" onclick="addNewUser()">
 
 </body>
+<script>
+
+    function addNewUser() {
+        let firstName = document.getElementById('firstName').value;
+        let lastName = document.getElementById('lastName').value;
+        
+       let selectedElement=document.getElementById(`citySelect`)
+        let cityId=selectedElement.value;
+        selectedElement.option[3.text]
+        
+        alert('Aitäh liitumast' + firstName+' '+lastName)
+    }
+</script>
 </html>

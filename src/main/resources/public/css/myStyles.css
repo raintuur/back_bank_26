@@ -1,0 +1,31 @@
+.awsomeBlue {
+    background-color: blue/!important/;
+.awsomeBlue {
+    background-color: red;
+}
+.awsomeAqua{
+    background-color: aqua;
+}
+.awsomeFont {
+    font-style: italic;
+    font-family: "Comic Sans MS";
+    font-size: large;
+    color: green;
+}
+.awsomeMargin{
+    margin:5px 5px 5px 0px;
+}
+.awsomeTable{
+    color: yellow;
+}
+.awsomeTable{
+    color: yellow;
+    border: 2px solid red;
+}
+.awesomeBorder {
+    border: 10px solid green;
+}
+.awesomeBorderBlue {
+    border: 10px solid blue;
+}
+}
