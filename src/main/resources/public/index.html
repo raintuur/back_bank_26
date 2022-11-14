@@ -1,29 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="css/myStyles.css">
   <meta charset="UTF-8">
   <title>Title</title>
+<body class="awesomeAqua">
 
-</head>
-<body>
+
+
+<h1 class="awesomeTextYellow"> hello world tere maailm </h1>
+<h3 class="awesomeFont awesomeTextYellow"> Vali-IT PANK </h3>
+<h2>See on maailma parim pank</h2>
+
 
 <!--todo: elemendid-->
 <!--todo: headerid-->
 <!--todo: paragraph-->
+<p>Tere tulemast meile <span style="background-color:red"> Vali-it </span> kliendiks!</p>
 <!--todo: <span>-->
 <!--todo: list <ul> bullet points ja <ol> järjest numbrid -->
+
+<span class="awesomeBlue">Miks peaks liituma?</span>
+
+<ol>
+  <li class="awesomeBlue">lihtne</li>
+  <li class="awesomeBlue">soodne</li>
+  <li>kliendisõbralik</li>
+  <li>hea</li>
+  <li>mõistlik</li>
+</ol>
+
+<h2> Asukoht </h2>
+<img src="https://www.lhv.ee/assets/images/fondid/european.svg" height="250">
 <!--todo: <img>, external, internal, width-->
+<img src="images/puppy.jpg" height="250">
 <!--todo: <table>-->
+
+
+
+<table class="awesomeTable" border="1">
+  <tr>
+    <th>Teenus</th>
+    <th>Hind</th>
+  </tr>
+  <tr>
+    <td>Kaart</td>
+    <td>10</td>
+  </tr>
+<tr>
+    <td>Kuutasu</td>
+    <td>50</td>
+  </tr>
+<tr>
+    <td>Aastatasu</td>
+    <td>400</td>
+  </tr>
+</table>
+<br><br>
 <!--todo: <input> text  (placeholder) -->
+<label for="firstName">Eesnimi</label>
+<input type="text"  id="firstName" placeholder="Mario">
+<br>
+<label for="lastName">Perekonnanimi</label>
+<input type="text"  id="lastName" placeholder="Super">
+
+
 <!--todo: <input> text  (placeholder) -->
+
 <!--todo: <input> text  (hidden) -->
+<input type="hidden" name="hiddenInput" value="See on peidetud väärtus">
+
 <!--todo: <select> (disabled, selected, label) -->
+<select  id="citySelect" onchange="alert('On change')">
+  <option value="0" disabled> --Linn--</option>
+  <option value="23" selected>Tallinn</option>
+  <option value="55">Tartu</option>
+  <option value="64">Viljandi</option>
+</select>
+
+
 <!--todo: <input> radio (label, name="group1" )-->
+<br>
+<br>
+
+<label for="genderMale">Mees</label>
+<input type="radio" name="group1" id="genderMale">
+
+<label for="genderFemale">Naine</label>
+<input type="radio" name="group1" id="genderFemale">
+
+<br>
+<br>
+
 <!--todo: <input> number (placeholder)-->
+<input type="number" id="birthYear" placeholder="Sünniaasta">
+
+<br>
+<br>
 <!--todo: <input> textarea (label, cols, rows)-->
+
+<label for="Comments">Kommentaarid:</label>
+<br>
+<textarea id="Comments" cols="30" rows="10"></textarea>
+
+
 <!--todo: <input> password (placeholder)-->
+<br>
+<br>
+<input class="awesomeMargin" type="password" id="password" placeholder="parool">
+<br>
+<input type="password" id="passwordRetype" placeholder="parool uuesti">
+
+<br>
+<br>
+<input type="checkbox" id="termsAndConditions">
+<label for="termsAndConditions">Olen nõus kõikide</label>
+
 <!--todo: Link <a> external, internal, width-->
+<a href="https://www.google.com" target="_blank">tingimustega!</a>
+<br>
+<br>
+
 <!--todo: <input> button (placeholder, onclick)-->
+<input type="button" value="Liitu!" onclick="addNewUser()">
 
 </body>
+<script>
+function addNewUser(){
+  let firstName = document.getElementById('firstName').value;
+  let lastName = document.getElementById('lastName').value;
+
+  let selectedElement = document.getElementById('citySelect');
+let cityId = selectedElement.value;
+let cityName = selectedElement.options[selectedElement.selectedIndex].text;
+
+alert ('Aitäh liitumast'+ ' ' + firstName + ' ' + lastName+' ' + 'Linnast:' + cityName)
+
+  
+  
+  
+}
+
+</script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
