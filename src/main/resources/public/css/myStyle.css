@@ -1,0 +1,44 @@
+.awesomeBlue {
+    background-color: blue;
+}
+
+.awesomeBlue {
+    background-color: red;
+}
+
+.awesomeTextYellow {
+    color: yellow;
+}
+
+.awesomeAqua {
+    background-color: aqua;
+
+}
+
+.awesomeFont {
+    font-style: italic;
+    font-family: "Comic Sans MS";
+    font-size: 40px;
+    color: yellow;
+}
+
+.awesomeMargin {
+    margin: 5px 5px 5px 0px;
+}
+
+.containerBorder {
+    border: 10px solid red;
+}
+
+.awesomeRowBorder {
+    border: 10px solid green;
+}
+
+.awesomeColumnBorder {
+    border: 10px solid blue;
+}
+
+.awesomeTable {
+    color: yellow;
+    border: 2px solid red;
+}
