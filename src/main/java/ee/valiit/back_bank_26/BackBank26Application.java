@@ -15,28 +15,31 @@ public class BackBank26Application {
 
     public static void main(String[] args) {
 		createCityRepository();
-		createAtmServices ();
+		createAtmServices();
         SpringApplication.run(BackBank26Application.class, args);
     }
 
-	private static void createAtmServices() {
-		Integer id= 1;
-		String name = "Raha sisse";
-
-		AtmService atmService1 = createAtmServices(id);
-
-		System.out.println(atmService);
-	}
-
-	private static AtmService getAtmService(Integer id) {
-		AtmService atmService = new AtmService();
-		atmService.setId(id);
-		atmService.setName("name");
-		return atmService;
-	}
 
 	public static List<City> findAllCities() {
 		return cities;
+	}
+
+
+
+	private static void createAtmServices() {
+		AtmService atmService1 = createAtmService(1, "Raha sisse");
+		AtmService atmService2 = createAtmService(2, "Raha välja");
+		AtmService atmService3 = createAtmService(3, "Maksed");
+		atmServices.add(atmService1);
+		atmServices.add(atmService2);
+		atmServices.add(atmService3);
+	}
+
+	private static AtmService createAtmService(Integer id, String name) {
+		AtmService atmService = new AtmService();
+		atmService.setId(id);
+		atmService.setName(name);
+		return atmService;
 	}
 
 	private static void createCityRepository() {
@@ -47,5 +50,6 @@ public class BackBank26Application {
 		cities.add(city2);
 		cities.add(city3);
 	}
+
 
 }

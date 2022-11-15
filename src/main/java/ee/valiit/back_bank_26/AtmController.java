@@ -15,6 +15,12 @@ public class AtmController {
         return cities;
     }
 
+    @GetMapping("/atm/service")
+    public List<AtmService> getAtmServices() {
+
+
+        return null;
+    }
 
 @GetMapping ("atm/service")
     public List<AtmService> getAtmServices () {
