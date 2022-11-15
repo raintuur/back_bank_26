@@ -1,8 +1,8 @@
 package ee.valiit.back_bank_26;
 
 public class CityInfo {
-    private String cityName;
     private Integer cityNameId;
+    private String cityName;
 
     public String getCityName() {
         return cityName;

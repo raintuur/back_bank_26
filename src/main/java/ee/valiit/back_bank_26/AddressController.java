@@ -9,18 +9,15 @@ import java.util.List;
 @RestController
 public class AddressController {
 
+
     @GetMapping("/atm/city")
     public List<CityInfo> getCitiesInfo() {
         List<CityInfo> cityInfo = createCityInfos();
         return cityInfo;
-
-
-        //todo: tagasta List<>objektidest
-        //objekti see peavad olema väljad 'cityName' ja 'cityNameId'
     }
 
     private static List<CityInfo> createCityInfos() {
-        List <CityInfo> cityInfoList = new ArrayList<>();
+        List<CityInfo> cityInfoList = new ArrayList<>();
 
         CityInfo cityInfo1 = new CityInfo();
         cityInfo1.setCityName("Tallinn");
@@ -31,7 +28,7 @@ public class AddressController {
         cityInfo2.setCityNameId(2);
 
         CityInfo cityInfo3 = new CityInfo();
-        cityInfo3.setCityName("Viljandi");
+        cityInfo3.setCityName("Pärnu");
         cityInfo3.setCityNameId(3);
         System.out.println();
 
@@ -40,4 +37,5 @@ public class AddressController {
         cityInfoList.add(cityInfo3);
         return cityInfoList;
     }
+
 }
