@@ -7,8 +7,9 @@ import lombok.Setter;
 @Setter
 public class AtmService {
 
-    private Integer serviceId;
-    private String serviceName;
+    private Integer id;
+    private String name;
     private boolean isSelected = false;
 
 }
+

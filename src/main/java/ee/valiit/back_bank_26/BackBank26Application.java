@@ -46,8 +46,8 @@ public class BackBank26Application {
 
 	private static AtmService createAtmService(Integer id, String name) {
 		AtmService atmService = new AtmService();
-		atmService.setServiceId(id);
-		atmService.setServiceName(name);
+		atmService.setId(id);
+		atmService.setName(name);
 		return atmService;
 	}
 }

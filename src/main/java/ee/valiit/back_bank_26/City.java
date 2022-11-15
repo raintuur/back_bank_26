@@ -1,34 +1,40 @@
 package ee.valiit.back_bank_26;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class City {
 
-    private Integer cityId;
-    private String cityName;
+
+    private Integer id;
+
+
+    private String name;
 
     public City() {
     }
 
-    public City(Integer cityId, String cityName) {
-        this.cityId = cityId;
-        this.cityName = cityName;
+    public City(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public Integer getCityId() {
-        return cityId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCityId(Integer cityId) {
-        this.cityId = cityId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getCityName() {
-        return cityName;
+    public String getName() {
+        return name;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setName(String name) {
+        this.name = name;
     }
 }

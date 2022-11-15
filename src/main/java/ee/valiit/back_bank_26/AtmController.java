@@ -16,9 +16,20 @@ public class AtmController {
     }
 
     @GetMapping("/atm/service")
-    public List<AtmService> getAtmServiceInfo() {
-        List<AtmService> serviceInfo = BackBank26Application.findAllAtmServices();
-        return serviceInfo;
+    public List<AtmServiceDto> getAtmServiceInfo() {
+
+        List<AtmService> serviceList = BackBank26Application.findAllAtmServices();
+        List<AtmServiceDto> resultList = new ArrayList<>();
+
+        for (AtmService service: serviceList) {
+            AtmServiceDto atmServiceDto = new AtmServiceDto();
+            atmServiceDto.setServiceId(service.getId());
+            atmServiceDto.setServiceName(service.getName());
+            resultList.add(atmServiceDto);
+        }
+
+        return resultList;
+
     }
 }
 
