@@ -14,6 +14,7 @@ public class BackBank26Application {
 	public static List<AtmService> atmServices = new ArrayList<>();
 
     public static void main(String[] args) {
+
 		createCityRepository();
 		createAtmServices();
         SpringApplication.run(BackBank26Application.class, args);
@@ -24,6 +25,9 @@ public class BackBank26Application {
 		return cities;
 	}
 
+	public static List<AtmService> findAllAtmServices(){
+		return atmServices;
+	}
 
 
 	private static void createAtmServices() {
