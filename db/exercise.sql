@@ -39,6 +39,8 @@ where personal_code = 'EE00001';
 
 -- kustutamisel peab suhtes (joones) panema cascading
 
+--order by
+
 delete
 from customer
 where personal_code = 'EE000134';
