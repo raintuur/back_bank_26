@@ -1,5 +1,6 @@
 package ee.valiit.back_bank_26;
 
+
 public class City {
     private Integer cityNameId;
     private String cityName;
@@ -11,4 +12,5 @@ public class City {
         this.cityNameId = cityNameId;
         this.cityName = cityName;
     }
+
 }

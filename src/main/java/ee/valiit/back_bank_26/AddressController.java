@@ -11,9 +11,8 @@ public class AddressController {
 
 
     @GetMapping("/atm/city")
-    public List<CityInfo> getCitiesInfo() {
-       List<City> cities = BackBank26Application.findAllCities();
-
+    public List<City> getCitiesInfo() {
+        List<City> cities = BackBank26Application.findAllCities();
         return cities;
     }
 
