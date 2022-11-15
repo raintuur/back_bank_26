@@ -16,19 +16,19 @@ public class AtmController {
     }
 
     @GetMapping("/atm/service")
-    public List<AtmService> getAtmServices() {
+    public List<AtmServiceInfo> getAtmServices() {
+
+        List<At>
 
 
         return null;
     }
 
-@GetMapping ("atm/service")
-    public List<AtmService> getAtmServices () {
-
-        return null;
-}
-
-
+    @GetMapping("atm/service")
+    public List<AtmServiceInfo> getAtmServices() {
+        BackBank26Application.findAllAtmServices();
+        return;
+    }
 
 
 }

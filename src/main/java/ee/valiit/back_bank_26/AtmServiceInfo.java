@@ -4,7 +4,7 @@ import lombok.*;
 
 @Getter
 @Setter
-public class AtmService {
+public class AtmServiceInfo {
     private Integer id;
     private String name;
 

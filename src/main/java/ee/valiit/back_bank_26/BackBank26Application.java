@@ -11,7 +11,7 @@ import java.util.List;
 public class BackBank26Application {
 
     public static List<City> cities = new ArrayList<>();
-	public static List<AtmService> atmServices = new ArrayList<>();
+	public static List<AtmServiceInfo> atmServices = new ArrayList<>();
 
     public static void main(String[] args) {
 		createCityRepository();
@@ -24,19 +24,21 @@ public class BackBank26Application {
 		return cities;
 	}
 
-
+	public static List<AtmServiceInfo> findAllAtmServices (){
+		return atmServices;
+	}
 
 	private static void createAtmServices() {
-		AtmService atmService1 = createAtmService(1, "Raha sisse");
-		AtmService atmService2 = createAtmService(2, "Raha välja");
-		AtmService atmService3 = createAtmService(3, "Maksed");
+		AtmServiceInfo atmService1 = createAtmService(1, "Raha sisse");
+		AtmServiceInfo atmService2 = createAtmService(2, "Raha välja");
+		AtmServiceInfo atmService3 = createAtmService(3, "Maksed");
 		atmServices.add(atmService1);
 		atmServices.add(atmService2);
 		atmServices.add(atmService3);
 	}
 
-	private static AtmService createAtmService(Integer id, String name) {
-		AtmService atmService = new AtmService();
+	private static AtmServiceInfo createAtmService(Integer id, String name) {
+		AtmServiceInfo atmService = new AtmServiceInfo();
 		atmService.setId(id);
 		atmService.setName(name);
 		return atmService;
