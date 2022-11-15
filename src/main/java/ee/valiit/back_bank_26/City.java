@@ -28,4 +28,6 @@ public class City {
     public void setCityName(String cityName) {
         this.cityName = cityName;
     }
+
+
 }
