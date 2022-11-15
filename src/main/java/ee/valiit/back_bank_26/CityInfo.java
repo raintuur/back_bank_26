@@ -1,6 +1,6 @@
 package ee.valiit.back_bank_26;
 
-public class cityInfo {
+public class CityInfo {
     private String cityName;
     private Integer cityNameId;
 
@@ -25,5 +25,3 @@ public class cityInfo {
 
     }
 }
-
-пжст...
