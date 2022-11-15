@@ -8,6 +8,6 @@ public class AtmServiceInfo {
 
     private Integer serviceId;
     private String serviceName;
-    private boolean isSelected;
+    private Boolean isSelected = false;
 
 }

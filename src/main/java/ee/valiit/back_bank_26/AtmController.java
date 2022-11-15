@@ -26,10 +26,9 @@ public class AtmController {
             AtmServiceInfo dto = new AtmServiceInfo();
             dto.setServiceId(entity.getId());
             dto.setServiceName(entity.getName());
-            dto.setSelected(true);
+            dto.setIsSelected(entity.getName().equals("Maksed"));
             resultList.add(dto);
         }
-        AtmServiceInfo atmInfo = new AtmServiceInfo();
 
         return resultList;
     }
