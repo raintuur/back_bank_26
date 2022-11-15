@@ -11,14 +11,35 @@ import java.util.List;
 public class BackBank26Application {
 
     public static List<City> cities = new ArrayList<>();
+	public static List<AtmService> atmServices = new ArrayList<>();
 
     public static void main(String[] args) {
 		createCityRepository();
+		createAtmServices();
         SpringApplication.run(BackBank26Application.class, args);
     }
 
+
 	public static List<City> findAllCities() {
 		return cities;
+	}
+
+
+
+	private static void createAtmServices() {
+		AtmService atmService1 = createAtmService(1, "Raha sisse");
+		AtmService atmService2 = createAtmService(2, "Raha välja");
+		AtmService atmService3 = createAtmService(3, "Maksed");
+		atmServices.add(atmService1);
+		atmServices.add(atmService2);
+		atmServices.add(atmService3);
+	}
+
+	private static AtmService createAtmService(Integer id, String name) {
+		AtmService atmService = new AtmService();
+		atmService.setId(id);
+		atmService.setName(name);
+		return atmService;
 	}
 
 	private static void createCityRepository() {
@@ -29,5 +50,6 @@ public class BackBank26Application {
 		cities.add(city2);
 		cities.add(city3);
 	}
+
 
 }
