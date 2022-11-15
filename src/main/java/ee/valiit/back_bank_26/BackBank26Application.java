@@ -10,7 +10,7 @@ public class BackBank26Application {
 
     public static List<City> cities = new ArrayList<>();
 
-    public static List<AtmService> atmServices = new ArrayList<>();
+    public static List<AtmServiceInfo> atmServices = new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -19,21 +19,21 @@ public class BackBank26Application {
         SpringApplication.run(BackBank26Application.class, args);
     }
 
-    private static AtmService createAtmServices(int i, String raha_sisse) {
+    private static AtmServiceInfo createAtmServices(int i, String raha_sisse) {
         Integer id = 1;
         String name = "Raha sisse";
 
-        AtmService atmService1 = createAtmServices(1, "Raha sisse");
-        AtmService atmService2 = createAtmServices(2, "Raha välja");
-        AtmService atmService3 = createAtmServices(3, "Maksed");
+        AtmServiceInfo atmService1 = createAtmServices(1, "Raha sisse");
+        AtmServiceInfo atmService2 = createAtmServices(2, "Raha välja");
+        AtmServiceInfo atmService3 = createAtmServices(3, "Maksed");
         atmServices.add(atmService1);
         atmServices.add(atmService2);
         atmServices.add(atmService3);
-
+        return atmService1;
     }
 
-    private static AtmService createAtmService(Integer id, String name) {
-        AtmService atmService = new AtmService();
+    private static AtmServiceInfo createAtmService(Integer id, String name) {
+        AtmServiceInfo atmService = new AtmServiceInfo();
         atmService.setId(id);
         atmService.setName(name);
         return atmService;
@@ -41,6 +41,9 @@ public class BackBank26Application {
 
     public static List<City> findAllCities() {
         return cities;
+    }
+    public static List<AtmServiceInfo> findAllAtmServices (){
+        return atmServices;
     }
 
     private static void createCityRepository() {
