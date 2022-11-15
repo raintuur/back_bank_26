@@ -5,9 +5,6 @@ public class City {
     private Integer cityNameId;
 
 
-    public City() {
-    }
-
     public City(String cityName, Integer cityNameId) {
         this.cityName = cityName;
         this.cityNameId = cityNameId;
@@ -27,5 +24,7 @@ public class City {
 
     public void setCityNameId(Integer cityNameId) {
         this.cityNameId = cityNameId;
+
+
     }
 }
