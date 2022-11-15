@@ -11,6 +11,15 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 -- Created by Vertabelo (http://vertabelo.com)
 -- Last modification date: 2022-11-14 08:53:29.931
 
+
+
+
+
+
+
+-- Created by Vertabelo (http://vertabelo.com)
+-- Last modification date: 2022-11-14 09:17:47.284
+
 -- tables
 -- Table: account
 CREATE TABLE account (
@@ -201,6 +210,7 @@ ALTER TABLE contact ADD CONSTRAINT contact_customer
 ALTER TABLE customer ADD CONSTRAINT customer_user
     FOREIGN KEY (user_id)
         REFERENCES "user" (id)
+        ON DELETE  CASCADE
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
