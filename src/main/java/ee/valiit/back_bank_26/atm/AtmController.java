@@ -31,18 +31,22 @@ public class AtmController {
 
         AtmServiceRepositoryImpl atmServiceRepository = new AtmServiceRepositoryImpl();
         List<AtmService> atmServices = atmServiceRepository.getAllAtmServices();
-
+//        todo: teeme entititest DTO'd
+//              todo: vaja luua mapper
+//                  todo: üksiku objekti mapper
+//                      todo: mitme objekti (Listi) mappimine teiseks Listiks
+//                            todo: tagastame mapitud listi (DTO'de list)
 
 
         List<AtmServiceInfo> resultList = new ArrayList<>();
 
-        for (AtmService entity : atmServices) {
-            AtmServiceInfo dto = new AtmServiceInfo();
-            dto.setServiceId(entity.getId());
-            dto.setServiceName(entity.getName());
-            dto.setIsSelected(entity.getName().equals("Maksed"));
-            resultList.add(dto);
-        }
+//        for (AtmService entity : atmServices) {
+//            AtmServiceInfo dto = new AtmServiceInfo();
+//            dto.setServiceId(entity.getId());
+//            dto.setServiceName(entity.getName());
+//            dto.setIsSelected(entity.getName().equals("Maksed"));
+//            resultList.add(dto);
+//        }
 
         return resultList;
     }
