@@ -1,6 +1,7 @@
 package ee.valiit.back_bank_26;
 
 import ee.valiit.back_bank_26.atm.AtmService;
+import ee.valiit.back_bank_26.city.City;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -17,10 +18,18 @@ public class BackBank26Application {
 
     public static void main(String[] args) {
 
-		createCityRepository();
 		createAtmServices();
+		createLocationRepository();
         SpringApplication.run(BackBank26Application.class, args);
     }
+
+	private static void createLocationRepository() {
+		Location location = new Location();
+		location.setId(1);
+		location.setName("Tondi Selver");
+		location.setStatus('A');
+
+	}
 
 
 	public static List<City> findAllCities() {
@@ -48,14 +57,7 @@ public class BackBank26Application {
 		return atmService;
 	}
 
-	private static void createCityRepository() {
-		City city1 = new City(1,"Tallinn");
-		City city2 = new City(2,"Tartu");
-		City city3 = new City(3,"Pärnu");
-		cities.add(city1);
-		cities.add(city2);
-		cities.add(city3);
-	}
+
 
 
 }
