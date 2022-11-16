@@ -1,6 +1,7 @@
 package ee.valiit.back_bank_26.atm;
 
 import ee.valiit.back_bank_26.BackBank26Application;
+import ee.valiit.back_bank_26.CityInfo;
 import ee.valiit.back_bank_26.city.City;
 import ee.valiit.back_bank_26.city.CityRepositoryImpl;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +24,14 @@ public class AtmController {
         // TODO: 4) Loo mapperi implementatsioon
         // TODO: 5) tee kõik mäppimine kasutades mapperit
 
+        City city = cities.get(0);
+
+        CityInfo cityInfo = cityToCityInfo(city);
 
         return cities;
     }
+
+    private static CityInfo cityToCityInfo(City city) {}
 
     @GetMapping("/atm/service")
     public List<AtmServiceInfo> getAtmServices() {
