@@ -1,5 +1,7 @@
-package ee.valiit.back_bank_26;
+package ee.valiit.back_bank_26.atm;
 
+import ee.valiit.back_bank_26.BackBank26Application;
+import ee.valiit.back_bank_26.city.City;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,5 +33,10 @@ public class AtmController {
         }
 
         return resultList;
+    }
+
+    @GetMapping("/atm/info")
+    public void getAtmLocations() {
+
     }
 }

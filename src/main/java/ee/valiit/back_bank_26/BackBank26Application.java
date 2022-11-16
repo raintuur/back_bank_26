@@ -1,5 +1,8 @@
 package ee.valiit.back_bank_26;
 
+import ee.valiit.back_bank_26.atm.AtmService;
+import ee.valiit.back_bank_26.city.City;
+import ee.valiit.back_bank_26.city.Location;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,7 +13,7 @@ import java.util.List;
 public class BackBank26Application {
     public static List<City> cities = new ArrayList<>();
 
-    private static List<AtmService> atmServices = new ArrayList<>();
+    private static final List<AtmService> atmServices = new ArrayList<>();
 
     public static void main(String[] args) {
         SpringApplication.run(BackBank26Application.class, args);
@@ -23,8 +26,6 @@ public class BackBank26Application {
     }
 
     public static List<AtmService> findAllAtmServices() {
-
-
         return atmServices;
     }
 
@@ -53,5 +54,7 @@ public class BackBank26Application {
         atmService.setName(name);
         return atmService;
     }
+
+    public static List<Location> locations;
 
 }

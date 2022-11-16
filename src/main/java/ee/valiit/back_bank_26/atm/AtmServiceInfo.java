@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26;
+package ee.valiit.back_bank_26.atm;
 import lombok.Getter;
 import lombok.Setter;
 
