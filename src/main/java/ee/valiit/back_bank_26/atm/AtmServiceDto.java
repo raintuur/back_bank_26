@@ -8,4 +8,5 @@ import lombok.Setter;
 public class AtmServiceDto {
         private Integer serviceId;
         private String serviceName;
+        private Boolean isSelected;
 }
