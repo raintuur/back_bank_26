@@ -35,5 +35,12 @@ public class AtmController {
         return resultList;
     }
 
+    @GetMapping("/atm/info")
+    public void getAllAtmLocations() {
+
+    }
+
+
+
 
 }

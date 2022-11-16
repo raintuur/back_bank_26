@@ -5,12 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class City {
+public class Location {
     private Integer id;
+    private City city;
     private String name;
-
-    public City(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    private Character status;
 }
