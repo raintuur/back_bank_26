@@ -1,10 +1,11 @@
 package ee.valiit.back_bank_26.city;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CityRepositoryImpl implements CityRepository {
 
-    public static List<City> cities;
+    public static List<City> cities = new ArrayList<>();
 
     @Override
     public void createCityRepository() {
@@ -14,6 +15,11 @@ public class CityRepositoryImpl implements CityRepository {
         cities.add(city1);
         cities.add(city2);
         cities.add(city3);
+    }
+
+    @Override
+    public List<City> findAllCities() {
+        return cities;
     }
 
 }
