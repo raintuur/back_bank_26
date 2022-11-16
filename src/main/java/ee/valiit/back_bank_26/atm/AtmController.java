@@ -15,10 +15,10 @@ public class AtmController {
     @GetMapping("/atm/city")
     public List<City> getCitiesInfo() {
         CityRepositoryImpl cityRepository = new CityRepositoryImpl();
-
+        List<City> cities = cityRepository.findAllCities();
         //List<City> cities = BackBank26Application.findAllCities();
 
-        return null;
+        return cities;
     }
 
     @GetMapping("/atm/service")
