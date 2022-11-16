@@ -1,9 +1,9 @@
 package ee.valiit.back_bank_26;
 
+import ee.valiit.back_bank_26.atm.AtmService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
