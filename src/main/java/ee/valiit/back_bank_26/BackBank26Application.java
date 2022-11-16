@@ -1,6 +1,6 @@
 package ee.valiit.back_bank_26;
 
-import com.fasterxml.jackson.databind.node.ArrayNode;
+import ee.valiit.back_bank_26.atm.AtmService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,9 +11,11 @@ import java.util.List;
 public class BackBank26Application {
 
 
-    public static List<City> cities = new ArrayList<>();
+    public static List<City> cities;
 
-    public static List<AtmService> atmServices = new ArrayList<>();
+    public static List<AtmService> atmServices;
+
+    public static List<Location> locations;
 
     public static void main(String[] args) {
         createCityRepository();

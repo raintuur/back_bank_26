@@ -1,30 +1,18 @@
 package ee.valiit.back_bank_26;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class City {
-    private String cityName;
-    private Integer cityNameId;
 
+    private Integer id;
+    private String name;
 
-    public City(String cityName, Integer cityNameId) {
-        this.cityName = cityName;
-        this.cityNameId = cityNameId;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
-
-    public Integer getCityNameId() {
-        return cityNameId;
-    }
-
-    public void setCityNameId(Integer cityNameId) {
-        this.cityNameId = cityNameId;
-
+    public City(String name, Integer Id) {
+        this.id = Id;
+        this.name = name;
 
     }
 }
