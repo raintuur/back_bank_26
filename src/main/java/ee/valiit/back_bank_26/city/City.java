@@ -13,4 +13,6 @@ public class City {
         this.id = id;
         this.name = name;
     }
+
+
 }
