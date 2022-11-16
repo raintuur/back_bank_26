@@ -21,7 +21,6 @@ public class AtmController {
         CityMapperImpl cityMapper = new CityMapperImpl();
 
         return cityMapper.citiesToCitiesDto(cities);
-
     }
 
     @GetMapping("/atm/service")
@@ -31,14 +30,11 @@ public class AtmController {
         AtmServiceMapperImpl atmServiceMapper = new AtmServiceMapperImpl();
 
         return atmServiceMapper.atmServicesToAtmServicesDto(serviceList);
-
     }
 
     @GetMapping("/atm/info")
     public void getAtmLocationByName() {
 
     }
-
-
 }
 
