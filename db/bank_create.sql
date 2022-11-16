@@ -1,24 +1,5 @@
--- Kustutab public schema (mis põhimõtteliselt kustutab kõik tabelid)
-DROP SCHEMA public CASCADE;
--- Loob uue public schema vajalikud õigused
-CREATE SCHEMA public
--- taastab vajalikud andmebaasi õigused
-    GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-09-16 09:58:27.985
-
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-14 08:53:29.931
-
-
-
-
-
-
-
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-14 09:17:47.284
+-- Last modification date: 2022-11-16 08:58:34.961
 
 -- tables
 -- Table: account
@@ -104,9 +85,9 @@ CREATE TABLE customer (
 -- Table: location
 CREATE TABLE location (
                           id serial  NOT NULL,
+                          city_id int  NOT NULL,
                           name varchar(255)  NOT NULL,
                           status char(1)  NOT NULL DEFAULT 'A',
-                          city_id int  NOT NULL,
                           CONSTRAINT location_pk PRIMARY KEY (id)
 );
 

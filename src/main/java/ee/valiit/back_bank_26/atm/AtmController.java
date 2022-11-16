@@ -1,5 +1,8 @@
-package ee.valiit.back_bank_26;
+package ee.valiit.back_bank_26.atm;
 
+import ee.valiit.back_bank_26.BackBank26Application;
+import ee.valiit.back_bank_26.city.City;
+import ee.valiit.back_bank_26.city.CityRepositoryImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,8 +15,9 @@ public class AtmController {
 
     @GetMapping("/atm/city")
     public List<City> getCitiesInfo() {
-        List<City> cities = BackBank26Application.findAllCities();
-        return cities;
+        CityRepositoryImpl cityRepository = new CityRepositoryImpl();
+//        List<City> cities = BackBank26Application.findAllCities();
+        return null;
     }
 
     @GetMapping("/atm/service")
@@ -34,6 +38,13 @@ public class AtmController {
 
         return resultList;
     }
+
+    @GetMapping("/atm/info")
+    public void getAllAtmLocations() {
+
+    }
+
+
 
 
 }
