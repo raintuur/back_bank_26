@@ -17,7 +17,11 @@ public class AtmController {
         CityRepositoryImpl cityRepository = new CityRepositoryImpl();
         List<City> cities = cityRepository.findAllCities();
         //List<City> cities = BackBank26Application.findAllCities();
-
+//        TODO: 1) mäppida ümber üksikobjekt city (entity) -> cityInfo (dto)
+//        TODO: 2) mäppida ümber List<City> (entity) -> List<CityInfo> (dto)
+//        TODO: 3) Loo mapper interface
+//        TODO: 4) Loo mapperi implementatsioon
+//        TODO: 5) tee kõik mappimine kasutades mapperit
         return cities;
     }
 
