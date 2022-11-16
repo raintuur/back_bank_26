@@ -1,6 +1,7 @@
 package ee.valiit.back_bank_26;
 
 import ee.valiit.back_bank_26.atm.AtmService;
+import ee.valiit.back_bank_26.atm.AtmServiceRepositoryImpl;
 import ee.valiit.back_bank_26.city.City;
 import ee.valiit.back_bank_26.city.CityRepositoryImpl;
 import org.springframework.boot.SpringApplication;
@@ -20,7 +21,9 @@ public class BackBank26Application {
         CityRepositoryImpl cityRepository = new CityRepositoryImpl();
         cityRepository.createCityRepository();
 
-        createAtmServices();
+        AtmServiceRepositoryImpl atmServiceRepository = new AtmServiceRepositoryImpl();
+        atmServiceRepository.createAtmServices();
+
         createLocationRepository();
         SpringApplication.run(BackBank26Application.class, args);
     }
@@ -34,23 +37,6 @@ public class BackBank26Application {
         location.setId(1);
         location.setName("Tondi Selver");
         location.setStatus('A');
-
-    }
-
-    private static void createAtmServices() {
-        AtmService atmService1 = createAtmService(1, "Raha sisse");
-        AtmService atmService2 = createAtmService(2, "Raha välja");
-        AtmService atmService3 = createAtmService(3, "Maksed");
-        atmServices.add(atmService1);
-        atmServices.add(atmService2);
-        atmServices.add(atmService3);
-    }
-
-    private static AtmService createAtmService(Integer id, String name) {
-        AtmService atmService = new AtmService();
-        atmService.setId(id);
-        atmService.setName(name);
-        return atmService;
     }
 
 }

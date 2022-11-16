@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+// Dto
 public class AtmServiceInfo {
     private Integer serviceId;
     private String serviceName;
