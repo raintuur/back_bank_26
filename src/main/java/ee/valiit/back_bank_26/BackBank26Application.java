@@ -5,16 +5,17 @@ import ee.valiit.back_bank_26.city.City;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @SpringBootApplication
 public class BackBank26Application {
 
-    public static List<City> cities;
-	public static List<AtmService> atmServices;
 
-	public static List<Location> locations;
+	public static List<AtmService> atmServices = new ArrayList<>();
+
+	public static List<Location> locations = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -32,9 +33,7 @@ public class BackBank26Application {
 	}
 
 
-	public static List<City> findAllCities() {
-		return cities;
-	}
+
 
 	public static List<AtmService> findAllAtmServices(){
 		return atmServices;
