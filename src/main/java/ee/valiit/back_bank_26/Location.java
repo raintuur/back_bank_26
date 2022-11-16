@@ -1,5 +1,6 @@
-package ee.valiit.back_bank_26.city;
+package ee.valiit.back_bank_26;
 
+import ee.valiit.back_bank_26.city.City;
 import lombok.Getter;
 import lombok.Setter;
 

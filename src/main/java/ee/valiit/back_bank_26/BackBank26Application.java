@@ -2,7 +2,7 @@ package ee.valiit.back_bank_26;
 
 import ee.valiit.back_bank_26.atm.AtmService;
 import ee.valiit.back_bank_26.city.City;
-import ee.valiit.back_bank_26.city.Location;
+import ee.valiit.back_bank_26.city.CityRepositoryImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,23 +11,23 @@ import java.util.List;
 
 @SpringBootApplication
 public class BackBank26Application {
-    public static List<City> cities = new ArrayList<>();
+    public static List<City> cities;
 
     private static final List<AtmService> atmServices = new ArrayList<>();
 
     public static void main(String[] args) {
         SpringApplication.run(BackBank26Application.class, args);
         createAtmServices();
-        createCityRepository();
-    }
-
-    public static List<City> findAllCities() {
-        return cities;
+        createLocationRepository();
+        CityRepositoryImpl cityRepository = new CityRepositoryImpl();
+        cityRepository.createCityRepository();
     }
 
     public static List<AtmService> findAllAtmServices() {
         return atmServices;
     }
+
+    public static List<Location> locations;
 
     private static void createAtmServices() {
 
@@ -39,15 +39,6 @@ public class BackBank26Application {
         atmServices.add(atmService3);
     }
 
-    private static void createCityRepository() {
-        City city1 = new City(1, "Tallinn");
-        City city2 = new City(2, "Tartu");
-        City city3 = new City(3, "Pärnu");
-        cities.add(city1);
-        cities.add(city2);
-        cities.add(city3);
-    }
-
     private static AtmService createAtmService(Integer id, String name) {
         AtmService atmService = new AtmService();
         atmService.setId(id);
@@ -55,6 +46,11 @@ public class BackBank26Application {
         return atmService;
     }
 
-    public static List<Location> locations;
-
+    private static void createLocationRepository() {
+        Location location = new Location();
+        location.setId(1);
+        location.setName("Tondi Selver");
+        location.setStatus('A');
+//        location.setCity();
+    }
 }
