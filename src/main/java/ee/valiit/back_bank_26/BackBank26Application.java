@@ -12,8 +12,6 @@ import java.util.List;
 @SpringBootApplication
 public class BackBank26Application {
 
-
-
     public static List<AtmService> atmServices = new ArrayList<>();
 
     public static List<Location> locations = new ArrayList<>();
@@ -21,9 +19,14 @@ public class BackBank26Application {
     public static void main(String[] args) {
         CityRepositoryImpl cityRepository = new CityRepositoryImpl();
         cityRepository.createCityRepository();
+
         createAtmServices();
         createLocationRepository();
         SpringApplication.run(BackBank26Application.class, args);
+    }
+
+    public static List<AtmService> findAllAtmServices() {
+        return atmServices;
     }
 
     private static void createLocationRepository() {
@@ -32,12 +35,6 @@ public class BackBank26Application {
         location.setName("Tondi Selver");
         location.setStatus('A');
 
-    }
-
-
-
-    public static List<AtmService> findAllAtmServices() {
-        return atmServices;
     }
 
     private static void createAtmServices() {
@@ -55,6 +52,5 @@ public class BackBank26Application {
         atmService.setName(name);
         return atmService;
     }
-
 
 }
