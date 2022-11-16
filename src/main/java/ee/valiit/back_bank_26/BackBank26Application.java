@@ -10,8 +10,10 @@ import java.util.List;
 @SpringBootApplication
 public class BackBank26Application {
 
-    public static List<City> cities = new ArrayList<>();
-	public static List<AtmService> atmServices = new ArrayList<>();
+    public static List<City> cities;
+	public static List<AtmService> atmServices;
+
+	public static List<Location> locations;
 
     public static void main(String[] args) {
 
