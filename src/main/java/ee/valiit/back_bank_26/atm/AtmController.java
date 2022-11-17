@@ -31,31 +31,11 @@ public class AtmController {
 
     @GetMapping("/atm/service")
     public List<AtmServiceInfo> getAtmServices() {
-
         AtmServiceRepositoryImpl atmServiceRepository = new AtmServiceRepositoryImpl();
         List<AtmService> atmServices = atmServiceRepository.getAllAtmServices();
-
-        // TODO: entitest teeme DTO-d
-                // TODO: vaja luua mäpper
-                    // TODO: üksik objekti mäpper
-                    // TODO: mitme objekti (Listi) mäppimine teiseks Listisk
-                    // TODO: tagastame mäpiyud listi (DTO'de list)
-
-
-
-        List<AtmServiceInfo> resultList = new ArrayList<>();
-
-//        for (AtmService entity : atmServiceEntities) {
-//            AtmServiceInfo dto = new AtmServiceInfo();
-//            dto.setServiceId(entity.getId());
-//            dto.setServiceName(entity.getName());
-//
-//            dto.setIsSelected(entity.getName().equals("Maksed"));
-//
-//            resultList.add(dto);
-//        }
-
-        return resultList;
+        AtmMapperImpl atmMapper = new AtmMapperImpl();
+        List<AtmServiceInfo> infos = atmMapper.atmServicesToAtmServiceInfos(atmServices);
+        return infos;
     }
 
     @GetMapping("/atm/info")
