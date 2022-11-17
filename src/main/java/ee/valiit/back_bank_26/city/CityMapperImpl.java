@@ -9,7 +9,6 @@ public class CityMapperImpl implements CityMapper {
 
     @Override
     public CityInfo cityToCityInfo(City city) {
-
         CityInfo cityInfo = new CityInfo();
         cityInfo.setCityNameId(city.getId());
         cityInfo.setCityName(city.getName());

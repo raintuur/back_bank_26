@@ -18,40 +18,25 @@ public class AtmController {
     public List<CityInfo> getCitiesInfo() {
         CityRepositoryImpl cityRepository = new CityRepositoryImpl();
         List<City> cities = cityRepository.findAllCities();
-
 //        TODO: 5) tee kõik mappimine kasutades mapperit
         CityMapperImpl cityMapper = new CityMapperImpl();
         List<CityInfo> result = cityMapper.citiesToCityInfos(cities);
-
         return result;
     }
 
     @GetMapping("/atm/service")
     public List<AtmServiceInfo> getAtmServices() {
-
         AtmServiceRepositoryImpl atmServiceRepository = new AtmServiceRepositoryImpl();
         List<AtmService> atmServices = atmServiceRepository.getAllAtmServices();
-//        todo: teeme entititest DTO'd
-//              todo: vaja luua mapper
-//                  todo: üksiku objekti mapper
-//                      todo: mitme objekti (Listi) mappimine teiseks Listiks
-//                            todo: tagastame mapitud listi (DTO'de list)
-
-
-        List<AtmServiceInfo> resultList = new ArrayList<>();
-
-//        for (AtmService entity : atmServices) {
-//            AtmServiceInfo dto = new AtmServiceInfo();
-//            dto.setServiceId(entity.getId());
-//            dto.setServiceName(entity.getName());
-//            dto.setIsSelected(entity.getName().equals("Maksed"));
-//            resultList.add(dto);
-//        }
-
-        return resultList;
+        AtmMapperImpl atmMapper = new AtmMapperImpl();
+        List<AtmServiceInfo> infos = atmMapper.atmServicesToAtmServiceInfos(atmServices);
+        return infos;
     }
 
     @GetMapping("/atm/info")
     public void getAtmLocations() {
+
+
+
     }
 }
