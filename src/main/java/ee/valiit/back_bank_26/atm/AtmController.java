@@ -21,13 +21,10 @@ public class AtmController {
 
 
     @GetMapping("/atm/city")
-    public CityDto getAllCities() {
-        List<City> all = cityRepository.findAll();
-
-        City tallinn = cityRepository.getById(1);
-        CityDto tallinnDto = cityMapper.cityToCityDto(tallinn);
-
-        return tallinnDto;
+    public List<CityDto> getAllCities() {
+        List<City> allEntities = cityRepository.findAll();
+        List<CityDto> allDtos = cityMapper.citiesToCityDtos(allEntities);
+        return allDtos;
     }
 
 
