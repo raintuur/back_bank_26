@@ -35,9 +35,9 @@ public class AtmController {
     @GetMapping("/atm/info")
     public List<LocationDto> getAllAtmLocations() {
 
-        List<LocationDto> result = new ArrayList<>();
 
-        return result;
+
+        return null;
     }
 }
 

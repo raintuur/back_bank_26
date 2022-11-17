@@ -5,7 +5,6 @@ import java.util.List;
 
 public class CityRepositoryImpl implements CityRepository {
 
-
     public static List<City> cities = new ArrayList<>();
 
     @Override
@@ -17,11 +16,22 @@ public class CityRepositoryImpl implements CityRepository {
         cities.add(city1);
         cities.add(city2);
         cities.add(city3);
-
     }
 
     @Override
     public List<City> findAllCities() {
         return cities;
     }
+
+    @Override
+    public City getCityByName(String name) {
+
+        for (City city : cities) {
+            if (city.getName().equals(name)) {
+                return city;
+            }
+        }
+        return null;
+    }
+
 }
