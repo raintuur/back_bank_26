@@ -1,14 +1,7 @@
 package ee.valiit.back_bank_26.city;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CityRepository {
-
-    void createCityRepository();
-
-
-    List<City> findAllCities();
-
-    City getCityByName(String name);
+public interface CityRepository extends JpaRepository<City, Integer> {
 
 }
