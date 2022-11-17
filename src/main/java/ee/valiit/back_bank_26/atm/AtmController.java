@@ -36,9 +36,15 @@ public class AtmController {
 
     @GetMapping("/atm/info")
     public List<LocationDto> getAllAtmLocations() {
-        List<LocationDto> result = new ArrayList<>();
+        // TODO: Tagasta kõik ATM asukohad (DTO'd List)
+            // TODO: leia andmebaasist kõik ATM asukohad
+            // TODO: teiseneda kogu Entitite list DTO'de listiks
+                // TODO: Kasuta mapperit
+                    // TODO: Loo mapper interface ja impl class
+                        // TODO: üksikobjekti ümber mäppimine
+                        // TODO: Listi ümber mäppimine
 
-        return result;
+        return null;
     }
 
 
