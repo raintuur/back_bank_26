@@ -22,4 +22,15 @@ public class CityRepositoryImpl implements CityRepository {
         return cities;
     }
 
+
+    @Override
+    public City getCityByName(String name) {
+        for (City city : cities) {
+            if (city.getName().equals(name)) {
+                return city;
+            }
+        }
+        return null;
+    }
+
 }
