@@ -29,7 +29,6 @@ public class AtmController {
     @Resource
     private AtmServiceMapper atmServiceMapper;
 
-
     @GetMapping("/atm/city")
     public List<CityDto> getAllCities() {
         List<City> allEntities = cityRepository.findAll();
@@ -37,12 +36,14 @@ public class AtmController {
         return allDtos;
     }
 
+
     @GetMapping("/atm/service")
     public List<AtmServiceDto> getAllAtmOptions() {
         List<AtmService> entities = atmServiceRepository.findAll();
         List<AtmServiceDto> dtos = atmServiceMapper.toDtos(entities);
         return dtos;
     }
+
 //
 //    @GetMapping("/atm/info")
 }

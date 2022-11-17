@@ -9,6 +9,11 @@ import java.io.Serializable;
 /**
  * A DTO for the {@link AtmService} entity
  */
+
+
+
+
+
 @Data
 public class AtmServiceDto implements Serializable {
     private final Integer serviceId;

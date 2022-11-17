@@ -7,7 +7,6 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface AtmServiceMapper {
 
-
     @Mapping(source = "id", target = "serviceId")
     @Mapping(source = "name", target = "serviceName")
     AtmServiceDto toDto(AtmService atmService);
