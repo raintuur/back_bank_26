@@ -42,7 +42,6 @@ public class AtmController {
 //                    todo: Loo mapper interface ja implement klass
 //                        todo: üksikobjekti ümbermappimine ja listi ümbermappimine
 
-
         return result;
     }
 }
