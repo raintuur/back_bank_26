@@ -8,4 +8,7 @@ public interface CityRepository {
 
    List<City> findAllCities();
 
+
+   City getCityByName(String name);
+
 }
