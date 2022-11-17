@@ -5,5 +5,10 @@ import java.util.List;
 public interface CityRepository {
 
     void createCityRepository();
+
     List<City> findAllCities();
+
+    City getCityByName(String name);
+
+
 }

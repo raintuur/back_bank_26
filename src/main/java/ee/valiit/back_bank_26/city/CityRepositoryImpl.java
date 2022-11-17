@@ -7,6 +7,7 @@ public class CityRepositoryImpl implements CityRepository {
 
     public static List<City> cities = new ArrayList<>();
 
+
     @Override
     public void createCityRepository() {
         City city1 = new City(1, "Tallinn");
@@ -16,9 +17,19 @@ public class CityRepositoryImpl implements CityRepository {
         cities.add(city2);
         cities.add(city3);
     }
+
     @Override
     public List<City> findAllCities() {
         return cities;
     }
 
+    @Override
+    public City getCityByName(String name) {
+        for (City city : cities) {
+            if (city.getName().equals(name)) {
+                return city;
+            }
+        }
+        return null;
+    }
 }

@@ -1,12 +1,10 @@
 package ee.valiit.back_bank_26.atm;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class AtmServiceInfo {
-    private Integer serviceId;
+public class ServiceDto {
     private String serviceName;
-    private Boolean isSelected = false;
-
 }
