@@ -40,9 +40,12 @@ public class BackBank26Application {
 
 
 
+
 	public static List<AtmService> findAllAtmServices(){
 		return atmServices;
 	}
+
+
 
 
 

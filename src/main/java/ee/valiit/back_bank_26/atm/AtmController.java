@@ -17,14 +17,13 @@ public class AtmController {
 
     @GetMapping("/atm/city")
     public List<CityInfo> getCitiesInfo() {
-        
+
         CityRepositoryImpl cityRepository = new CityRepositoryImpl();
         List<City> cities = cityRepository.findAllCities();
 
         CityMapperImpl cityMapper = new CityMapperImpl();
-        cityMapper.citiesToCityInfos(cities);
-
         List<CityInfo> cityInfos = cityMapper.citiesToCityInfos(cities);
+
 
         return cityInfos;
     }
@@ -34,21 +33,27 @@ public class AtmController {
     public List<AtmServiceInfo> getAtmServices() {
 
         AtmServiceRepositoryImpl atmServiceRepository = new AtmServiceRepositoryImpl();
-        List<AtmService> atmServices= atmServiceRepository.getAllAtmServices();
+        List<AtmService> atmServices = atmServiceRepository.getAllAtmServices();
+
+        // TODO: entitest teeme DTO-d
+                // TODO: vaja luua mäpper
+                    // TODO: üksik objekti mäpper
+                    // TODO: mitme objekti (Listi) mäppimine teiseks Listisk
+                    // TODO: tagastame mäpiyud listi (DTO'de list)
 
 
 
         List<AtmServiceInfo> resultList = new ArrayList<>();
 
-        for (AtmService entity : atmServiceEntities) {
-            AtmServiceInfo dto = new AtmServiceInfo();
-            dto.setServiceId(entity.getId());
-            dto.setServiceName(entity.getName());
-
-            dto.setIsSelected(entity.getName().equals("Maksed"));
-
-            resultList.add(dto);
-        }
+//        for (AtmService entity : atmServiceEntities) {
+//            AtmServiceInfo dto = new AtmServiceInfo();
+//            dto.setServiceId(entity.getId());
+//            dto.setServiceName(entity.getName());
+//
+//            dto.setIsSelected(entity.getName().equals("Maksed"));
+//
+//            resultList.add(dto);
+//        }
 
         return resultList;
     }

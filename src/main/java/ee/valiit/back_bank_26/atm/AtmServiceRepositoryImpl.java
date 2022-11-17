@@ -21,5 +21,4 @@ public class AtmServiceRepositoryImpl implements AtmServiceRepository {
     public List<AtmService> getAllAtmServices() {
         return atmServices;
     }
-
 }

@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface CityMapper {
 
-
     CityInfo cityToCityInfo(City city);
 
-    List<CityInfo> citiesToCityInfos(List<City> cities);
+    List<CityInfo> citiesToCityInfos(List<City>  cities);
+
 
 }
