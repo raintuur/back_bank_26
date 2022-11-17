@@ -12,21 +12,25 @@ public class LocationRepositoryImpl implements LocationRepository{
     
     @Override
     public void createLocationRepository() {
-
-        String cityName = "Tallinn";
-        int locationId = 1;
-        String locationName = "Tondi Selver";
-
-        createLocation(cityName, locationId, locationName);
+        Location location1 = createLocation("Tondi Selver", 1, "Tallinn");
+        Location location2 = createLocation("Järve Selver", 2, "Tallinn");
+        Location location3 = createLocation("Jõe Prisma", 3, "Tartu");
+        Location location4 = createLocation("Port Artur", 4, "Pärnu");
+        locations.add(location1);
+        locations.add(location2);
+        locations.add(location3);
+        locations.add(location4);
     }
 
-    private static void createLocation(String cityName, int locationId, String locationName) {
+     public static Location createLocation(String locationName, int locationId, String cityName) {
         CityRepositoryImpl cityRepository = new CityRepositoryImpl();
         City city = cityRepository.getCityByName(cityName);
+
         Location location = new Location();
         location.setId(locationId);
         location.setCity(city);
         location.setName(locationName);
         location.setStatus('A');
+        return location;
     }
 }

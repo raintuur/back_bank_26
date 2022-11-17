@@ -2,6 +2,7 @@ package ee.valiit.back_bank_26;
 
 import ee.valiit.back_bank_26.atm.AtmServiceRepositoryImpl;
 import ee.valiit.back_bank_26.city.CityRepositoryImpl;
+import ee.valiit.back_bank_26.location.LocationRepositoryImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,5 +15,7 @@ public class BackBank26Application {
         atmServiceRepository.createAtmServices();
         CityRepositoryImpl cityRepository = new CityRepositoryImpl();
         cityRepository.createCityRepository();
+        LocationRepositoryImpl locationRepository = new LocationRepositoryImpl();
+        locationRepository.createLocationRepository();
     }
 }
