@@ -1,12 +1,14 @@
 package ee.valiit.back_bank_26.city;
 
-import ee.valiit.back_bank_26.CityInfo;
+import org.mapstruct.*;
 
 import java.util.List;
 
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface CityMapper {
 
-    CityInfo cityToCityInfo(City city);
+    CityDto cityToCityDto(City city);
 
-    List<CityInfo> citiesToCityInfos(List<City> cities);
+    List<CityDto> citiesToCityDtos(List<City> cities);
+
 }
