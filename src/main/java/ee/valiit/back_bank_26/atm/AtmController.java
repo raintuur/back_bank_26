@@ -1,5 +1,9 @@
 package ee.valiit.back_bank_26.atm;
 
+import ee.valiit.back_bank_26.atm.option.AtmService;
+import ee.valiit.back_bank_26.atm.option.AtmServiceDto;
+import ee.valiit.back_bank_26.atm.option.AtmServiceMapper;
+import ee.valiit.back_bank_26.atm.option.AtmServiceRepository;
 import ee.valiit.back_bank_26.city.City;
 import ee.valiit.back_bank_26.city.CityDto;
 import ee.valiit.back_bank_26.city.CityMapper;
@@ -9,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class AtmController {
@@ -20,21 +23,27 @@ public class AtmController {
     @Resource
     private CityMapper cityMapper;
 
+    @Resource
+    private AtmServiceRepository atmServiceRepository;
+
+    @Resource
+    private AtmServiceMapper atmServiceMapper;
+
     @GetMapping("/atm/city")
-    public CityDto getAllCities() {
-        List<City> all = cityRepository.findAll();
-
-        City tallinn = cityRepository.getById(1);
-        CityDto tallinnDto = cityMapper.cityToCityDto(tallinn);
-
-        return tallinnDto;
+    public List<CityDto> getAllCities() {
+        List<City> allEntities = cityRepository.findAll();
+        List<CityDto> cityDtos = cityMapper.citiesToCityDtos(allEntities);
+        return cityDtos;
     }
 
-//    @GetMapping("/atm/service")
-//
-//
-//    @GetMapping("/atm/info")
+    @GetMapping("/atm/service")
+    public List<AtmServiceDto> getAllAtmOptions() {
+        List<AtmService> entities = atmServiceRepository.findAll();
+        List<AtmServiceDto> atmServiceDtos = atmServiceMapper.toDtos(entities);
+        return atmServiceDtos;
+    }
 
+//    @GetMapping("/atm/info")
 
 
 }
