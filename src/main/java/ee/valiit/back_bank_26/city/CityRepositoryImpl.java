@@ -21,4 +21,16 @@ public class CityRepositoryImpl implements CityRepository {
     public List<City> findAllCities() {
         return cities;
     }
+
+    @Override
+    public City getCityByName(String name) {
+        for (City city : cities) {
+            if (city.getName().equals(name)) {
+                return city;
+            }
+        }
+        //        return cities.stream().filter(city -> city.getName().equals(name)).findFirst().map(city -> city).orElse(null);
+        return null;
+    }
+
 }
