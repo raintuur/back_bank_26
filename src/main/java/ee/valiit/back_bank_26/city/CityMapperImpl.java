@@ -19,10 +19,12 @@ public class CityMapperImpl implements CityMapper {
     @Override
     public List<CityInfo> citiesToCityInfos(List<City> cities) {
         List<CityInfo> result = new ArrayList<>();
+
         for (City city : cities) {
             CityInfo cityInfo = cityToCityInfo(city);
             result.add(cityInfo);
         }
+
         return result;
     }
 }
