@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-14 09:17:49.891
+-- Last modification date: 2022-11-17 14:18:33.363
 
 -- tables
 -- Table: account
@@ -23,7 +23,7 @@ CREATE TABLE address
     customer_id int           NULL,
     location_id int           NULL,
     street_name varchar(255)  NOT NULL,
-    start       date          NOT NULL DEFAULT now(),
+    start       date          NOT NULL DEFAULT NOW(),
     "end"       date          NULL,
     longitude   decimal(6, 2) NULL,
     latitude    decimal(6, 2) NULL,
@@ -40,20 +40,20 @@ CREATE TABLE atm
     CONSTRAINT atm_pk PRIMARY KEY (id)
 );
 
--- Table: atm_service
-CREATE TABLE atm_service
+-- Table: atm_option
+CREATE TABLE atm_option
 (
     id   serial       NOT NULL,
     name varchar(255) NOT NULL,
     CONSTRAINT atm_service_pk PRIMARY KEY (id)
 );
 
--- Table: atm_service_relation
-CREATE TABLE atm_service_relation
+-- Table: atm_option_relation
+CREATE TABLE atm_option_relation
 (
-    id             serial NOT NULL,
-    atm_id         int    NOT NULL,
-    atm_service_id int    NOT NULL,
+    id            serial NOT NULL,
+    atm_id        int    NOT NULL,
+    atm_option_id int    NOT NULL,
     CONSTRAINT atm_service_relation_pk PRIMARY KEY (id)
 );
 
@@ -73,7 +73,7 @@ CREATE TABLE contact
     customer_id int          NOT NULL,
     telephone   varchar(255) NOT NULL,
     email       varchar(255) NOT NULL,
-    start       date         NOT NULL DEFAULT now(),
+    start       date         NOT NULL DEFAULT NOW(),
     "end"       date         NULL,
     CONSTRAINT contact_pk PRIMARY KEY (id)
 );
@@ -188,20 +188,20 @@ ALTER TABLE atm
                 INITIALLY IMMEDIATE
 ;
 
--- Reference: atm_service_relation_atm (table: atm_service_relation)
-ALTER TABLE atm_service_relation
-    ADD CONSTRAINT atm_service_relation_atm
-        FOREIGN KEY (atm_id)
-            REFERENCES atm (id)
+-- Reference: atm_option_relation_atm_option (table: atm_option_relation)
+ALTER TABLE atm_option_relation
+    ADD CONSTRAINT atm_option_relation_atm_option
+        FOREIGN KEY (atm_option_id)
+            REFERENCES atm_option (id)
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE
 ;
 
--- Reference: atm_service_relation_atm_service (table: atm_service_relation)
-ALTER TABLE atm_service_relation
-    ADD CONSTRAINT atm_service_relation_atm_service
-        FOREIGN KEY (atm_service_id)
-            REFERENCES atm_service (id)
+-- Reference: atm_service_relation_atm (table: atm_option_relation)
+ALTER TABLE atm_option_relation
+    ADD CONSTRAINT atm_service_relation_atm
+        FOREIGN KEY (atm_id)
+            REFERENCES atm (id)
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE
 ;
