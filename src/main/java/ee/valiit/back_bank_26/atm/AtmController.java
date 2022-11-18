@@ -30,6 +30,9 @@ public class AtmController {
     @Resource
     private OptionMapper optionMapper;
 
+    @Resource
+    private LocationMapper locationMapper;
+
 
 
     @GetMapping("/atm/city")
