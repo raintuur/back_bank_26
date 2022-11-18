@@ -1,6 +1,7 @@
 package ee.valiit.back_bank_26.atm;
 
 import ee.valiit.back_bank_26.atm.location.Location;
+import ee.valiit.back_bank_26.atm.location.LocationMapper;
 import ee.valiit.back_bank_26.atm.location.LocationRepository;
 import ee.valiit.back_bank_26.atm.option.Option;
 import ee.valiit.back_bank_26.atm.option.OptionDto;
@@ -42,9 +43,6 @@ public class AtmController {
 
 
 
-
-
-
     @GetMapping("/city")
     @Operation(summary = "Selle teenusega saad kätte kõik linnad", description = "Mingi pikem jutt rohkem mula")
     public List<CityDto> getAllCities() {
@@ -66,7 +64,8 @@ public class AtmController {
     @Operation( summary = "Leiab kõikide pangaautomaatide asukohad")
     public LocationDto getAllAtmLocations() {
         Location location = locationRepository.getById(1);
-        LocationDto locationDto = locationMapper.locationToLocationDto(location);
+        LocationDto locationDto = locationMapper.toDto(location);
+
         return locationDto;
     }
 }
