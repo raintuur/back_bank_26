@@ -77,26 +77,34 @@ public class AtmController {
         for (LocationDto locationDto : locationDtos) {
             // JÄRVE SELVER
 
+            List<AtmOption> availableOptions = atmOptionRepository.findAtmOptionsBy(locationDto.getLocationId());
+            List<AtmOptionDto> availableOptionDtos = new ArrayList<>();
+
             for (Option option : options) {
                 // Sularaha sisse
-                option
+                // Sularaha Välja
+                // maksed
 
-                List<AtmOption> atmOptions = atmOptionRepository.findAtmOptionsBy(locationDto.getLocationId());
-
-                List<OptionDto> optionDtos = new ArrayList<>();
-                for (AtmOption atmOption : atmOptions) {
+                for (AtmOption atmOption : availableOptions) {
                     // siin viis rida,
                     // AAA - sularaha sisse
                     // AAA - sularaha välja
                     // AAA - maksed
                     // BBB - sularaha sisse
                     // BBB - sularaha välja
-
+                    if (option.getName().equals(atmOption.getOption().getName())) {
+                        AtmOptionDto atmOptionDto = new AtmOptionDto();
+                        atmOptionDto.setOptionName(option.getName());
+                        availableOptionDtos.add(atmOptionDto);
+                        break;
+                    }
 
                 }
 
 
             }
+
+            locationDto.setOptions(availableOptionDtos);
 
         }
 
