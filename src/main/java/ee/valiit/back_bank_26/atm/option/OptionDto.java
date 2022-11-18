@@ -7,12 +7,14 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
- * A DTO for the {@link AtmService} entity
+ * A DTO for the {@link Option} entity
  */
 @Data
-public class AtmServiceDto implements Serializable {
-    private final Integer serviceId;
+public class OptionDto implements Serializable {
+    private final Integer optionId;
     @Size(max = 255)
     @NotNull
-    private final String serviceName;
+    private final String optionName;
+
+    private Boolean isSelected;
 }
