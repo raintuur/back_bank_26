@@ -67,8 +67,7 @@ public class AtmController {
 //
     @GetMapping("/info")
     @Operation( summary = "Leiab kõikide pangaautomaatide asukohad")
-    public List<AtmLocationInfo> getAllAtmLocations() {
-
+    public List <AtmLocationInfo> getAllAtmLocations() {
 
 
         return dtos;
