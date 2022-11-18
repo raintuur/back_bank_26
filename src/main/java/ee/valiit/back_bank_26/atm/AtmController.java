@@ -1,5 +1,7 @@
 package ee.valiit.back_bank_26.atm;
 
+import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOption;
+import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOptionMapper;
 import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOptionRepository;
 import ee.valiit.back_bank_26.domain.atm.location.Location;
 import ee.valiit.back_bank_26.domain.atm.location.LocationDto;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -35,6 +38,9 @@ public class AtmController {
     private AtmOptionRepository atmOptionRepository;
 
     @Resource
+    private LocationRepository locationRepository;
+
+    @Resource
     private CityMapper cityMapper;
 
     @Resource
@@ -42,6 +48,9 @@ public class AtmController {
 
     @Resource
     private LocationMapper locationMapper;
+
+    @Resource
+    private AtmOptionMapper atmOptionMapper;
 
     @GetMapping("/city")
     @Operation(summary = "Selle teenusega saab kätte kõik linnad", description = "Mingi pikem jutt rohkem mula")
@@ -61,10 +70,41 @@ public class AtmController {
 
     @GetMapping("/info")
     @Operation(summary = "Leiab kõikide pangaautomaatide asukohad")
-    public List<AtmLocationInfo> getAllAtmLocations() {
-        List<Location> entities = atmOptionRepository.findAll();
-        List<LocationDto> locationDtos = locationMapper.toDtos(entities);
-        return AtmLocationInfo;
+    public List<LocationDto> getAllAtmLocations() {
+
+        List<Location> locations = locationRepository.findAll();
+        List<LocationDto> locationDtos = locationMapper.toDtos(locations);
+        List<Option> options = optionRepository.findAll();
+
+        for (LocationDto locationDto : locationDtos) {
+            //Jarve Selver
+
+            List<AtmOption> availableOptions = atmOptionRepository.findAtmOptionsBy(locationDto.getLocationId());
+            List<AtmOptionDto> availableOptionsDtos = new ArrayList<>();
+
+            for (Option option : options) {
+                //Sularaha sisse
+                //Sularaha valja
+                //Maksed
+
+                for (AtmOption atmOption : availableOptions) {
+                    // siin viis rida,
+                    // AAA - sularaha sisse
+                    // AAA - sularaha valja
+                    // AAA - maksed
+                    // BBB - sularaha sisse
+                    // BBB - sularaha valja
+                    if (option.getName().equals(atmOption.getOption().getName())) {
+                        AtmOptionDto atmOptionDto = new AtmOptionDto();
+                        atmOptionDto.setOptionName(option.getName());
+                        availableOptionsDtos.add(atmOptionDto);
+                        break;
+                    }
+                }
+            }
+        }
+
+        return locationDtos;
     }
 }
 
