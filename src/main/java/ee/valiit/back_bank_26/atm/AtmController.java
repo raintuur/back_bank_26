@@ -35,6 +35,9 @@ public class AtmController {
     private AtmOptionRepository atmOptionRepository;
 
     @Resource
+    private LocationRepository locationRepository;
+
+    @Resource
     private CityMapper cityMapper;
 
     @Resource
@@ -67,9 +70,19 @@ public class AtmController {
 //
     @GetMapping("/info")
     @Operation( summary = "Leiab kõikide pangaautomaatide asukohad")
-    public List <AtmLocationInfo> getAllAtmLocations() {
+    public List<LocationDto> getAllAtmLocations() {
 
+        List<Location> locations = locationRepository.findAll();
+        List<LocationDto> locationDtos = locationMapper.toDtos(locations);
+        List<Option> options = optionRepository.findAll();
 
-        return dtos;
+        for (LocationDto locationDto : locationDtos) {
+
+            for (Option option : options) {
+
+            }
+        }
+
+        return locationDtos;
     }
 }
