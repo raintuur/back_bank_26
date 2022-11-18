@@ -1,5 +1,6 @@
 package ee.valiit.back_bank_26.atm;
 
+import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOption;
 import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOptionRepository;
 import ee.valiit.back_bank_26.domain.atm.location.Location;
 import ee.valiit.back_bank_26.domain.atm.location.LocationDto;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -76,7 +78,22 @@ public class AtmController {
             // JÄRVE SELVER
 
             for (Option option : options) {
-                // sularaha sisse
+                // Sularaha sisse
+                option
+
+                List<AtmOption> atmOptions = atmOptionRepository.findAtmOptionsBy(locationDto.getLocationId());
+
+                List<OptionDto> optionDtos = new ArrayList<>();
+                for (AtmOption atmOption : atmOptions) {
+                    // siin viis rida,
+                    // AAA - sularaha sisse
+                    // AAA - sularaha välja
+                    // AAA - maksed
+                    // BBB - sularaha sisse
+                    // BBB - sularaha välja
+
+
+                }
 
 
             }
