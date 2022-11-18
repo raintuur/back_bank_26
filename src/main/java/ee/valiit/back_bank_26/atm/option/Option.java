@@ -5,20 +5,21 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "atm_service_relation")
-public class AtmServiceRelation {
+@Table(name = "option")
+public class Option {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Size(max = 255)
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "atm_service_id", nullable = false)
-    private AtmService atmService;
+    @Column(name = "name", nullable = false)
+    private String name;
 
 }

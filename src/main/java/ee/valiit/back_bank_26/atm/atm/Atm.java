@@ -1,5 +1,6 @@
 package ee.valiit.back_bank_26.atm.atm;
 
+import ee.valiit.back_bank_26.atm.location.Location;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,11 @@ public class Atm {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "location_id", nullable = false)
+    private Location location;
 
     @Size(max = 255)
     @NotNull
