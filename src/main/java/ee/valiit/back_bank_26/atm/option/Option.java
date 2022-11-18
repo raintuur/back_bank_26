@@ -10,8 +10,8 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @Entity
-@Table(name = "atm_service")
-public class AtmService {
+@Table(name = "option")
+public class Option {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
