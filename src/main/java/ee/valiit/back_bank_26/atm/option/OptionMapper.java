@@ -8,6 +8,7 @@ import java.util.List;
 public interface OptionMapper {
     @Mapping(source = "id", target ="optionId")
     @Mapping(source = "name", target ="optionName")
+    @Mapping(constant = "false", target = "isSelected")
     OptionDto toDto(Option option);
 
     List<OptionDto> toDtos(List<Option> options);

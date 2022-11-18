@@ -42,9 +42,12 @@ public class AtmController {
 
     @GetMapping("/atm/option")
     public List<OptionDto> getAllAtmOptions() {
+
         List<Option> entities = optionRepository.findAll();
 
-        return dtos;
+        List<OptionDto> optionDtos = optionMapper.toDtos(entities);
+
+        return optionDtos;
     }
 
 //
