@@ -11,7 +11,6 @@ import java.io.Serializable;
  */
 @Data
 public class LocationDto implements Serializable {
-    private final String cityName;
     private final String locationName;
-
+    private final String cityName;
 }

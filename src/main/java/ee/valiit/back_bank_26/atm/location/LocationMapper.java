@@ -9,4 +9,5 @@ public interface LocationMapper {
     @Mapping(source = "name", target = "locationName")
     @Mapping(source = "city.name", target = "cityName")
     LocationDto toDto(Location location);
+
 }
