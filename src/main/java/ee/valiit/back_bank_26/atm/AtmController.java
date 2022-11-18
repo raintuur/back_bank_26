@@ -81,12 +81,17 @@ public class AtmController {
             List<AtmOptionDto> availableOptionDtos = new ArrayList<>();
 
             for (Option option : options) {
-//                Sularaha sisse
+                // Sularaha sisse
+                // Sularaha Välja
+                // maksed
 
-
-                List<AtmOptionDto> optionDtos = new ArrayList<>();
                 for (AtmOption atmOption : availableOptions) {
-
+                    // siin viis rida,
+                    // AAA - sularaha sisse
+                    // AAA - sularaha välja
+                    // AAA - maksed
+                    // BBB - sularaha sisse
+                    // BBB - sularaha välja
                     if (option.getName().equals(atmOption.getOption().getName())) {
                         AtmOptionDto atmOptionDto = new AtmOptionDto();
                         atmOptionDto.setOptionName(option.getName());
@@ -98,6 +103,8 @@ public class AtmController {
 
 
             }
+
+            locationDto.setOptions(availableOptionDtos);
 
         }
 

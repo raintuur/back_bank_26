@@ -10,4 +10,6 @@ public interface AtmOptionRepository extends JpaRepository<AtmOption, Integer> {
     List<AtmOption> findAtmOptionsBy(Integer locationId);
 
 
+
+
 }
