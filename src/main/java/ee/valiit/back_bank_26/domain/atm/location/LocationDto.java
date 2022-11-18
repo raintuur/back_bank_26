@@ -1,9 +1,7 @@
-package ee.valiit.back_bank_26.atm.location;
+package ee.valiit.back_bank_26.domain.atm.location;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**

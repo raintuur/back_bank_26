@@ -1,17 +1,18 @@
 package ee.valiit.back_bank_26.atm;
 
-import ee.valiit.back_bank_26.atm.location.Location;
-import ee.valiit.back_bank_26.atm.location.LocationDto;
-import ee.valiit.back_bank_26.atm.location.LocationMapper;
-import ee.valiit.back_bank_26.atm.location.LocationRepository;
-import ee.valiit.back_bank_26.atm.option.Option;
-import ee.valiit.back_bank_26.atm.option.OptionDto;
-import ee.valiit.back_bank_26.atm.option.OptionMapper;
-import ee.valiit.back_bank_26.atm.option.OptionRepository;
-import ee.valiit.back_bank_26.city.City;
-import ee.valiit.back_bank_26.city.CityDto;
-import ee.valiit.back_bank_26.city.CityMapper;
-import ee.valiit.back_bank_26.city.CityRepository;
+import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOptionRepository;
+import ee.valiit.back_bank_26.domain.atm.location.Location;
+import ee.valiit.back_bank_26.domain.atm.location.LocationDto;
+import ee.valiit.back_bank_26.domain.atm.location.LocationMapper;
+import ee.valiit.back_bank_26.domain.atm.location.LocationRepository;
+import ee.valiit.back_bank_26.domain.atm.option.Option;
+import ee.valiit.back_bank_26.domain.atm.option.OptionDto;
+import ee.valiit.back_bank_26.domain.atm.option.OptionMapper;
+import ee.valiit.back_bank_26.domain.atm.option.OptionRepository;
+import ee.valiit.back_bank_26.domain.city.City;
+import ee.valiit.back_bank_26.domain.city.CityDto;
+import ee.valiit.back_bank_26.domain.city.CityMapper;
+import ee.valiit.back_bank_26.domain.city.CityRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +32,7 @@ public class AtmController {
     private OptionRepository optionRepository;
 
     @Resource
-    private LocationRepository locationRepository;
+    private AtmOptionRepository atmOptionRepository;
 
     @Resource
     private CityMapper cityMapper;
@@ -66,9 +67,9 @@ public class AtmController {
 //
     @GetMapping("/info")
     @Operation( summary = "Leiab kõikide pangaautomaatide asukohad")
-    public List <LocationDto> getAllAtmLocations() {
-        List<Location> entities = locationRepository.findAll();
-        List<LocationDto> dtos = locationMapper.toDtos(entities);
+    public List <AtmLocationInfo> getAllAtmLocations() {
+
+
         return dtos;
     }
 }
