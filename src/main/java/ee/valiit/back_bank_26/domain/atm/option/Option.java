@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26.city;
+package ee.valiit.back_bank_26.domain.atm.option;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,12 +7,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
 @Getter
 @Setter
 @Entity
-@Table(name = "city")
-public class City {
+@Table(name = "option")
+public class Option {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

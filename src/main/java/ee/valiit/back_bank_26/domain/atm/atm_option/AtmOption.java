@@ -1,6 +1,7 @@
-package ee.valiit.back_bank_26.atm.option;
+package ee.valiit.back_bank_26.domain.atm.atm_option;
 
-import ee.valiit.back_bank_26.atm.atm.Atm;
+import ee.valiit.back_bank_26.domain.atm.atm.Atm;
+import ee.valiit.back_bank_26.domain.atm.option.Option;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,5 +22,10 @@ public class AtmOption {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "atm_id", nullable = false)
     private Atm atm;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "option_id", nullable = false)
+    private Option option;
 
 }

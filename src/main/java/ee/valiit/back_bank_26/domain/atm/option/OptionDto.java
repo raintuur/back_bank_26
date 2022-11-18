@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26.atm.option;
+package ee.valiit.back_bank_26.domain.atm.option;
 
 import lombok.Data;
 
@@ -15,5 +15,5 @@ public class OptionDto implements Serializable {
     @Size(max = 255)
     @NotNull
     private final String optionName;
-    private boolean isSelected = false;
+    private final boolean isSelected;
 }

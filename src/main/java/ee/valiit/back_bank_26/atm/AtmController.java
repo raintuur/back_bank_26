@@ -1,18 +1,26 @@
 package ee.valiit.back_bank_26.atm;
 
-import ee.valiit.back_bank_26.atm.option.OptionDto;
-import ee.valiit.back_bank_26.atm.option.OptionMapper;
-import ee.valiit.back_bank_26.atm.option.OptionRepository;
-import ee.valiit.back_bank_26.city.CityDto;
-import ee.valiit.back_bank_26.city.CityMapper;
-import ee.valiit.back_bank_26.city.CityRepository;
+import ee.valiit.back_bank_26.domain.atm.atm_option.AtmOptionMapper;
+import ee.valiit.back_bank_26.domain.atm.location.Location;
+import ee.valiit.back_bank_26.domain.atm.location.LocationDto;
+import ee.valiit.back_bank_26.domain.atm.location.LocationMapper;
+import ee.valiit.back_bank_26.domain.atm.location.LocationRepository;
+import ee.valiit.back_bank_26.domain.atm.option.OptionDto;
+import ee.valiit.back_bank_26.domain.atm.option.OptionMapper;
+import ee.valiit.back_bank_26.domain.atm.option.OptionRepository;
+import ee.valiit.back_bank_26.domain.city.CityDto;
+import ee.valiit.back_bank_26.domain.city.CityMapper;
+import ee.valiit.back_bank_26.domain.city.CityRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
+@RequestMapping("/atm")
 public class AtmController {
 
     @Resource
@@ -20,25 +28,37 @@ public class AtmController {
     @Resource
     private OptionRepository optionRepository;
     @Resource
+    private LocationRepository locationRepository;
+    @Resource
     private CityMapper cityMapper;
     @Resource
     private OptionMapper optionMapper;
+    @Resource
+    private AtmOptionMapper atmOptionMapper;
+    @Resource
+    private LocationMapper locationMapper;
 
 
-
-    @GetMapping("/atm/city")
+    @GetMapping("/city")
+    @Operation(summary = "This returns all city names and id-s for dropdownbox")
     public List<CityDto> getAllCities() {
         return cityMapper.citiesTocityDtos(cityRepository.findAll());
     }
 
-    @GetMapping("/atm/option")
+    @GetMapping("/option")
+    @Operation(summary = "This returns all option names for radio buttons", description = "Something Something")
     public List<OptionDto> getAllOptions() {
         return optionMapper.toDtos(optionRepository.findAll());
     }
 
-    @GetMapping("/atm/info")
-    public String getAtmLocationByName() {
-        return null;
+    @GetMapping("/info")
+    @Operation(summary = "this returns atm and atm location info for atm info table generation",
+            description = "Returns city name, atm location, available service options")
+    public List<LocationDto> getAtmLocationByName() {
+        List<Location> locations = locationRepository.findAll();
+        List<LocationDto> locationDtos = locationMapper.toDtos(locations);
+
+        return locationDtos;
     }
 }
 
