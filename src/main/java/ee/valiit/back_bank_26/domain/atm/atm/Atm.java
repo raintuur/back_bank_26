@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26.atm.option;
+package ee.valiit.back_bank_26.domain.atm.atm;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +10,8 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @Entity
-@Table(name = "atm_option")
-public class AtmOption {
+@Table(name = "atm")
+public class Atm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -19,7 +19,12 @@ public class AtmOption {
 
     @Size(max = 255)
     @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "serial_number", nullable = false)
+    private String serialNumber;
+
+    @Size(max = 1)
+    @NotNull
+    @Column(name = "status", nullable = false, length = 1)
+    private String status;
 
 }

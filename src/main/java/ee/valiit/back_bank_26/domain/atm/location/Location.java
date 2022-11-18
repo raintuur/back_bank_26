@@ -1,5 +1,6 @@
-package ee.valiit.back_bank_26.atm.atm;
+package ee.valiit.back_bank_26.domain.atm.location;
 
+import ee.valiit.back_bank_26.domain.city.City;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,17 +11,22 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @Entity
-@Table(name = "atm")
-public class Atm {
+@Table(name = "location")
+public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "city_id", nullable = false)
+    private City city;
+
     @Size(max = 255)
     @NotNull
-    @Column(name = "serial_number", nullable = false)
-    private String serialNumber;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @Size(max = 1)
     @NotNull

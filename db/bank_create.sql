@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-17 14:18:33.363
+-- Last modification date: 2022-11-18 07:27:53.952
 
 -- tables
 -- Table: account
@@ -43,18 +43,10 @@ CREATE TABLE atm
 -- Table: atm_option
 CREATE TABLE atm_option
 (
-    id   serial       NOT NULL,
-    name varchar(255) NOT NULL,
-    CONSTRAINT atm_service_pk PRIMARY KEY (id)
-);
-
--- Table: atm_option_relation
-CREATE TABLE atm_option_relation
-(
-    id            serial NOT NULL,
-    atm_id        int    NOT NULL,
-    atm_option_id int    NOT NULL,
-    CONSTRAINT atm_service_relation_pk PRIMARY KEY (id)
+    id        serial NOT NULL,
+    atm_id    int    NOT NULL,
+    option_id int    NOT NULL,
+    CONSTRAINT atm_option_pk PRIMARY KEY (id)
 );
 
 -- Table: city
@@ -98,6 +90,14 @@ CREATE TABLE location
     name    varchar(255) NOT NULL,
     status  char(1)      NOT NULL DEFAULT 'A',
     CONSTRAINT location_pk PRIMARY KEY (id)
+);
+
+-- Table: option
+CREATE TABLE option
+(
+    id   serial       NOT NULL,
+    name varchar(255) NOT NULL,
+    CONSTRAINT option_pk PRIMARY KEY (id)
 );
 
 -- Table: role
@@ -188,20 +188,20 @@ ALTER TABLE atm
                 INITIALLY IMMEDIATE
 ;
 
--- Reference: atm_option_relation_atm_option (table: atm_option_relation)
-ALTER TABLE atm_option_relation
-    ADD CONSTRAINT atm_option_relation_atm_option
-        FOREIGN KEY (atm_option_id)
-            REFERENCES atm_option (id)
+-- Reference: atm_option_relation_atm (table: atm_option)
+ALTER TABLE atm_option
+    ADD CONSTRAINT atm_option_relation_atm
+        FOREIGN KEY (atm_id)
+            REFERENCES atm (id)
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE
 ;
 
--- Reference: atm_service_relation_atm (table: atm_option_relation)
-ALTER TABLE atm_option_relation
-    ADD CONSTRAINT atm_service_relation_atm
-        FOREIGN KEY (atm_id)
-            REFERENCES atm (id)
+-- Reference: atm_option_relation_option (table: atm_option)
+ALTER TABLE atm_option
+    ADD CONSTRAINT atm_option_relation_option
+        FOREIGN KEY (option_id)
+            REFERENCES option (id)
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE
 ;
@@ -244,6 +244,7 @@ ALTER TABLE transaction
 ;
 
 -- Reference: user_role_role (table: user_role)
+
 ALTER TABLE user_role
     ADD CONSTRAINT user_role_role
         FOREIGN KEY (role_id)

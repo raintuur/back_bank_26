@@ -1,6 +1,7 @@
-package ee.valiit.back_bank_26.atm.option;
+package ee.valiit.back_bank_26.domain.atm.atmoption;
 
-import ee.valiit.back_bank_26.atm.atm.Atm;
+import ee.valiit.back_bank_26.domain.atm.atm.Atm;
+import ee.valiit.back_bank_26.domain.atm.option.Option;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +11,8 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Entity
-@Table(name = "atm_option_relation")
-public class AtmOptionRelation {
+@Table(name = "atm_option")
+public class AtmOption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -24,7 +25,7 @@ public class AtmOptionRelation {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "atm_option_id", nullable = false)
-    private AtmOption atmOption;
+    @JoinColumn(name = "option_id", nullable = false)
+    private Option option;
 
 }
