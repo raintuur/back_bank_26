@@ -23,11 +23,14 @@ public class AtmController {
     @Resource
     private OptionRepository optionRepository;
 
+
     @Resource
     private CityMapper cityMapper;
 
     @Resource
     private OptionMapper optionMapper;
+
+
 
     @GetMapping("/atm/city")
     public List<CityDto> getAllCities() {
@@ -41,7 +44,6 @@ public class AtmController {
     public List<OptionDto> getAllAtmOptions() {
         List<Option> entities = optionRepository.findAll();
         List<OptionDto> optionDtos = optionMapper.toDtos(entities);
-
         return optionDtos;
     }
 
