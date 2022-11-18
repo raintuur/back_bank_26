@@ -66,11 +66,10 @@ public class AtmController {
 //
     @GetMapping("/info")
     @Operation( summary = "Leiab kõikide pangaautomaatide asukohad")
-    public LocationDto getAllAtmLocations() {
-        Location location = locationRepository.getById(1);
-        LocationDto locationDto = locationMapper.toDto(location);
+    public List<LocationDto> getAllAtmLocations() {
 
-
-        return locationDto;
+        List<Location> entities = locationRepository.findAll();
+        List<LocationDto> dtos = locationMapper.toDtos(entities);
+        return dtos;
     }
 }
