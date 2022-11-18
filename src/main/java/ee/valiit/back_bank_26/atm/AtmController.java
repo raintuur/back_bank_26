@@ -47,10 +47,6 @@ public class AtmController {
     private LocationMapper locationMapper;
 
 
-
-
-
-
     @GetMapping("/city")
     @Operation(summary = "Selle teenusega saad kätte kõik linnad", description = "Mingi pikem jutt rohkem mula")
     public List<CityDto> getAllCities() {
@@ -77,11 +73,20 @@ public class AtmController {
         List<Option> options = optionRepository.findAll();
 
         for (LocationDto locationDto : locationDtos) {
+            // JÄRVE SELVER
 
             for (Option option : options) {
+                // sularaha sisse
+
 
             }
+
         }
+
+
+
+
+
 
         return locationDtos;
     }
