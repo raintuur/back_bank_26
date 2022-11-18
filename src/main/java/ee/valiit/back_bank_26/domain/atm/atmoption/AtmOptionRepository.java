@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AtmOptionRepository extends JpaRepository<AtmOption, Integer> {
     @Query("select a from AtmOption a where a.atm.location.id = ?1 order by a.atm.location.id, a.option.id")
-    List<AtmOption> findAtmLocationsBy(Integer locationId);
+    List<AtmOption> findAtmOptionsBy(Integer locationId);
 
 
 }
