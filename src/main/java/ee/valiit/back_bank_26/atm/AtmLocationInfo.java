@@ -9,5 +9,5 @@ import java.util.List;
 public class AtmLocationInfo {
     private String cityName;
     private String locationName;
-    private List<Option> options;
+    private List<AtmOptionDto> options;
 }
