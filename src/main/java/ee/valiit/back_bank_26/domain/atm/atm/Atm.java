@@ -1,6 +1,6 @@
-package ee.valiit.back_bank_26.atm.atm;
+package ee.valiit.back_bank_26.domain.atm.atm;
 
-import ee.valiit.back_bank_26.atm.location.Location;
+import ee.valiit.back_bank_26.domain.atm.location.Location;
 import lombok.Getter;
 import lombok.Setter;
 
