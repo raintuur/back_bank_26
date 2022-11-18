@@ -16,16 +16,16 @@ INSERT INTO public.atm (id, serial_number, location_id, status ) VALUES (DEFAULT
 INSERT INTO public.atm (id, serial_number, location_id, status) VALUES (DEFAULT, 'BBB123', 2, DEFAULT);
 INSERT INTO public.atm (id, serial_number, location_id, status) VALUES (DEFAULT, 'CCC123', 3, DEFAULT);
 
-INSERT INTO public.atm_service (id, name) VALUES (DEFAULT, 'raha välja');
-INSERT INTO public.atm_service (id, name) VALUES (DEFAULT, 'raha sisse');
-INSERT INTO public.atm_service (id, name) VALUES (DEFAULT, 'maksed');
+INSERT INTO public.option (id, name) VALUES (DEFAULT, 'raha välja');
+INSERT INTO public.option (id, name) VALUES (DEFAULT, 'raha sisse');
+INSERT INTO public.option (id, name) VALUES (DEFAULT, 'maksed');
 
-INSERT INTO public.atm_service_relation (id, atm_id, atm_service_id) VALUES (DEFAULT, 1, 1);
-INSERT INTO public.atm_service_relation (id, atm_id, atm_service_id) VALUES (DEFAULT, 1, 2);
-INSERT INTO public.atm_service_relation (id, atm_id, atm_service_id) VALUES (DEFAULT, 1, 3);
-INSERT INTO public.atm_service_relation (id, atm_id, atm_service_id) VALUES (DEFAULT, 2, 1);
-INSERT INTO public.atm_service_relation (id, atm_id, atm_service_id) VALUES (DEFAULT, 2, 2);
-INSERT INTO public.atm_service_relation (id, atm_id, atm_service_id) VALUES (DEFAULT, 3, 1);
-INSERT INTO public.atm_service_relation (id, atm_id, atm_service_id) VALUES (DEFAULT, 3, 2);
+INSERT INTO public.atm_option (id, atm_id, option_id) VALUES (DEFAULT, 1, 1);
+INSERT INTO public.atm_option (id, atm_id, option_id) VALUES (DEFAULT, 1, 2);
+INSERT INTO public.atm_option (id, atm_id, option_id) VALUES (DEFAULT, 1, 3);
+INSERT INTO public.atm_option (id, atm_id, option_id) VALUES (DEFAULT, 2, 1);
+INSERT INTO public.atm_option (id, atm_id, option_id) VALUES (DEFAULT, 2, 2);
+INSERT INTO public.atm_option (id, atm_id, option_id) VALUES (DEFAULT, 3, 1);
+INSERT INTO public.atm_option (id, atm_id, option_id) VALUES (DEFAULT, 3, 2);
 
 INSERT INTO public."user" (id, username, password, role_id) VALUES (DEFAULT, 'admin', '123', 1);

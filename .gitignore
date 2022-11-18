@@ -36,3 +36,4 @@ out/
 ### vs code ###
 .vscode/
 /src/main/generated/
+/.jpb/jpb-settings.xml
