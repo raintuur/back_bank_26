@@ -67,8 +67,25 @@ public class AtmController {
     @GetMapping("/info")
     @Operation( summary = "Leiab kõikide pangaautomaatide asukohad")
     public List<LocationDto> getAllAtmLocations() {
+
         List<Location> locations = locationRepository.findAll();
         List<LocationDto> locationDtos = locationMapper.toDtos(locations);
+        List<Option> options = optionRepository.findAll();
+
+        for (LocationDto locationDto : locationDtos) {
+            // JÄRVE SELVER
+
+            for (Option option : options) {
+                // sularaha sisse
+
+
+            }
+
+        }
+
+
+
+
 
 
         return locationDtos;
