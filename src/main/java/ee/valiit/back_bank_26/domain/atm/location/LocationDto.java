@@ -1,6 +1,6 @@
 package ee.valiit.back_bank_26.domain.atm.location;
 
-import ee.valiit.back_bank_26.domain.atm.option.Option;
+import ee.valiit.back_bank_26.atm.AtmOptionDto;
 import ee.valiit.back_bank_26.domain.atm.option.OptionDto;
 import lombok.Data;
 
@@ -14,12 +14,12 @@ import java.util.List;
  */
 @Data
 public class LocationDto implements Serializable {
+    private final Integer locationId;
     @Size(max = 255)
     @NotNull
     private final String cityName;
     @Size(max = 255)
     @NotNull
     private final String locationName;
-    private final Integer locationId;
-    private final List<Option> options;
+    private final List<AtmOptionDto> options;
 }

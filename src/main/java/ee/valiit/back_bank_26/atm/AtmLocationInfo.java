@@ -14,5 +14,5 @@ public class AtmLocationInfo {
     @Size(max = 255)
     @NotNull
     private final String locationName;
-    private final List<Optsion> optsions;
+    private final List<AtmOptionDto> optsions;
 }
