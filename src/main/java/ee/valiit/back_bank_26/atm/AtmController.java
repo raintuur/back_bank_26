@@ -1,9 +1,5 @@
 package ee.valiit.back_bank_26.atm;
 
-import ee.valiit.back_bank_26.atm.option.AtmService;
-import ee.valiit.back_bank_26.atm.option.AtmServiceDto;
-import ee.valiit.back_bank_26.atm.option.AtmServiceMapper;
-import ee.valiit.back_bank_26.atm.option.AtmServiceRepository;
 import ee.valiit.back_bank_26.city.City;
 import ee.valiit.back_bank_26.city.CityDto;
 import ee.valiit.back_bank_26.city.CityMapper;
@@ -23,12 +19,6 @@ public class AtmController {
     @Resource
     private CityMapper cityMapper;
 
-    @Resource
-    private AtmServiceRepository atmServiceRepository;
-
-    @Resource
-    private AtmServiceMapper atmServiceMapper;
-
     @GetMapping("/atm/city")
     public List<CityDto> getAllCities() {
         List<City> allEntities = cityRepository.findAll();
@@ -37,12 +27,12 @@ public class AtmController {
     }
 
 
-    @GetMapping("/atm/service")
-    public List<AtmServiceDto> getAllAtmOptions() {
-        List<AtmService> entities = atmServiceRepository.findAll();
-        List<AtmServiceDto> dtos = atmServiceMapper.toDtos(entities);
-        return dtos;
-    }
+//    @GetMapping("/atm/service")
+//    public List<AtmServiceDto> getAllAtmOptions() {
+//        List<AtmService> entities = atmServiceRepository.findAll();
+//        List<AtmServiceDto> dtos = atmServiceMapper.toDtos(entities);
+//        return dtos;
+//    }
 
 //
 //    @GetMapping("/atm/info")
