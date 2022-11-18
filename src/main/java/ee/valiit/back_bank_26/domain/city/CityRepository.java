@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26.city;
+package ee.valiit.back_bank_26.domain.city;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
