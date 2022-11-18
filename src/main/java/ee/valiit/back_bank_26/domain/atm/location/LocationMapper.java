@@ -8,6 +8,7 @@ import java.util.List;
 public interface LocationMapper {
 
 
+    @Mapping(source = "id", target = "locationId")
     @Mapping(source = "name", target = "locationName")
     @Mapping(source = "city.name", target = "cityName")
     LocationDto toDto(Location location);
