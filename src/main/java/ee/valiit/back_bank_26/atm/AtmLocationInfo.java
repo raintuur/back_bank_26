@@ -8,11 +8,12 @@ import java.util.List;
 
 @Data
 public class AtmLocationInfo {
+    private final Integer locationId;
     @Size(max = 255)
     @NotNull
     private final String cityName;
     @Size(max = 255)
     @NotNull
     private final String locationName;
-    private final List<AtmOptionDto> optsions;
+    private List<AtmOptionDto> atmOptions;
 }

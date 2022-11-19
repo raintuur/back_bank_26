@@ -4,10 +4,8 @@ import ee.valiit.back_bank_26.domain.atm.atm_option.AtmOption;
 import ee.valiit.back_bank_26.domain.atm.atm_option.AtmOptionMapper;
 import ee.valiit.back_bank_26.domain.atm.atm_option.AtmOptionRepository;
 import ee.valiit.back_bank_26.domain.atm.location.Location;
-import ee.valiit.back_bank_26.domain.atm.location.LocationDto;
 import ee.valiit.back_bank_26.domain.atm.location.LocationMapper;
 import ee.valiit.back_bank_26.domain.atm.location.LocationRepository;
-import ee.valiit.back_bank_26.domain.atm.option.Option;
 import ee.valiit.back_bank_26.domain.atm.option.OptionDto;
 import ee.valiit.back_bank_26.domain.atm.option.OptionMapper;
 import ee.valiit.back_bank_26.domain.atm.option.OptionRepository;
@@ -60,31 +58,49 @@ public class AtmController {
     @GetMapping("/info")
     @Operation(summary = "this returns atm and atm location info for atm info table generation",
             description = "Returns city name, atm location, available service options")
-    public List<LocationDto> getAtmLocationByName() {
+    public List<AtmLocationInfo> getAtmLocationByName() {
 
         List<Location> locations = locationRepository.findAll();
-        List<LocationDto> locationDtos = locationMapper.toDtos(locations);
-        List<Option> options = optionRepository.findAll();
+        List<AtmLocationInfo> atmLocationInfos = locationMapper.toDtos(locations);
 
-        for (LocationDto locationDto : locationDtos) {
-            List<AtmOption> availableOptions = atmOptionRepository.findAtmOptionsBy(locationDto.getLocationId());
+        // Esimene loop vaatab ükshaaval eel pool loodud AtmLocationInfos Listi sisse ja teeme iga objektiga eraldi tööd.
+        for (AtmLocationInfo atmLocationInfo : atmLocationInfos) {
+
+            //Teeme uue listi, kus hakkame hoidma ühe ATM asukoha võimalike Optsioneid (Rahasisse, -välja või maksed)
+            // ja kohe anname talle ka väärtused loodud query-ga. Siia listi tulevad ainult väärtused juhul,
+            // kui antud asukoha ATM on optsioneid. Väärtused on Entity'd.
+            List<AtmOption> availableOptions = atmOptionRepository.findAtmOptionsBy(atmLocationInfo.getLocationId());
+
+            //Looma sama sama asja kohta Dto listi, et ümber tõsta entitiest Dto-ks.
             List<AtmOptionDto> availableOptionsDtos = new ArrayList<>();
 
-            for (Option option : options) {
-
-                for (AtmOption atmOption : availableOptions) {
-                    if(option.getName().equals(atmOption.getOption().getName())) {
-                        AtmOptionDto atmOptionDto = new AtmOptionDto();
-                        atmOptionDto.setOptionName(option.getName());
-                        availableOptionsDtos.add(atmOptionDto);
-                        break;
-                    }
-                }
+            // Järgmine for loop, mille sees toimub ümber tõstmine ja üksikute Dto-de listi lisamine.
+            // See võiks olla vast mõnes Mapperi Intefacesis.
+            for (AtmOption availableOption : availableOptions) {
+                AtmOptionDto atmOptionDto = new AtmOptionDto();
+                atmOptionDto.setOptionName(availableOption.getOption().getName());
+                availableOptionsDtos.add(atmOptionDto);
             }
-            locationDto.setOptions(availableOptionsDtos);
+            //Nüüd lisame real 75 loodud avilableOptionsDto List lõplikusse Dto-sse, mida saadame front end poole.
+            atmLocationInfo.setAtmOptions(availableOptionsDtos);
         }
+        return atmLocationInfos;
 
-        return locationDtos;
+
+//            for (Option option : options) {
+//
+//                for (AtmOption atmOption : availableOptions) {
+//                    if(option.getName().equals(atmOption.getOption().getName())) {
+//                        AtmOptionDto atmOptionDto = new AtmOptionDto();
+//                        atmOptionDto.setOptionName(option.getName());
+//                        availableOptionsDtos.add(atmOptionDto);
+//                        break;
+//                    }
+//                }
+//            }
+//            atmLocationInfo.setOptions(availableOptionsDtos);
+//        }
+
     }
 }
 
