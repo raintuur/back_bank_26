@@ -81,9 +81,8 @@ public class AtmController {
                     }
                 }
             }
+            locationDto.setOptions(availableOptionsDtos);
         }
-
-        locationDtos.se
 
         return locationDtos;
     }

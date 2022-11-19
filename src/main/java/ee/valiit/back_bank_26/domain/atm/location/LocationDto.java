@@ -21,5 +21,5 @@ public class LocationDto implements Serializable {
     @Size(max = 255)
     @NotNull
     private final String locationName;
-    private final List<AtmOptionDto> options;
+    private List<AtmOptionDto> options;
 }
