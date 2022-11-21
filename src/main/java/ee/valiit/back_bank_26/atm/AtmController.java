@@ -1,6 +1,5 @@
 package ee.valiit.back_bank_26.atm;
 
-import ee.valiit.back_bank_26.domain.atm.atm_option.AtmOption;
 import ee.valiit.back_bank_26.domain.atm.atm_option.AtmOptionMapper;
 import ee.valiit.back_bank_26.domain.atm.atm_option.AtmOptionRepository;
 import ee.valiit.back_bank_26.domain.atm.location.Location;
@@ -38,8 +37,6 @@ public class AtmController {
     @Resource
     private OptionMapper optionMapper;
     @Resource
-    private AtmOptionMapper atmOptionMapper;
-    @Resource
     private LocationMapper locationMapper;
 
 
@@ -63,44 +60,27 @@ public class AtmController {
         List<Location> locations = locationRepository.findAll();
         List<AtmLocationInfo> atmLocationInfos = locationMapper.toDtos(locations);
 
-        // Esimene loop vaatab ükshaaval eel pool loodud AtmLocationInfos Listi sisse ja teeme iga objektiga eraldi tööd.
-        for (AtmLocationInfo atmLocationInfo : atmLocationInfos) {
-
-            //Teeme uue listi, kus hakkame hoidma ühe ATM asukoha võimalike Optsioneid (Rahasisse, -välja või maksed)
-            // ja kohe anname talle ka väärtused loodud query-ga. Siia listi tulevad ainult väärtused juhul,
-            // kui antud asukoha ATM on optsioneid. Väärtused on Entity'd.
-            List<AtmOption> availableOptions = atmOptionRepository.findAtmOptionsBy(atmLocationInfo.getLocationId());
-
-            //Looma sama sama asja kohta Dto listi, et ümber tõsta entitiest Dto-ks.
-            List<AtmOptionDto> availableOptionsDtos = new ArrayList<>();
-
-            // Järgmine for loop, mille sees toimub ümber tõstmine ja üksikute Dto-de listi lisamine.
-            // See võiks olla vast mõnes Mapperi Intefacesis.
-            for (AtmOption availableOption : availableOptions) {
-                AtmOptionDto atmOptionDto = new AtmOptionDto();
-                atmOptionDto.setOptionName(availableOption.getOption().getName());
-                availableOptionsDtos.add(atmOptionDto);
-            }
-            //Nüüd lisame real 75 loodud avilableOptionsDto List lõplikusse Dto-sse, mida saadame front end poole.
-            atmLocationInfo.setAtmOptions(availableOptionsDtos);
-        }
+        addAtmLocations(atmLocationInfos);
         return atmLocationInfos;
 
+    }
 
-//            for (Option option : options) {
-//
-//                for (AtmOption atmOption : availableOptions) {
-//                    if(option.getName().equals(atmOption.getOption().getName())) {
-//                        AtmOptionDto atmOptionDto = new AtmOptionDto();
-//                        atmOptionDto.setOptionName(option.getName());
-//                        availableOptionsDtos.add(atmOptionDto);
-//                        break;
-//                    }
-//                }
-//            }
-//            atmLocationInfo.setOptions(availableOptionsDtos);
-//        }
+    private void addAtmLocations(List<AtmLocationInfo> atmLocationInfos) {
+        for (AtmLocationInfo atmLocationInfoDto : atmLocationInfos) {
 
+            addAtmOptionsToLocationDto(atmLocationInfoDto);
+        }
+    }
+
+    private void addAtmOptionsToLocationDto(AtmLocationInfo atmLocationInfo) {
+        List<String> availableOptions = atmOptionRepository.findAtmOptionNamesBy(atmLocationInfo.getLocationId());
+        List<AtmOptionDto> atmOptionDtos = new ArrayList<>();
+
+        for (String availableOption : availableOptions) {
+            AtmOptionDto atmOptionDto = new AtmOptionDto(availableOption);
+            atmOptionDtos.add(atmOptionDto);
+        }
+        atmLocationInfo.setAtmOptions(atmOptionDtos);
     }
 }
 
