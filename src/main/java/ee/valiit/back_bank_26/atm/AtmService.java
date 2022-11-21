@@ -1,5 +1,9 @@
 package ee.valiit.back_bank_26.atm;
 
+import ee.valiit.back_bank_26.domain.atm.atm.Atm;
+import ee.valiit.back_bank_26.domain.atm.atm.AtmMapper;
+import ee.valiit.back_bank_26.domain.atm.atm.AtmRepository;
+import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOption;
 import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOptionRepository;
 import ee.valiit.back_bank_26.domain.atm.location.Location;
 import ee.valiit.back_bank_26.domain.atm.location.LocationDto;
@@ -41,6 +45,12 @@ public class AtmService {
 
     @Resource
     private LocationMapper locationMapper;
+
+    @Resource
+    private AtmMapper atmMapper;
+
+    @Resource
+    private AtmRepository atmRepository;
 
     public List<LocationDto> getAllAtmLocations() {
         List<Location> locations = locationRepository.findAll();
@@ -99,4 +109,26 @@ public class AtmService {
     }
 
 
+    public void addAtm(AtmRequest request) {
+        Atm atm = atmMapper.toEntity(request);
+        Location location = locationRepository.findById(request.getLocationId()).get();
+        atm.setLocation(location);
+        atmRepository.save(atm);
+
+        List<OptionDto> options = request.getOptions();
+        for (OptionDto option : options) {
+            if (option.getIsSelected()) {
+                Integer optionId = option.getOptionId();
+                Option optionEntity = optionRepository.findById(optionId).get();
+                AtmOption atmOption = new AtmOption();
+                atmOption.setAtm(atm);
+                atmOption.setOption(optionEntity);
+                atmOptionRepository.save(atmOption);
+            }
+        }
+
+
+
+        System.out.println();
+    }
 }
