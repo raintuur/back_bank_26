@@ -1,31 +1,49 @@
 package ee.valiit.back_bank_26.atm;
 
-import ee.valiit.back_bank_26.city.City;
-import ee.valiit.back_bank_26.city.CityDto;
-import ee.valiit.back_bank_26.city.CityMapper;
-import ee.valiit.back_bank_26.city.CityRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import ee.valiit.back_bank_26.domain.atm.location.LocationDto;
+import ee.valiit.back_bank_26.domain.atm.option.OptionDto;
+import ee.valiit.back_bank_26.domain.city.CityDto;
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
+@RequestMapping("/atm")
 public class AtmController {
 
     @Resource
-    private CityRepository cityRepository;
+    private AtmService atmService;
 
-    @Resource
-    private CityMapper cityMapper;
-
-    @GetMapping("/atm/city")
-    public List<CityDto> getAllCities() {
-        List<City> allEntities = cityRepository.findAll();
-        List<CityDto> allDtos = cityMapper.citiesToCityDtos(allEntities);
-        return allDtos;
+    @GetMapping("/info/by-city")
+    @Operation(summary = "Leiab pangaautomaatide asukohad linna ID'de järgi")
+    public List<LocationDto> getAtmLocationsByCityId(@RequestParam Integer cityId) {
+        return atmService.getAtmLocationsByCityId(cityId);
     }
 
-//    @GetMapping("/atm/service")
-//    @GetMapping("/atm/info")
+    @GetMapping("/city")
+    @Operation(summary = "Selle teenusega saad kätte kõik linnad", description = "Mingi pike jutt")
+    public List<CityDto> getAllCities() {
+        return atmService.getAllCities();
+    }
+
+    @GetMapping("/option")
+    @Operation(summary = "Leiab kõikide automaatide võimalikud valikud (sularaha välja, sularaha sisse, jne")
+    public List<OptionDto> getAllAtmOptions() {
+        return atmService.getAllAtmOptions();
+    }
+
+    @GetMapping("/info")
+    @Operation(summary = "Leiab kõikide pangaautomaatide asukohad")
+    public List<LocationDto> getAllAtmLocations() {
+        return atmService.getAllAtmLocations();
+    }
+
+    @PostMapping("")
+    public void addAtm(@RequestBody AtmRequest request) {
+        atmService.addAtm(request);
+    }
+
+
 }
