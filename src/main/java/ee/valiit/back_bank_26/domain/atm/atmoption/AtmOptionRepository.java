@@ -11,6 +11,8 @@ public interface AtmOptionRepository extends JpaRepository<AtmOption, Integer> {
     List<AtmOption> findAtmOptionsBy(Integer locationId);
 
     @Query("select distinct (a.option) from AtmOption a where a.atm.location.id = ?1")
-    List<Option> findAtmOptionNamesBy(Integer locationId);
+    List<Option> findOptionsBy(Integer locationId);
+
+
 
 }
