@@ -83,12 +83,17 @@ public class AtmController {
     }
 
     private void addAtmOptionsToLocationDto(LocationDto dto) {
-        List<AtmOptionDto> atmOptionDtos = new ArrayList<>();
         List<String> optionNames = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
-        for (String optionName : optionNames) {
-            AtmOptionDto atmOptionDto = new AtmOptionDto(optionName);
-            atmOptionDtos.add(atmOptionDto);
-        }
+        List<AtmOptionDto> atmOptionDtos = optionMapper.toAtmOptionDtos(options);
         dto.setOptions(atmOptionDtos);
+
+
+//        List<AtmOptionDto> atmOptionDtos = new ArrayList<>();
+
+//        for (String optionName : optionNames) {
+//            AtmOptionDto atmOptionDto = new AtmOptionDto(optionName);
+//            atmOptionDtos.add(atmOptionDto);
+//        }
+//        dto.setOptions(atmOptionDtos);
     }
 }
