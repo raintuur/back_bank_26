@@ -13,5 +13,4 @@ public interface AtmOptionMapper  {
 
    AtmLocationInfo toLocationInfo(AtmOption atmOption );
 
-
 }

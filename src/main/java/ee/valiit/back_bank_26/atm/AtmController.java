@@ -44,7 +44,7 @@ public class AtmController {
     @PostMapping("")
     @Operation(summary = "This serivce posts new atm to database")
     public void postNewAtm(@RequestBody AtmRequest atmRequest) {
-        System.out.println("Yeeee");
+        atmService.postNewAtm(atmRequest);
     }
 
 }

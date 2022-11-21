@@ -1,5 +1,10 @@
 package ee.valiit.back_bank_26.atm;
 
+import ee.valiit.back_bank_26.domain.atm.atm.Atm;
+import ee.valiit.back_bank_26.domain.atm.atm.AtmMapper;
+import ee.valiit.back_bank_26.domain.atm.atm.AtmRepository;
+import ee.valiit.back_bank_26.domain.atm.atm_option.AtmOption;
+import ee.valiit.back_bank_26.domain.atm.atm_option.AtmOptionMapper;
 import ee.valiit.back_bank_26.domain.atm.atm_option.AtmOptionRepository;
 import ee.valiit.back_bank_26.domain.atm.location.Location;
 import ee.valiit.back_bank_26.domain.atm.location.LocationMapper;
@@ -27,11 +32,17 @@ public class AtmService {
     @Resource
     private AtmOptionRepository atmOptionRepository;
     @Resource
+    private AtmRepository atmRepository;
+    @Resource
     private CityMapper cityMapper;
     @Resource
     private OptionMapper optionMapper;
     @Resource
     private LocationMapper locationMapper;
+    @Resource
+    private AtmMapper atmMapper;
+    @Resource
+    private AtmOptionMapper atmOptionMapper;
 
     public List<AtmLocationInfo> getAtmLocationByCity(Integer cityId) {
         List<Location> locations = locationRepository.findLocationsBy(cityId);
@@ -53,6 +64,23 @@ public class AtmService {
         return createAtmLocationInfos(locations);
     }
 
+    public void postNewAtm(AtmRequest atmRequest) {
+        Atm atm = atmMapper.atmRequestToEntity(atmRequest);
+        Location location = locationRepository.findById(atmRequest.getLocationId()).get();
+        atm.setLocation(location);
+        atmRepository.save(atm);
+
+        for (OptionDto atmOption : atmRequest.getOptions()) {
+            if (atmOption.isSelected()) {
+                Option optionEntity = optionRepository.findById(atmOption.getOptionId()).get();
+                AtmOption atmOptionEntity = new AtmOption();
+                atmOptionEntity.setAtm(atm);
+                atmOptionEntity.setOption(optionEntity);
+                atmOptionRepository.save(atmOptionEntity);
+            }
+        }
+    }
+
     private List<AtmLocationInfo> createAtmLocationInfos(List<Location> locations) {
         List<AtmLocationInfo> atmLocationInfos = locationMapper.toDtos(locations);
         addAtmLocations(atmLocationInfos);
@@ -66,5 +94,4 @@ public class AtmService {
             atmLocationInfo.setAtmOptions(atmOptionDtos);
         }
     }
-
 }
