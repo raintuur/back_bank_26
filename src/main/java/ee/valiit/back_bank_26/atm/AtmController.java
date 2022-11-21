@@ -4,10 +4,7 @@ import ee.valiit.back_bank_26.domain.atm.location.LocationDto;
 import ee.valiit.back_bank_26.domain.atm.option.OptionDto;
 import ee.valiit.back_bank_26.domain.city.CityDto;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -46,5 +43,11 @@ public class AtmController {
         List<LocationDto> result = atmService.getAllAtmLocations();
         return result;
     }
+
+    @PostMapping()
+    public void addAtm(@RequestBody AtmRequest request) {
+        System.out.println();
+    }
+
 
 }
