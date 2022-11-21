@@ -69,7 +69,7 @@ public class AtmService {
     }
 
     private void addAtmOptionsToLocationDto(LocationDto dto) {
-        List<Option> options = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
+        List<Option> options = atmOptionRepository.findOptionBy(dto.getLocationId());
         List<AtmOptionDto> atmOptionDtos = optionMapper.toAtmOptionDtos(options);
         dto.setOptions(atmOptionDtos);
 
