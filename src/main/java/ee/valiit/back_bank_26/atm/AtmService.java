@@ -1,6 +1,9 @@
 package ee.valiit.back_bank_26.atm;
 
 import ee.valiit.back_bank_26.domain.atm.atm.Atm;
+import ee.valiit.back_bank_26.domain.atm.atm.AtmMapper;
+import ee.valiit.back_bank_26.domain.atm.atm.AtmRepository;
+import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOption;
 import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOptionRepository;
 import ee.valiit.back_bank_26.domain.atm.location.Location;
 import ee.valiit.back_bank_26.domain.atm.location.LocationDto;
@@ -122,8 +125,9 @@ public class AtmService {
                 atmOption.setOption(optionEntity);
                 atmOptionRepository.save(atmOption);
             }
+
         }
-
-
     }
+
+
 }
