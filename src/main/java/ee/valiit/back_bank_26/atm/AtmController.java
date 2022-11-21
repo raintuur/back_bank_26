@@ -69,27 +69,25 @@ public class AtmController {
     @GetMapping("/info")
     @Operation( summary = "Leiab kõikide pangaautomaatide asukohad")
     public List<LocationDto> getAllAtmLocations() {
-
         List<Location> locations = locationRepository.findAll();
         List<LocationDto> locationDtos = locationMapper.toDtos(locations);
-
-        for (LocationDto dto : locationDtos) {
-            List<String> optionNames = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
-
-            for (String optionName : optionNames) {
-
-
-
-        }
-
-
-
-
-
-
-
-
-
+        addAtmOptions(locationDtos);
         return locationDtos;
+    }
+
+    private void addAtmOptions(List<LocationDto> locationDtos) {
+        for (LocationDto dto : locationDtos) {
+            addAtmOptionsToLocationDto(dto);
+        }
+    }
+
+    private void addAtmOptionsToLocationDto(LocationDto dto) {
+        List<AtmOptionDto> atmOptionDtos = new ArrayList<>();
+        List<String> optionNames = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
+        for (String optionName : optionNames) {
+            AtmOptionDto atmOptionDto = new  AtmOptionDto(optionName);
+            atmOptionDtos.add(atmOptionDto);
+    }
+        dto.setOptions(atmOptionDtos);
     }
 }
