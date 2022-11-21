@@ -76,6 +76,8 @@ public class AtmController {
 
         for (LocationDto locationDto : locationDtos) {
             // JÄRVE SELVER
+            List<String> names = atmOptionRepository.findAtmOptionNamesBy(locationDto.getLocationId());
+
 
             List<AtmOption> availableOptions = atmOptionRepository.findAtmOptionsBy(locationDto.getLocationId());
             List<AtmOptionDto> availableOptionDtos = new ArrayList<>();
