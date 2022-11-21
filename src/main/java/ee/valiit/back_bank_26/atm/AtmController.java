@@ -65,9 +65,10 @@ public class AtmController {
         List<OptionDto> optionDtos = optionMapper.toDtos(entities);
         return optionDtos;
     }
-//
+
+    //
     @GetMapping("/info")
-    @Operation( summary = "Leiab kõikide pangaautomaatide asukohad")
+    @Operation(summary = "Leiab kõikide pangaautomaatide asukohad")
     public List<LocationDto> getAllAtmLocations() {
         List<Location> locations = locationRepository.findAll();
         List<LocationDto> locationDtos = locationMapper.toDtos(locations);
@@ -85,9 +86,9 @@ public class AtmController {
         List<AtmOptionDto> atmOptionDtos = new ArrayList<>();
         List<String> optionNames = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
         for (String optionName : optionNames) {
-            AtmOptionDto atmOptionDto = new  AtmOptionDto(optionName);
+            AtmOptionDto atmOptionDto = new AtmOptionDto(optionName);
             atmOptionDtos.add(atmOptionDto);
-    }
+        }
         dto.setOptions(atmOptionDtos);
     }
 }
