@@ -83,13 +83,18 @@ public class AtmController {
     }
 
     private void addAtmOptionsToLocationDto(LocationDto dto) {
-        List<String> optionNames = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
+        List<Option> options = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
         List<AtmOptionDto> atmOptionDtos = optionMapper.toAtmOptionDtos(options);
         dto.setOptions(atmOptionDtos);
 
 
-//        List<AtmOptionDto> atmOptionDtos = new ArrayList<>();
 
+        // Selline versioon kus
+        //          atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId())
+        //          tagastas option tabeli veeru name väärtused List<String> ina
+
+//        List<AtmOptionDto> atmOptionDtos = new ArrayList<>();
+//        List<String> optionNames = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
 //        for (String optionName : optionNames) {
 //            AtmOptionDto atmOptionDto = new AtmOptionDto(optionName);
 //            atmOptionDtos.add(atmOptionDto);

@@ -8,8 +8,8 @@ import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface OptionMapper {
-    @Mapping(source = "id", target ="optionId")
-    @Mapping(source = "name", target ="optionName")
+    @Mapping(source = "id", target = "optionId")
+    @Mapping(source = "name", target = "optionName")
     @Mapping(constant = "false", target = "isSelected")
     OptionDto toDto(Option option);
 
@@ -18,6 +18,7 @@ public interface OptionMapper {
     @Mapping(source = "name", target = "optionName")
     AtmOptionDto toAtmOptionDto(Option option);
 
-    List<AtmOptionDto> toAtmOptionDtos(List<Option> option);
+    List<AtmOptionDto> toAtmOptionDtos(List<Option> options);
+
 
 }
