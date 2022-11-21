@@ -9,7 +9,7 @@ public interface AtmOptionRepository extends JpaRepository<AtmOption, Integer> {
     @Query("select a from AtmOption a where a.atm.location.id = ?1 order by a.atm.location.id, a.option.id")
     List<AtmOption> findAtmOptionsBy(Integer locationId);
 
-
-
-
+    // Lihtne lahendus, millega saab kenasti konkreetse locationi võimalikud maksetüübi nimed kätte (distinct).
+    @Query("select distinct (a.option.name) from AtmOption a where a.atm.location.id = ?1 order by a.option.name desc")
+    List<String> findAtmOptionNamesBy(Integer locationId);
 }
