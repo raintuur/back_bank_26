@@ -19,11 +19,14 @@ public class AtmController {
     @Resource
     private AtmService atmService;
 
+
     @GetMapping("/info/by-city")
     @Operation(summary = "Leiab pangaautomaatide asukohad linna ID'de järgi")
-    public List<LocationDto> getAllAtmLocationsByCityId(@RequestParam() Integer cityId) {
-        return atmService.getAllAtmLocationsByCityId(cityId);
+    public List<LocationDto> getAtmLocationsByCityId(@RequestParam Integer cityId) {
+        List<LocationDto> result = atmService.getAtmLocationsByCityId(cityId);
+        return result;
     }
+
 
     @GetMapping("/city")
     @Operation(summary = "Selle teenusega saad kätte kõik linnad", description = "Mingi pikem jutt rohkem mula")
