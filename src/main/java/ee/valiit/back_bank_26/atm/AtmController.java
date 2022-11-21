@@ -72,41 +72,18 @@ public class AtmController {
 
         List<Location> locations = locationRepository.findAll();
         List<LocationDto> locationDtos = locationMapper.toDtos(locations);
-        List<Option> options = optionRepository.findAll();
 
-        for (LocationDto locationDto : locationDtos) {
-            // JÄRVE SELVER
+        for (LocationDto dto : locationDtos) {
+            List<String> optionNames = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
 
-            List<AtmOption> availableOptions = atmOptionRepository.findAtmOptionsBy(locationDto.getLocationId());
-            List<AtmOptionDto> availableOptionDtos = new ArrayList<>();
-
-            for (Option option : options) {
-                // Sularaha sisse
-                // Sularaha Välja
-                // maksed
-
-                for (AtmOption atmOption : availableOptions) {
-                    // siin viis rida,
-                    // AAA - sularaha sisse
-                    // AAA - sularaha välja
-                    // AAA - maksed
-                    // BBB - sularaha sisse
-                    // BBB - sularaha välja
-                    if (option.getName().equals(atmOption.getOption().getName())) {
-                        AtmOptionDto atmOptionDto = new AtmOptionDto();
-                        atmOptionDto.setOptionName(option.getName());
-                        availableOptionDtos.add(atmOptionDto);
-                        break;
-                    }
-
-                }
+            for (String optionName : optionNames) {
 
 
-            }
-
-            locationDto.setOptions(availableOptionDtos);
 
         }
+
+
+
 
 
 
