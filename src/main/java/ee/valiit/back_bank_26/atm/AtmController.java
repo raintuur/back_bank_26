@@ -6,6 +6,7 @@ import ee.valiit.back_bank_26.domain.city.CityDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -17,6 +18,15 @@ public class AtmController {
 
     @Resource
     private AtmService atmService;
+
+
+    @GetMapping("/info/by-city")
+    @Operation(summary = "Leiab pangaautomaatide asukohad linna ID'de järgi")
+    public List<LocationDto> getAtmLocationsByCityId(@RequestParam Integer cityId) {
+        List<LocationDto> result = atmService.getAtmLocationsByCityId(cityId);
+        return result;
+    }
+
 
     @GetMapping("/city")
     @Operation(summary = "Selle teenusega saad kätte kõik linnad", description = "Mingi pikem jutt rohkem mula")

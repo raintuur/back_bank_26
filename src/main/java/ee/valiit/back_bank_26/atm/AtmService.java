@@ -44,8 +44,20 @@ public class AtmService {
 
     public List<LocationDto> getAllAtmLocations() {
         List<Location> locations = locationRepository.findAll();
+        List<LocationDto> locationDtos = createLocationDtos(locations);
+        return locationDtos;
+    }
+
+    private List<LocationDto> createLocationDtos(List<Location> locations) {
         List<LocationDto> locationDtos = locationMapper.toDtos(locations);
         addAtmOptions(locationDtos);
+        return locationDtos;
+    }
+
+
+    public List<LocationDto> getAtmLocationsByCityId(Integer cityId) {
+        List<Location> locations = locationRepository.findLocationsBy(cityId);
+        List<LocationDto> locationDtos = createLocationDtos(locations);
         return locationDtos;
     }
 
@@ -69,7 +81,7 @@ public class AtmService {
     }
 
     private void addAtmOptionsToLocationDto(LocationDto dto) {
-        List<Option> options = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
+        List<Option> options = atmOptionRepository.findOptionsBy(dto.getLocationId());
         List<AtmOptionDto> atmOptionDtos = optionMapper.toAtmOptionDtos(options);
         dto.setOptions(atmOptionDtos);
 
