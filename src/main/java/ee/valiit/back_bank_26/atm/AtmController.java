@@ -1,26 +1,12 @@
 package ee.valiit.back_bank_26.atm;
 
-import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOption;
-import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOptionRepository;
-import ee.valiit.back_bank_26.domain.atm.location.Location;
 import ee.valiit.back_bank_26.domain.atm.location.LocationDto;
-import ee.valiit.back_bank_26.domain.atm.location.LocationMapper;
-import ee.valiit.back_bank_26.domain.atm.location.LocationRepository;
-import ee.valiit.back_bank_26.domain.atm.option.Option;
 import ee.valiit.back_bank_26.domain.atm.option.OptionDto;
-import ee.valiit.back_bank_26.domain.atm.option.OptionMapper;
-import ee.valiit.back_bank_26.domain.atm.option.OptionRepository;
-import ee.valiit.back_bank_26.domain.city.City;
 import ee.valiit.back_bank_26.domain.city.CityDto;
-import ee.valiit.back_bank_26.domain.city.CityMapper;
-import ee.valiit.back_bank_26.domain.city.CityRepository;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -28,77 +14,40 @@ import java.util.List;
 public class AtmController {
 
     @Resource
-    private CityRepository cityRepository;
+    private AtmService atmService;
 
-    @Resource
-    private OptionRepository optionRepository;
-
-    @Resource
-    private AtmOptionRepository atmOptionRepository;
-
-    @Resource
-    private LocationRepository locationRepository;
-
-    @Resource
-    private CityMapper cityMapper;
-
-    @Resource
-    private OptionMapper optionMapper;
-
-    @Resource
-    private LocationMapper locationMapper;
-
+    @GetMapping("/info/by-city")
+    @Operation(summary = "Leiab pangaautomaatide asukohad linna ID'de järgi")
+    public List<LocationDto> getAtmLocationsByCityId(@RequestParam Integer cityId) {
+        List<LocationDto> result = atmService.getAtmLocationsByCityId(cityId);
+        return result;
+    }
 
     @GetMapping("/city")
     @Operation(summary = "Selle teenusega saad kätte kõik linnad", description = "Mingi pikem jutt rohkem mula")
     public List<CityDto> getAllCities() {
-        List<City> allEntities = cityRepository.findAll();
-        List<CityDto> allDtos = cityMapper.citiesToCityDtos(allEntities);
-        return allDtos;
+        List<CityDto> result = atmService.getAllCities();
+        return result;
     }
-
 
     @GetMapping("/option")
     @Operation(summary = "Leiab kõik automaatide võimalikud valikud (sularaha välja, sulraha sisse, jne)")
     public List<OptionDto> getAllAtmOptions() {
-        List<Option> entities = optionRepository.findAll();
-        List<OptionDto> optionDtos = optionMapper.toDtos(entities);
-        return optionDtos;
+        List<OptionDto> result = atmService.getAllAtmOptions();
+        return result;
     }
 
-    //
     @GetMapping("/info")
     @Operation(summary = "Leiab kõikide pangaautomaatide asukohad")
     public List<LocationDto> getAllAtmLocations() {
-        List<Location> locations = locationRepository.findAll();
-        List<LocationDto> locationDtos = locationMapper.toDtos(locations);
-        addAtmOptions(locationDtos);
-        return locationDtos;
+        List<LocationDto> result = atmService.getAllAtmLocations();
+        return result;
     }
 
-    private void addAtmOptions(List<LocationDto> locationDtos) {
-        for (LocationDto dto : locationDtos) {
-            addAtmOptionsToLocationDto(dto);
-        }
+    @PostMapping()
+    public void addAtm(@RequestBody AtmRequest request) {
+        System.out.println();
     }
 
-    private void addAtmOptionsToLocationDto(LocationDto dto) {
-        List<Option> options = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
-        List<AtmOptionDto> atmOptionDtos = optionMapper.toAtmOptionDtos(options);
-        dto.setOptions(atmOptionDtos);
 
-
-
-        // Selline versioon kus
-        //          atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId())
-        //          tagastas option tabeli veeru name väärtused List<String> ina
-
-//        List<AtmOptionDto> atmOptionDtos = new ArrayList<>();
-//        List<String> optionNames = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
-//        for (String optionName : optionNames) {
-//            AtmOptionDto atmOptionDto = new AtmOptionDto(optionName);
-//            atmOptionDtos.add(atmOptionDto);
-//        }
-//        dto.setOptions(atmOptionDtos);
-    }
 }
