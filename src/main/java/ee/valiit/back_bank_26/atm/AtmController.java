@@ -1,7 +1,7 @@
 package ee.valiit.back_bank_26.atm;
 
-import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOption;
 import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOptionRepository;
+import ee.valiit.back_bank_26.domain.atm.location.AtmOptionDto;
 import ee.valiit.back_bank_26.domain.atm.location.Location;
 import ee.valiit.back_bank_26.domain.atm.location.LocationDto;
 import ee.valiit.back_bank_26.domain.atm.location.LocationMapper;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -28,25 +27,9 @@ import java.util.List;
 public class AtmController {
 
     @Resource
-    private CityRepository cityRepository;
+    private AtmSerivce atmSerivce;
 
-    @Resource
-    private OptionRepository optionRepository;
 
-    @Resource
-    private AtmOptionRepository atmOptionRepository;
-
-    @Resource
-    private LocationRepository locationRepository;
-
-    @Resource
-    private CityMapper cityMapper;
-
-    @Resource
-    private OptionMapper optionMapper;
-
-    @Resource
-    private LocationMapper locationMapper;
 
 
     @GetMapping("/city")
@@ -73,7 +56,8 @@ public class AtmController {
         List<Location> locations = locationRepository.findAll();
         List<LocationDto> locationDtos = locationMapper.toDtos(locations);
         addAtmOptions(locationDtos);
-        return locationDtos;
+        return atmSerivce.getAllAtmLocations;
+
     }
 
     private void addAtmOptions(List<LocationDto> locationDtos) {

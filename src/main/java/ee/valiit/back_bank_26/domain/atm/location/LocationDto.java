@@ -1,7 +1,5 @@
 package ee.valiit.back_bank_26.domain.atm.location;
 
-import ee.valiit.back_bank_26.atm.AtmOptionDto;
-import ee.valiit.back_bank_26.domain.atm.option.OptionDto;
 import lombok.Data;
 
 import java.io.Serializable;

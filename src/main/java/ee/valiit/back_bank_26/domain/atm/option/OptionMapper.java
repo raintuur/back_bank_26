@@ -1,8 +1,9 @@
 package ee.valiit.back_bank_26.domain.atm.option;
 
-import ee.valiit.back_bank_26.atm.AtmOptionDto;
-import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOption;
-import org.mapstruct.*;
+import ee.valiit.back_bank_26.domain.atm.location.AtmOptionDto;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
@@ -16,7 +17,9 @@ public interface OptionMapper {
     List<OptionDto> toDtos(List<Option> options);
 
     @Mapping(source = "name", target = "optionName")
-    AtmOptionDto toAtmOptionDto(Option option);
+    default AtmOptionDto toAtmOptionDto(Option option) {
+        return null;
+    }
 
     List<AtmOptionDto> toAtmOptionDtos(List<Option> options);
 
