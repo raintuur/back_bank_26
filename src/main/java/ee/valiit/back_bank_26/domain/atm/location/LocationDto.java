@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 public class LocationDto implements Serializable {
     private Integer locationId;
-    private final String cityName;
     private final String locationName;
+    private final String cityName;
     private List<AtmOptionDto> options;
 }
