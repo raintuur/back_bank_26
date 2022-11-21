@@ -65,56 +65,30 @@ public class AtmController {
         List<OptionDto> optionDtos = optionMapper.toDtos(entities);
         return optionDtos;
     }
-//
-    @GetMapping("/info")
-    @Operation( summary = "Leiab kõikide pangaautomaatide asukohad")
-    public List<LocationDto> getAllAtmLocations() {
 
+    //
+    @GetMapping("/info")
+    @Operation(summary = "Leiab kõikide pangaautomaatide asukohad")
+    public List<LocationDto> getAllAtmLocations() {
         List<Location> locations = locationRepository.findAll();
         List<LocationDto> locationDtos = locationMapper.toDtos(locations);
-        List<Option> options = optionRepository.findAll();
-
-        for (LocationDto locationDto : locationDtos) {
-            // JÄRVE SELVER
-            List<String> names = atmOptionRepository.findAtmOptionNamesBy(locationDto.getLocationId());
-
-
-            List<AtmOption> availableOptions = atmOptionRepository.findAtmOptionsBy(locationDto.getLocationId());
-            List<AtmOptionDto> availableOptionDtos = new ArrayList<>();
-
-            for (Option option : options) {
-                // Sularaha sisse
-                // Sularaha Välja
-                // maksed
-
-                for (AtmOption atmOption : availableOptions) {
-                    // siin viis rida,
-                    // AAA - sularaha sisse
-                    // AAA - sularaha välja
-                    // AAA - maksed
-                    // BBB - sularaha sisse
-                    // BBB - sularaha välja
-                    if (option.getName().equals(atmOption.getOption().getName())) {
-                        AtmOptionDto atmOptionDto = new AtmOptionDto();
-                        atmOptionDto.setOptionName(option.getName());
-                        availableOptionDtos.add(atmOptionDto);
-                        break;
-                    }
-
-                }
-
-
-            }
-
-            locationDto.setOptions(availableOptionDtos);
-
-        }
-
-
-
-
-
-
+        addAtmOptions(locationDtos);
         return locationDtos;
+    }
+
+    private void addAtmOptions(List<LocationDto> locationDtos) {
+        for (LocationDto dto : locationDtos) {
+            addAtmOptionsToLocationDto(dto);
+        }
+    }
+
+    private void addAtmOptionsToLocationDto(LocationDto dto) {
+        List<AtmOptionDto> atmOptionDtos = new ArrayList<>();
+        List<String> optionNames = atmOptionRepository.findAtmOptionNamesBy(dto.getLocationId());
+        for (String optionName : optionNames) {
+            AtmOptionDto atmOptionDto = new AtmOptionDto(optionName);
+            atmOptionDtos.add(atmOptionDto);
+        }
+        dto.setOptions(atmOptionDtos);
     }
 }
