@@ -125,9 +125,10 @@ public class AtmService {
                 atmOption.setOption(optionEntity);
                 atmOptionRepository.save(atmOption);
             }
-
         }
+
+
+
+        System.out.println();
     }
-
-
 }

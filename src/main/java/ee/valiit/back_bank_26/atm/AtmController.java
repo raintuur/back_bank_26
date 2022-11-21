@@ -47,7 +47,6 @@ public class AtmController {
     @PostMapping()
     public void addAtm(@RequestBody AtmRequest request) {
         atmService.addAtm(request);
-
     }
 
 
