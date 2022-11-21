@@ -14,6 +14,6 @@ public class OptionDto implements Serializable {
     private Integer optionId;
     @Size(max = 255)
     @NotNull
-    private final String optionName;
+    private String optionName;
     private Boolean isSelected;
 }
