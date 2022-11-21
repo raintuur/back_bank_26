@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 public class OptionDto implements Serializable {
-    private final Integer optionId;
+    private Integer optionId;
     @Size(max = 255)
     @NotNull
     private final String optionName;
