@@ -28,25 +28,9 @@ import java.util.List;
 public class AtmController {
 
     @Resource
-    private CityRepository cityRepository;
+    private AtmService atmService;
 
-    @Resource
-    private OptionRepository optionRepository;
 
-    @Resource
-    private AtmOptionRepository atmOptionRepository;
-
-    @Resource
-    private LocationRepository locationRepository;
-
-    @Resource
-    private CityMapper cityMapper;
-
-    @Resource
-    private OptionMapper optionMapper;
-
-    @Resource
-    private LocationMapper locationMapper;
 
 
     @GetMapping("/city")
@@ -70,10 +54,7 @@ public class AtmController {
     @GetMapping("/info")
     @Operation(summary = "Leiab kõikide pangaautomaatide asukohad")
     public List<LocationDto> getAllAtmLocations() {
-        List<Location> locations = locationRepository.findAll();
-        List<LocationDto> locationDtos = locationMapper.toDtos(locations);
-        addAtmOptions(locationDtos);
-        return locationDtos;
+        return atmService.getAllAtmLocations();
     }
 
     private void addAtmOptions(List<LocationDto> locationDtos) {
