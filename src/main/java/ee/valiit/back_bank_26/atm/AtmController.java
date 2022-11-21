@@ -95,7 +95,7 @@ public class AtmController {
                     if (option.getName().equals(atmOption.getOption().getName())) {
                         AtmOptionDto atmOptionDto = new AtmOptionDto();
                         atmOptionDto.setOptionName(option.getName());
-                        availableOptionDtos.add(atmOptionDto);
+                        availableOptionDtos.add(atmOptionDto)
                         break;
                     }
 
