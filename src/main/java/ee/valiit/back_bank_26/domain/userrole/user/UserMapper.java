@@ -1,5 +1,6 @@
 package ee.valiit.back_bank_26.domain.userrole.user;
 
+import ee.valiit.back_bank_26.login.LoginResponse;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
