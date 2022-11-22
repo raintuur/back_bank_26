@@ -17,11 +17,13 @@ import ee.valiit.back_bank_26.domain.city.City;
 import ee.valiit.back_bank_26.domain.city.CityDto;
 import ee.valiit.back_bank_26.domain.city.CityMapper;
 import ee.valiit.back_bank_26.domain.city.CityRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+//@Slf4j
 @Service
 public class AtmService {
 
@@ -110,6 +112,7 @@ public class AtmService {
 
     public void addAtm(AtmRequest request) {
         Atm atm = atmMapper.toEntity(request);
+//        log.info("Request id is: {}", request.getLocationId());
         Location location = locationRepository.findById(request.getLocationId()).get();
         atm.setLocation(location);
         atmRepository.save(atm);
@@ -126,8 +129,6 @@ public class AtmService {
                 atmOptionRepository.save(atmOption);
             }
         }
-
-
         System.out.println();
     }
 }
