@@ -1,9 +1,14 @@
 package ee.valiit.back_bank_26.domain.userrole.role;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "role")
 public class Role {
@@ -16,21 +21,5 @@ public class Role {
     @NotNull
     @Column(name = "type", nullable = false, length = 50)
     private String type;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
 }
