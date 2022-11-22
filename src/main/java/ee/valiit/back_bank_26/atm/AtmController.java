@@ -19,7 +19,8 @@ public class AtmController {
     @GetMapping("/info/by-city")
     @Operation(summary = "Leiab pangaautomaatide asukohad linna ID järgi")
     public List<LocationDto> getAtmLocationsByCityId(@RequestParam Integer cityId) {
-        return atmService.getAtmLocationsByCityId(cityId);
+        List<LocationDto> result = atmService.getAtmLocationsByCityId(cityId);
+        return result;
     }
 
     @GetMapping("/city")
@@ -43,7 +44,7 @@ public class AtmController {
         return result;
     }
 
-    @PostMapping
+    @PostMapping()
     public void addAtm(@RequestBody AtmRequest request) {
         atmService.addAtm(request);
     }

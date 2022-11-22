@@ -1,5 +1,6 @@
 package ee.valiit.back_bank_26.domain.atm.location;
 
+import ee.valiit.back_bank_26.domain.atm.option.OptionDto;
 import ee.valiit.back_bank_26.domain.city.City;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Getter
 @Setter

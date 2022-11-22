@@ -16,4 +16,5 @@ public class LocationDto implements Serializable {
     private final String locationName;
     private final String cityName;
     private List<AtmOptionDto> options;
+
 }
