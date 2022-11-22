@@ -17,9 +17,11 @@ public class LoginService {
     public void login(String username, String password) {
         Optional<User> userOptional = userRepository.findBy(username, password);
 
+        // kui ei leia siis viska viga
         if (userOptional.isEmpty()) {
             throw new BusinessException("Oled loll", "666");
         }
+
 
     }
 }

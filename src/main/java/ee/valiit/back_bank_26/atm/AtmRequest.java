@@ -12,3 +12,4 @@ public class AtmRequest {
     private String status;
     private List<OptionDto> options;
 }
+

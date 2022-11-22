@@ -1,5 +1,6 @@
 package ee.valiit.back_bank_26.domain.userrole.user;
 
+import ee.valiit.back_bank_26.domain.userrole.role.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,5 +27,10 @@ public class User {
     @NotNull
     @Column(name = "password", nullable = false, length = 50)
     private String password;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 
 }

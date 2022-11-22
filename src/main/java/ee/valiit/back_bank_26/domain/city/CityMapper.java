@@ -11,6 +11,6 @@ public interface CityMapper {
     @Mapping(source = "name", target = "cityName")
     CityDto cityToCityDto(City city);
 
-    List<CityDto> citiesToCityDtos(List<City>cities);
+    List<CityDto> citiesToCityDtos(List<City> cities);
 
 }

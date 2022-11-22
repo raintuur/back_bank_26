@@ -64,6 +64,7 @@ public class AtmService {
         return locationDtos;
     }
 
+
     public List<LocationDto> getAtmLocationsByCityId(Integer cityId) {
         List<Location> locations = locationRepository.findLocationsBy(cityId);
         List<LocationDto> locationDtos = createLocationDtos(locations);
@@ -107,6 +108,7 @@ public class AtmService {
 //        dto.setOptions(atmOptionDtos);
     }
 
+
     public void addAtm(AtmRequest request) {
         Atm atm = atmMapper.toEntity(request);
         Location location = locationRepository.findById(request.getLocationId()).get();
@@ -118,13 +120,15 @@ public class AtmService {
             if (option.getIsSelected()) {
                 Integer optionId = option.getOptionId();
                 Option optionEntity = optionRepository.findById(optionId).get();
-
                 AtmOption atmOption = new AtmOption();
                 atmOption.setAtm(atm);
                 atmOption.setOption(optionEntity);
-
                 atmOptionRepository.save(atmOption);
             }
         }
+
+
+
+        System.out.println();
     }
 }

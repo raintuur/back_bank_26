@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-18 07:27:53.952
+-- Last modification date: 2022-11-18 07:25:04.21
 
 -- tables
 -- Table: account
@@ -62,9 +62,9 @@ CREATE TABLE city
 CREATE TABLE contact
 (
     id          serial       NOT NULL,
-    customer_id int          NOT NULL,
     telephone   varchar(255) NOT NULL,
     email       varchar(255) NOT NULL,
+    customer_id int          NOT NULL,
     start       date         NOT NULL DEFAULT NOW(),
     "end"       date         NULL,
     CONSTRAINT contact_pk PRIMARY KEY (id)
@@ -74,10 +74,10 @@ CREATE TABLE contact
 CREATE TABLE customer
 (
     id            serial       NOT NULL,
-    user_id       int          NOT NULL,
     first_name    varchar(255) NOT NULL,
     last_name     varchar(255) NOT NULL,
-    personal_code varchar(255) NOT NULL,
+    personal_code varchar(50)  NOT NULL,
+    user_id       int          NOT NULL,
     CONSTRAINT customer_ak_1 UNIQUE (personal_code) NOT DEFERRABLE INITIALLY IMMEDIATE,
     CONSTRAINT customer_pk PRIMARY KEY (id)
 );
@@ -129,17 +129,9 @@ CREATE TABLE "user"
     id       serial      NOT NULL,
     username varchar(50) NOT NULL,
     password varchar(50) NOT NULL,
-    CONSTRAINT user_ak_2 UNIQUE (username) NOT DEFERRABLE INITIALLY IMMEDIATE,
+    role_id  int         NOT NULL,
+    CONSTRAINT user_ak_1 UNIQUE (username) NOT DEFERRABLE INITIALLY IMMEDIATE,
     CONSTRAINT user_pk PRIMARY KEY (id)
-);
-
--- Table: user_role
-CREATE TABLE user_role
-(
-    id      serial NOT NULL,
-    user_id int    NOT NULL,
-    role_id int    NOT NULL,
-    CONSTRAINT user_role_pk PRIMARY KEY (id)
 );
 
 -- foreign keys
@@ -188,18 +180,18 @@ ALTER TABLE atm
                 INITIALLY IMMEDIATE
 ;
 
--- Reference: atm_option_relation_atm (table: atm_option)
+-- Reference: atm_option_atm (table: atm_option)
 ALTER TABLE atm_option
-    ADD CONSTRAINT atm_option_relation_atm
+    ADD CONSTRAINT atm_option_atm
         FOREIGN KEY (atm_id)
             REFERENCES atm (id)
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE
 ;
 
--- Reference: atm_option_relation_option (table: atm_option)
+-- Reference: atm_option_option (table: atm_option)
 ALTER TABLE atm_option
-    ADD CONSTRAINT atm_option_relation_option
+    ADD CONSTRAINT atm_option_option
         FOREIGN KEY (option_id)
             REFERENCES option (id)
             NOT DEFERRABLE
@@ -243,21 +235,11 @@ ALTER TABLE transaction
                 INITIALLY IMMEDIATE
 ;
 
--- Reference: user_role_role (table: user_role)
-
-ALTER TABLE user_role
-    ADD CONSTRAINT user_role_role
+-- Reference: user_role (table: user)
+ALTER TABLE "user"
+    ADD CONSTRAINT user_role
         FOREIGN KEY (role_id)
             REFERENCES role (id)
-            NOT DEFERRABLE
-                INITIALLY IMMEDIATE
-;
-
--- Reference: user_role_user (table: user_role)
-ALTER TABLE user_role
-    ADD CONSTRAINT user_role_user
-        FOREIGN KEY (user_id)
-            REFERENCES "user" (id)
             NOT DEFERRABLE
                 INITIALLY IMMEDIATE
 ;

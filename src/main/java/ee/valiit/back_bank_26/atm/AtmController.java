@@ -17,21 +17,21 @@ public class AtmController {
     private AtmService atmService;
 
     @GetMapping("/info/by-city")
-    @Operation(summary = "Leiab pangaautomaatide asukohad linna ID järgi")
+    @Operation(summary = "Leiab pangaautomaatide asukohad linna ID'de järgi")
     public List<LocationDto> getAtmLocationsByCityId(@RequestParam Integer cityId) {
         List<LocationDto> result = atmService.getAtmLocationsByCityId(cityId);
         return result;
     }
 
     @GetMapping("/city")
-    @Operation(summary = "Selle teenusega saab kätte kõik linnad", description = "Mingi pikem jutt rohkem mula")
+    @Operation(summary = "Selle teenusega saad kätte kõik linnad", description = "Mingi pikem jutt rohkem mula")
     public List<CityDto> getAllCities() {
         List<CityDto> result = atmService.getAllCities();
         return result;
     }
 
     @GetMapping("/option")
-    @Operation(summary = "Leiab kõik automaatide võimalikud valikud (sularaha välja, sularaha sisse, jne)")
+    @Operation(summary = "Leiab kõik automaatide võimalikud valikud (sularaha välja, sulraha sisse, jne)")
     public List<OptionDto> getAllAtmOptions() {
         List<OptionDto> result = atmService.getAllAtmOptions();
         return result;
@@ -48,5 +48,6 @@ public class AtmController {
     public void addAtm(@RequestBody AtmRequest request) {
         atmService.addAtm(request);
     }
+
 
 }
