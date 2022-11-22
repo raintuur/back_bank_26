@@ -1,6 +1,6 @@
 package ee.valiit.back_bank_26.login;
 
-import ee.valiit.back_bank_26.domain.userrole.user.LoginResponse;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +14,7 @@ public class LoginController {
     private LoginService loginService;
 
     @GetMapping("/login")
+    @Operation(summary = "Logib teenusesse sisse")
     public LoginResponse login(@RequestParam String username, @RequestParam String password) {
         LoginResponse loginResponse = loginService.login(username, password);
         return loginResponse;

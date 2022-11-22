@@ -1,5 +1,6 @@
-package ee.valiit.back_bank_26.domain.userrole.user;
+package ee.valiit.back_bank_26.login;
 
+import ee.valiit.back_bank_26.domain.userrole.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
