@@ -40,6 +40,8 @@ public class AtmService {
     private LocationRepository locationRepository;
 
     @Resource
+    private AtmRepository atmRepository;
+    @Resource
     private CityMapper cityMapper;
 
     @Resource
@@ -51,8 +53,6 @@ public class AtmService {
     @Resource
     private AtmMapper atmMapper;
 
-    @Resource
-    private AtmRepository atmRepository;
 
     public List<LocationDto> getAllAtmLocations() {
         List<Location> locations = locationRepository.findAll();
