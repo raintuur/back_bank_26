@@ -12,4 +12,3 @@ public interface UserMapper {
     LoginResponse toLoginResponse(User user);
 
 }
-

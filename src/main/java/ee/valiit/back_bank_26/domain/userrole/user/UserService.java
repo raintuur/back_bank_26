@@ -1,8 +1,6 @@
 package ee.valiit.back_bank_26.domain.userrole.user;
 
-
 import ee.valiit.back_bank_26.infrastructure.exception.BusinessException;
-import ee.valiit.back_bank_26.login.LoginResponse;
 import ee.valiit.back_bank_26.validation.BankError;
 import ee.valiit.back_bank_26.validation.Validation;
 import org.springframework.stereotype.Service;
@@ -20,7 +18,6 @@ public class UserService {
         Optional<User> userOptional = userRepository.findBy(username, password);
         Validation.validateUserCredentials(userOptional);
         User user = userOptional.get();
-
         return user;
     }
 
