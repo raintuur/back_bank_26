@@ -23,6 +23,8 @@ public class PhotoService {
 
     public PhotoDto getUserPhoto(Integer userId) {
         User user = userService.getUserBy(userId);
+
+        PhotoDto photoDto = userMapper.userToPhotoDto(user);
         return userMapper.userToPhotoDto(user);
     }
 }
