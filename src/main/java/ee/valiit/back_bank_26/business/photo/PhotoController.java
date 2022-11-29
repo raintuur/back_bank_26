@@ -1,9 +1,6 @@
 package ee.valiit.back_bank_26.business.photo;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -14,9 +11,13 @@ public class PhotoController {
     @Resource
     private PhotoService photoService;
 
+    @GetMapping()
+    public PhotoDto getUserPhoto(Integer userId) {
+        return photoService.getUserPhoto(userId);
+    }
 
     @PostMapping()
-    public void addUserPhoto(@RequestBody PhotoRequest request) {
+    public void addUserPhoto(@RequestBody PhotoDto request) {
         photoService.addUserPhoto(request);
     }
 }
