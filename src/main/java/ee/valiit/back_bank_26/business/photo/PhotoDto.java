@@ -3,7 +3,7 @@ package ee.valiit.back_bank_26.business.photo;
 import lombok.Data;
 
 @Data
-public class PhotoRequest {
+public class PhotoDto {
     private Integer userId;
     private String pictureData;
 }

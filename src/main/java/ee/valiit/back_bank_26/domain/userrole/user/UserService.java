@@ -4,6 +4,7 @@ import ee.valiit.back_bank_26.validation.Validation;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 @Service
@@ -24,5 +25,11 @@ public class UserService {
         Optional<User> optionalUser = userRepository.findById(userId);
         User user = optionalUser.get();
         return user;
+    }
+
+    public void addUserPhoto(User user, String pictureData) {
+        byte[] pictureAsByteArray = pictureData.getBytes(StandardCharsets.UTF_8);
+        user.setPictureData(pictureAsByteArray);
+        userRepository.save(user);
     }
 }
