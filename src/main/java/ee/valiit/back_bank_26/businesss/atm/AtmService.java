@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26.atm;
+package ee.valiit.back_bank_26.businesss.atm;
 
 import ee.valiit.back_bank_26.domain.atm.atm.Atm;
 import ee.valiit.back_bank_26.domain.atm.atm.AtmMapper;

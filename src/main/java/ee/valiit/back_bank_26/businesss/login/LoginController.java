@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26.login;
+package ee.valiit.back_bank_26.businesss.login;
 
 import ee.valiit.back_bank_26.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
