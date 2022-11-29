@@ -23,6 +23,7 @@ public class PhotoController {
     }
 
     @PostMapping()
+    @Operation(summary = "Lisab kasutaja pildi kasutades tema userId'd")
     public void addUserPhoto(@RequestBody PhotoDto request) {
         photoService.addUserPhoto(request);
     }
