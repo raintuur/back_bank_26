@@ -33,4 +33,7 @@ public class User {
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
+    @Column(name = "picture_data")
+    private byte[] pictureData;
+
 }

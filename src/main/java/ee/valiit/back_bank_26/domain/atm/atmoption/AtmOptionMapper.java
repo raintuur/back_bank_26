@@ -1,6 +1,6 @@
 package ee.valiit.back_bank_26.domain.atm.atmoption;
 
-import ee.valiit.back_bank_26.atm.AtmLocationInfo;
+import ee.valiit.back_bank_26.business.atm.AtmLocationInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
