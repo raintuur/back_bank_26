@@ -131,6 +131,7 @@ CREATE TABLE "user" (
                         role_id int  NOT NULL,
                         username varchar(50)  NOT NULL,
                         password varchar(50)  NOT NULL,
+                        picture_data bytea NULL,
                         CONSTRAINT user_ak_1 UNIQUE (username) NOT DEFERRABLE  INITIALLY IMMEDIATE,
                         CONSTRAINT user_pk PRIMARY KEY (id)
 );

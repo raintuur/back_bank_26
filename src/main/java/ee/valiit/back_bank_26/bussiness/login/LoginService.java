@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26.login;
+package ee.valiit.back_bank_26.bussiness.login;
 
 import ee.valiit.back_bank_26.domain.userrole.user.UserMapper;
 import ee.valiit.back_bank_26.domain.userrole.user.UserService;
@@ -14,6 +14,6 @@ public class LoginService {
     private UserMapper userMapper;
 
     public LoginResponse login(String user, String password) {
-        return userMapper.toLoginResponse(userService.getValidUser(user, password));
+        return userMapper.toLoginResponse(userService.getUserBy(user, password));
     }
 }

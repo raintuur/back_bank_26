@@ -1,6 +1,6 @@
 package ee.valiit.back_bank_26.domain.atm.option;
 
-import ee.valiit.back_bank_26.atm.AtmOptionDto;
+import ee.valiit.back_bank_26.bussiness.atm.AtmOptionDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;

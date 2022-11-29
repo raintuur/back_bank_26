@@ -1,6 +1,6 @@
 package ee.valiit.back_bank_26.domain.atm.location;
 
-import ee.valiit.back_bank_26.atm.AtmLocationInfo;
+import ee.valiit.back_bank_26.bussiness.atm.AtmLocationInfo;
 import org.mapstruct.*;
 
 import java.util.List;

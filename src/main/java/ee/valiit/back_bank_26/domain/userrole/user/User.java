@@ -33,4 +33,7 @@ public class User {
     @Column(name = "password", nullable = false, length = 50)
     private String password;
 
+    @Column(name = "picture_data")
+    private byte[] picture_data;
+
 }

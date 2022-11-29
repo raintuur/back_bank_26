@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26.login;
+package ee.valiit.back_bank_26.bussiness.login;
 
 import ee.valiit.back_bank_26.infrastructure.error.ApiError;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,14 +22,14 @@ public class LoginController {
     @Resource
     private LoginService loginService;
 
-@GetMapping("/login")
-@Operation(summary = "Logib teenusesse sisse ja kontrollib username ja parooli")
-@ApiResponses(value= {
-        @ApiResponse(responseCode = "200", description = "Tagastab Objekti, kus sees on olemas userId, roleId ja roleType"),
-        @ApiResponse(responseCode = "403", description = "Kasutajanimi või parool ei ühti andmebaasiga.",
-                content = @Content(schema = @Schema(implementation = ApiError.class)))
-})
+    @GetMapping("/login")
+    @Operation(summary = "Logib teenusesse sisse ja kontrollib username ja parooli")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Tagastab Objekti, kus sees on olemas userId, roleId ja roleType"),
+            @ApiResponse(responseCode = "403", description = "Kasutajanimi või parool ei ühti andmebaasiga.",
+                    content = @Content(schema = @Schema(implementation = ApiError.class)))
+    })
     public LoginResponse login(@RequestParam String username, @RequestParam String password) {
-       return loginService.login(username,password);
-}
+        return loginService.login(username, password);
+    }
 }
