@@ -18,6 +18,9 @@ public interface UserMapper {
 
     @Named("byteArrayToString")
     static String byteArrayToString(byte[] pictureDataAsByteArray) {
+        if (pictureDataAsByteArray == null) {
+            return  null;
+        }
         String pictureAsString = new String(pictureDataAsByteArray);
         return pictureAsString;
     }
