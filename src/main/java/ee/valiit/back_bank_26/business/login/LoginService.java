@@ -17,7 +17,7 @@ public class LoginService {
     private UserService userService;
 
     public LoginResponse login(String username, String password) {
-        User user = userService.getValidUser(username, password);
+        User user = userService.getUserBy(username, password);
         LoginResponse loginResponse = userMapper.toLoginResponse(user);
         return loginResponse;
     }
