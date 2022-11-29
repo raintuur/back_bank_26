@@ -11,7 +11,6 @@ public enum BankError {
     private final String errorCode;
 
     BankError(String message, String errorCode) {
-
         this.message = message;
         this.errorCode = errorCode;
     }

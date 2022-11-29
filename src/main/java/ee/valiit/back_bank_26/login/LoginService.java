@@ -12,6 +12,7 @@ public class LoginService {
 
     @Resource
     private UserMapper userMapper;
+
     @Resource
     private UserService userService;
 

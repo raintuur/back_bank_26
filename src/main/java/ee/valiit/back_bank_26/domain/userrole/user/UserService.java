@@ -15,10 +15,11 @@ public class UserService {
     private UserRepository userRepository;
 
     public User getValidUser(String username, String password) {
-
         Optional<User> userOptional = userRepository.findBy(username, password);
         Validation.validateUserCredentials(userOptional);
         User user = userOptional.get();
         return user;
     }
+
+
 }

@@ -21,11 +21,12 @@ public class LoginController {
     @Resource
     private LoginService loginService;
 
+
     @GetMapping("/login")
     @Operation(summary = "Logib teenusesse sisse")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Tagastab login objekti, kus sees on olemas kasutaja 'userId' ja tema 'roleType'"),
-            @ApiResponse(responseCode = "403", description = "Valed kasutaja rekvisiidid. Ebaõnnestunud sisselogimine", content = @Content(schema = @Schema(implementation = ApiError.class)))
+            @ApiResponse(responseCode = "200", description = "Tagastab login objekti, kus sees on olemas kasutaia 'userId' ja tema roll 'roleType'"),
+            @ApiResponse(responseCode = "403", description = "Valed kasutaja rekviisid. Ebaõnnestunud sisselogimine", content = @Content(schema = @Schema(implementation = ApiError.class)))
     })
     public LoginResponse login(@RequestParam String username, @RequestParam String password) {
         LoginResponse loginResponse = loginService.login(username, password);

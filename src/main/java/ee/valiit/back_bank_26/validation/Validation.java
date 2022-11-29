@@ -9,9 +9,8 @@ public class Validation {
 
     public static void validateUserCredentials(Optional<User> userOptional) {
         if (userOptional.isEmpty()) {
-            throw new BusinessException(
-                    BankError.INCORRECT_CREDENTIALS.getMessage(),
-                    BankError.INCORRECT_CREDENTIALS.getErrorCode());
+            throw new BusinessException(BankError.INCORRECT_CREDENTIALS.getMessage(), BankError.INCORRECT_CREDENTIALS.getErrorCode() );
         }
     }
+
 }
