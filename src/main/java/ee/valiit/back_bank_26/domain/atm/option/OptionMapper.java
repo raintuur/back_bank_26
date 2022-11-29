@@ -1,7 +1,6 @@
 package ee.valiit.back_bank_26.domain.atm.option;
 
-import ee.valiit.back_bank_26.atm.AtmOptionDto;
-import ee.valiit.back_bank_26.domain.atm.atmoption.AtmOption;
+import ee.valiit.back_bank_26.business.atm.AtmOptionDto;
 import org.mapstruct.*;
 
 import java.util.List;
