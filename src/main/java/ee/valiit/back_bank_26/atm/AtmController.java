@@ -46,7 +46,7 @@ public class AtmController {
 
     @PostMapping()
     public void addAtm(@RequestBody AtmRequest request) {
-        System.out.println();
+        atmService.addAtm(request);
     }
 
 
