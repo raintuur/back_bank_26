@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-18 07:25:04.21
+-- Last modification date: 2022-11-29 07:39:57.843
 
 -- tables
 -- Table: account
@@ -126,10 +126,11 @@ CREATE TABLE transaction
 -- Table: user
 CREATE TABLE "user"
 (
-    id       serial      NOT NULL,
-    username varchar(50) NOT NULL,
-    password varchar(50) NOT NULL,
-    role_id  int         NOT NULL,
+    id           serial       NOT NULL,
+    username     varchar(50)  NOT NULL,
+    password     varchar(255) NOT NULL,
+    role_id      int          NOT NULL,
+    picture_data bytea        NOT NULL,
     CONSTRAINT user_ak_1 UNIQUE (username) NOT DEFERRABLE INITIALLY IMMEDIATE,
     CONSTRAINT user_pk PRIMARY KEY (id)
 );
