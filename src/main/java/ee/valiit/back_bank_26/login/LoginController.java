@@ -21,10 +21,6 @@ public class LoginController {
     @Resource
     private LoginService loginService;
 
-//    @ApiResponses(value = {
-//            @ApiResponse(responseCode = "200", description = "Returned a new bus object with fullfilled id field from database."),
-//            @ApiResponse(responseCode = "404", description = "Bus line with given ID not found error.", content = @Content(schema = @Schema(implementation = ApiError.class)))})
-
 
     @GetMapping("/login")
     @Operation(summary = "Logib teenusesse sisse")
