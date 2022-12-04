@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26.business.atm;
+package ee.valiit.back_bank_26.business.atm.dto;
 
 
 import lombok.Data;

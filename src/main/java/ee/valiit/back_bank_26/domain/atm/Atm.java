@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26.domain.atm.atm;
+package ee.valiit.back_bank_26.domain.atm;
 
 import ee.valiit.back_bank_26.domain.atm.location.Location;
 import lombok.Getter;

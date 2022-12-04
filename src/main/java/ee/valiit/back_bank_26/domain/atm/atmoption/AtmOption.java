@@ -1,6 +1,6 @@
 package ee.valiit.back_bank_26.domain.atm.atmoption;
 
-import ee.valiit.back_bank_26.domain.atm.atm.Atm;
+import ee.valiit.back_bank_26.domain.atm.Atm;
 import ee.valiit.back_bank_26.domain.atm.option.Option;
 import lombok.Getter;
 import lombok.Setter;
