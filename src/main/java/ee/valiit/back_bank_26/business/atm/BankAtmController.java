@@ -30,12 +30,38 @@ public class BankAtmController {
     @Resource
     private BankAtmService bankAtmService;
 
+    // Kui meie veebiserverisse tuleb sisse http päring 'GET' 'http://localhost:8080/atm/city'
+    // siis käivitatakse selle mäppingu all olev meetod getAllCities()
+    // Kuna getAllCities() meetod, on defineeritud nii, et see tagastab List<CityDto> tüüpi objekti,
+    // siis RETURN'is peab olema List<CityDto> tüüpi objekt (see vastus läheb serverist välja JSON sõnumina)
 
-
+    // Kui HTTP sõnumite saatmise ja kättesaamise teema on veel endiselt segane, siis palun vaata uuesti "Spring HelloWorld":
+    // https://youtu.be/pc9irBCk6rg
+    // Kui JSON'i sõnumi struktuuri teema on veel endiselt segane, siis palun vaata uuesti "JSON":
+    // https://youtu.be/dyZUWR3Cchw
     @GetMapping("/city")
+    // @Operation lisab Swageri teenuse juurde vastavasisulise kirjelduse
     @Operation(summary = "Selle teenusega saad kätte kõik linnad", description = "Mingi pikem jutt rohkem mula")
     public List<CityDto> getAllCities() {
+        // Siin meetodis pole mingeid parameetreid/andmeid, mis meetodi väljakutsumisel siia sisse kaasa tuleksid
+        // Kui meetodite teema on veel endiselt segane, siis palun vaata uuesti "Meetodid", "Meetodite signatuurid" ja "Public ja Private meetodid":
+        // https://youtu.be/EI3XfkdPBc4
+        // https://youtu.be/GvP68LBZiUA
+        // https://youtu.be/4ZkvNfu9kNw
+
+        // Kutsume välja meie poolt defineeritud meetodi nimega getAllCities()
+        // See meetod on meil ära defineeritud BankAtmService klassis
+        // getAllCities() on meil selliselt defineeritud, et see võtab sisse parameetritena:
+        // int tüüpi objekti
+        // See on selleks vajalik, et me saaksime anda meetodisse kaasa anda objekti, kus sees on mingid andmed,
+        // millega me soovime kuidagi toimetada.
+        // bankAtmService.getAllCities() meetod on defineeritud nii, et see tagastab List<CityDto> tüüpi objekti
+        // siin all me loome uue List<CityDto> tüüpi objekti 'result' mille sisse väärtustatakse
+        // selle getAllCities() meetodi poolt tagastatav tulemus.
+        // vaata ka kommentaare selle meetodi sees
         List<CityDto> result = bankAtmService.getAllCities();
+
+        // http päringule tagastatakse 'result' objekt JSON'i kujul
         return result;
     }
 
@@ -48,6 +74,8 @@ public class BankAtmController {
     // Kindlasti peab meetodi signatuuris olema ka see @RequestParam annotatsioon, sest muidu Spring ei tea,
     // et siia enpoint'ile peaks ka sisse tulema selline parameeter
 
+    // Kui HTTP sõnumite saatmise ja kättesaamise teema on veel endiselt segane, siis palun vaata uuesti "Spring HelloWorld":
+    // https://youtu.be/pc9irBCk6rg
     // Kui @RequestParam teema on veel endiselt segane, siis palun vaata uuesti "Spring @RequestParam":
     // https://youtu.be/9ovmRakMRBY
     // Kui JSON'i sõnumi struktuuri teema on veel endiselt segane, siis palun vaata uuesti "JSON":
@@ -58,6 +86,10 @@ public class BankAtmController {
     public List<LocationDto> getAtmLocationsByCityId(@RequestParam Integer cityId) {
         // Võtame getAtmLocationsByCityId() signatuuri parameetris sisse int tüüpi väärtuse
         // Siin signatuuris antakse sellele objektidele nimeks 'cityId'
+        // Kui meetodite teema on veel endiselt segane, siis palun vaata uuesti "Meetodid", "Meetodite signatuurid" ja "Public ja Private meetodid":
+        // https://youtu.be/EI3XfkdPBc4
+        // https://youtu.be/GvP68LBZiUA
+        // https://youtu.be/4ZkvNfu9kNw
 
         // Kutsume välja meie poolt defineeritud meetodi nimega getAtmLocationsByCityId()
         // See meetod on meil ära defineeritud BankAtmService klassis
@@ -68,9 +100,6 @@ public class BankAtmController {
         // bankAtmService.getAtmLocationsByCityId() meetod on defineeritud nii, et see tagastab List<LocationDto> tüüpi objekti
         // siin all me loome uue List<LocationDto> tüüpi objekti 'result' mille sisse väärtustatakse
         // selle getAtmLocationsByCityId() meetodi poolt tagastatav tulemus.
-        // Kui meetodite teema on veel endiselt segane, siis palun vaata uuesti "Meetodite loomine" ja "Public ja Private meetodid":
-        // https://youtu.be/KtZfO5z_JzQ
-        // https://youtu.be/vJn0BuWFrBE
         // vaata ka kommentaare selle meetodi sees
         List<LocationDto> result = bankAtmService.getAtmLocationsByCityId(cityId);
 
