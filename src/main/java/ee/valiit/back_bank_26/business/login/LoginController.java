@@ -21,7 +21,6 @@ public class LoginController {
     @Resource
     private LoginService loginService;
 
-
     @GetMapping("/login")
     @Operation(summary = "Logib teenusesse sisse")
     @ApiResponses(value = {
