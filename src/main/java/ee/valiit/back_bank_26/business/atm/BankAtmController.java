@@ -107,9 +107,50 @@ public class BankAtmController {
         return result;
     }
 
+    // Kui meie veebiserverisse tuleb sisse http päring 'POST' 'http://localhost:8080/atm'
+    // siis käivitatakse selle mäppingu all olev meetod addAtm()
+    // Kuna addAtm() meetod, on defineeritud nii, et see on 'void', siis see meetod mingit JSON'it ei tagasta
+    // Välja saadetakse vaid status code (kui kõik läheb hästi, siis on selleks koodiks 200).
+    // Kuna meetodi parameetris on ära defineeritud @RequestBody AtmRequest tüüpi objekt,
+    // siis Spring annab endast parima, et mäppida ära sisse tulev JSON sõnum selleks Java AtmRequest tüüpi objektiks
+    // Swaggeri'is on olemas ka request body näidis sellisest JSON'ist, mille Spring peaks suutma ära mäppida:
+    //    {
+    //        "locationId": 0,
+    //        "serialNumber": "string",
+    //        "status": "string",
+    //        "options": [
+    //            {
+    //                "optionId": 0,
+    //                    "optionName": "string",
+    //                    "isSelected": true
+    //            }
+    //        ]
+    //    }
+    // @RequestBody annotatsiooni lisamisel peaks jälgima seda, et see imporditakse "springframework" teegist
+    // Kui @RequestBody teema on veel endiselt segane, siis palun vaata uuesti "Spring @RequestBody":
+    // https://youtu.be/mIYDl4pf1P0
+    // @Valid - annotatsioon kontrollib, et kas sissetulev JSON sõnum vastab sellistele nõuetele,
+    // nagu on AtmRequest klassis muutujate peal defineeritud. Vaata ka AtmRequest klass sees olevaid kommentaare
+    // Kui JSON'i sõnumi struktuuri teema on veel endiselt segane, siis palun vaata uuesti "JSON":
+    // https://youtu.be/dyZUWR3Cchw
     @PostMapping()
     @Operation(summary = "Pangaautomaadi lisamine asukohta")
     public void addAtm(@RequestBody @Valid AtmRequest request) {
+        // Võtame addAtm() signatuuri @RequestBody parameetris sisse AtmRequest tüüpi objekti,
+        // Selle väärtused võetakse JSON sõnumist
+        // Siin signatuuris antakse sellele objektile/muutujale nimeks 'request'
+
+
+        // Kutsume välja meie poolt defineeritud meetodi bankAtmService.addAtm()
+        // See meetod on meil ära defineeritud BankAtmService klassis
+        // bankAtmService.addAtm() on meil selliselt defineeritud, et see võtab sisse parameetritena: AtmRequest tüüpi objekti
+        // See on selleks vajalik, et me saaksime sellesse meetodisse kaasa anda objekti (andmed),
+        // millega me soovime siis seal meetodi sees kuidagi toimetada.
+        // Kui meetodite teema on veel endiselt segane, siis palun vaata uuesti "Meetodid", "Meetodite signatuurid" ja "Public ja Private meetodid":
+        // https://youtu.be/EI3XfkdPBc4
+        // https://youtu.be/GvP68LBZiUA
+        // https://youtu.be/4ZkvNfu9kNw
+        // vaata ka kommentaare selle 'bankAtmService.addAtm()' meetodi sees
         bankAtmService.addAtm(request);
     }
 

@@ -14,6 +14,12 @@ public interface CityMapper {
     // Luuakse uut tüüpi objekt (mingist teisest klassist)
     // ja siis mäpitakse (kaardistatakse ja väärtustatakse) andmed uuele objektile ümber.
 
+    // Siin on ära defineeritud meetod, millel ei ole keha
+    // Projekti käivitamisel/jooksutamisel ehitatakse kogu projekt serverile kenasti valmis
+    // ning selle ehitamise käigus üritab MapStructi tehnoloogia ise kirjutada valmis selle koodiosa,
+    // millega tehakse üks uus objekt klassist CityDto nii,
+    // et kõik andmed võetakse siia meetodisse sisse tulevast 'location' objektist
+
     // Siin näiteks kasutame @Mapping annotatsiooni, et aidata MapStructi mäpperi koodiosa kirjutamisel
     // source = meetodi signatuuri sees olev osa 'city' on sisend/sisse tulev info, millel on olemas väli 'id'
     // target = meetod tagastab CityDto tüüpi objekti (väljund), millel on väli 'cityNameId'

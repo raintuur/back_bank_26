@@ -28,6 +28,9 @@ public class LocationService {
     // https://youtu.be/GvP68LBZiUA
     // https://youtu.be/4ZkvNfu9kNw
     public List<Location> findLocationsBy(Integer cityId) {
+        // Võtame findLocationsBy() signatuuri parameetris sisse Integer tüüpi objekti
+        // Siin signatuuris antakse sellele objekti muutujale nimeks 'cityId'
+
 
         // kasutame locationRepository (värav) objekti, et saada ligi tabeli 'location' andmetele
         // See meetod findLocationsBy() on meie enda loodud meetod.
@@ -42,7 +45,22 @@ public class LocationService {
     }
 
     public Location findById(Integer locationId) {
+        // Võtame findById() signatuuri parameetris sisse Integer tüüpi objekti
+        // Siin signatuuris antakse sellele objekti muutujale nimeks 'locationId'
+
+
+        // kasutame locationRepository (värav) objekti, et saada ligi tabeli 'location' andmetele
+        // see meetod findById() on juba JpaRepository klassis endal olemas.
+        // Seda meetodit findById() me ei ole ise kuidagi loonud.
+        // Kaasa anname asukoha id - 'location' tabeli veeru 'id' väärtuse.
+        // repository tagastab antud 'id'le kuuluva location objekti (andmebaasi mõttes tagastatakse asukoha andmetega rida)
+        // Tulemus mähitakse omakorda "Optional" klassi objekti sisse (komm ja kommipaber)
+        // Sellel Optional klassil on olemas mugavad meetodid, millega saab kontrollida, et kas leiti mingi tulemus (user objekt pole 'null'
+        // või siis ei leitud mingit tulemust.
+        // meetodiga .get() siin meetodi lõpus võtame selle objekti sealt optional klassi seest välja (võtame kommi paberist välja)
         Location location = locationRepository.findById(locationId).get();
+
+        // RETURN'iga tagastatakse tulemus sinna kohta, kust see meetod välja kutsutakse
         return location;
     }
 }

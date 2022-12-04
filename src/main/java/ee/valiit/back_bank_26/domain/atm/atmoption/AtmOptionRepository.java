@@ -28,11 +28,11 @@ public interface AtmOptionRepository extends JpaRepository<AtmOption, Integer> {
     // Õnneks saab nende meetodite koostamiseks kasutada IntelliJ pluginat JPA Buddy, mis teeb sellise meetodite lisamise väga lihtsaks.
     // Kui JPA JpaRepositor meetodite loomise teema on veel endiselt segane, siis palun vaata uuesti "Create repository methods"
     // https://youtu.be/kMR8PzaCp0Y
-    @Query("select a from AtmOption a where a.atm.location.id = ?1 order by a.atm.location.id, a.option.id")
-    List<AtmOption> findAtmOptionsBy(Integer locationId);
-
+    // NB! Osa "distinct (a.option)" leidsime interneti abiga ja me ise mudisime seda definitsiooni
     @Query("select distinct (a.option) from AtmOption a where a.atm.location.id = ?1")
     List<Option> findOptionsBy(Integer locationId);
+
+
 
 
 

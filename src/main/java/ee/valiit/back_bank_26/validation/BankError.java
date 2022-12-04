@@ -2,6 +2,7 @@ package ee.valiit.back_bank_26.validation;
 
 import lombok.Getter;
 
+// Vaata infot conflust enumide kohta. Otsi sealt: "Enum Coffee machine näitel"
 @Getter
 public enum BankError {
     INCORRECT_CREDENTIALS("Sellist kasutajanime või parooli ei leitud", "666"),

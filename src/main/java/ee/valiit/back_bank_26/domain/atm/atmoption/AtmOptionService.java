@@ -25,6 +25,8 @@ public class AtmOptionService {
     // https://youtu.be/GvP68LBZiUA
     // https://youtu.be/4ZkvNfu9kNw
     public List<Option> findOptionsBy(Integer locationId) {
+        // Võtame findOptionsBy() signatuuri parameetris sisse Integer tüüpi objekti
+        // Siin signatuuris antakse sellele objekti muutujale nimeks 'locationId'
 
         // kasutame atmOptionRepository (värav) objekti, et saada ligi tabeli 'location' andmetele
         // See meetod findLocationsBy() on meie enda loodud meetod.
@@ -33,10 +35,27 @@ public class AtmOptionService {
         // Tulemus pannakse omakorda "List" klassi options objekti sisse
         // Vaata ka kommentaare selle meetodi sees.
         List<Option> options = atmOptionRepository.findOptionsBy(locationId);
+
+        // RETURN'iga tagastatakse tulemus sinna kohta, kust see meetod välja kutsutakse
         return options;
     }
 
+    // See meetod on defineeritud nii, et ta võtab sisse AtmOption tüüpi objekti
+    // See on selleks vajalik, et me saaksime siin meetodis selle objekti andmetega kuidagi toimetada.
+    // Kuna addAtmOption() meetod, on defineeritud nii, et see on 'void', siis siin meetodis midagi ei tagasta
+    // Kui meetodite teema on veel endiselt segane, siis palun vaata uuesti "Meetodid", "Meetodite signatuurid" ja "Public ja Private meetodid":
+    // https://youtu.be/EI3XfkdPBc4
+    // https://youtu.be/GvP68LBZiUA
+    // https://youtu.be/4ZkvNfu9kNw
     public void addAtmOption(AtmOption atmOption) {
+        // Võtame addAtmOption() signatuuri parameetris sisse AtmOption tüüpi objekti
+        // Siin signatuuris antakse sellele objekti muutujale nimeks 'atmOption'
+
+
+        // kasutame atmOptionRepository (värav) objekti, et saada ligi tabeli 'atm_option' andmetele
+        // see meetod save() on juba JpaRepository klassis endal olemas.
+        // Seda meetodit save() me ei ole ise kuidagi loonud.
+        // Kaasa anname vastava tabeli entity ja sellega salvestatakse andmed andmebaasi kenast ka maha.
         atmOptionRepository.save(atmOption);
     }
 }

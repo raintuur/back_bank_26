@@ -14,21 +14,66 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
+
+// @RestController annab Springile märku, et siin klassis on mingid endpoint'id (controllerid)
 @RestController
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class LoginController {
+    // Kui meie veebirakendus tõmmatakse käima, siis taustal toimetab servlet dispatcher,
+    // kes teab kõiki meie controllerite endpoinide definitsioone
+    // Kui see teema on veel endiselt segane, siis palun vaata uuesti "Spring HelloWorld":
+    // https://youtu.be/pc9irBCk6rg
 
+    // @Resource abiga saab Spring teha meile ligipääsu:
+    // @Service, @Component, @Mapper, @Repository, jne annotatsiooniga klassidele
     @Resource
     private LoginService loginService;
 
+
+    // Kui meie veebiserverisse tuleb sisse http päring 'GET' 'http://localhost:8080/login?username=admin&password=123'
+    // siis käivitatakse selle mäppingu all olev meetod login()
+    // Kuna login() meetod, on defineeritud nii, et see tagastab LoginResponse tüüpi objekti,
+    // siis RETURN'is peab olema LoginResponse tüüpi objekt (see vastus läheb serverist välja JSON sõnumina)
+    // Kuna meetodi parameetris on ära defineeritud @RequestParam String tüüpi objektid,
+    // siis Spring eeldab, et http sõnumile antakse kaasa request parameeter 'username' ja 'password'
+    // Kindlasti peab meetodi signatuuris olema ka see @RequestParam annotatsioonid, sest muidu Spring ei tea,
+    // et siia enpoint'ile peaks ka sisse tulema selline parameeter
+
+    // Kui HTTP sõnumite saatmise ja kättesaamise teema on veel endiselt segane, siis palun vaata uuesti "Spring HelloWorld":
+    // https://youtu.be/pc9irBCk6rg
+    // Kui @RequestParam teema on veel endiselt segane, siis palun vaata uuesti "Spring @RequestParam":
+    // https://youtu.be/9ovmRakMRBY
+    // Kui JSON'i sõnumi struktuuri teema on veel endiselt segane, siis palun vaata uuesti "JSON":
+    // https://youtu.be/dyZUWR3Cchw
     @GetMapping("/login")
+    // @Operation lisab Swageri teenuse juurde vastavasisulise kirjelduse
     @Operation(summary = "Logib teenusesse sisse")
+    // @ApiResponses  value = {@ApiResponse} abil saab kirjeldada ära võimalikud vastused, seal hulgas ka vea olukorrad
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Tagastab login objekti, kus sees on olemas kasutaia 'userId' ja tema roll 'roleType'"),
             @ApiResponse(responseCode = "403", description = "Valed kasutaja rekviisid. Ebaõnnestunud sisselogimine", content = @Content(schema = @Schema(implementation = ApiError.class)))
     })
     public LoginResponse login(@RequestParam String username, @RequestParam String password) {
+        // Võtame login() signatuuri parameetris sisse String tüüpi väärtused
+        // Siin signatuuris antakse nendele objektidele nimeks 'username' ja 'password'
+        // Kui meetodite teema on veel endiselt segane, siis palun vaata uuesti "Meetodid", "Meetodite signatuurid" ja "Public ja Private meetodid":
+        // https://youtu.be/EI3XfkdPBc4
+        // https://youtu.be/GvP68LBZiUA
+        // https://youtu.be/4ZkvNfu9kNw
+
+        // Kutsume välja meie poolt defineeritud meetodi nimega login()
+        // See meetod on meil ära defineeritud LoginService klassis
+        // login() on meil selliselt defineeritud, et see võtab sisse parameetritena:
+        // String tüüpi objektid
+        // See on selleks vajalik, et me saaksime anda meetodisse kaasa anda objektid, kus sees on mingid andmed,
+        // millega me soovime kuidagi toimetada.
+        // loginService.login() meetod on defineeritud nii, et see tagastab LoginResponse tüüpi objekti
+        // siin all me loome uue LoginResponse tüüpi objekti 'loginResponse' mille sisse väärtustatakse
+        // selle login() meetodi poolt tagastatav tulemus.
+        // vaata ka kommentaare selle meetodi sees
         LoginResponse loginResponse = loginService.login(username, password);
+
+        // http päringule tagastatakse 'loginResponse' objekt JSON'i kujul
         return loginResponse;
     }
 

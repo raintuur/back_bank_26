@@ -71,7 +71,7 @@ public class BankAtmService {
         // cityService.findAll() on meil selliselt defineeritud, et ta ei võta väljapoolt sisse ühtegi parameetrit/andmeid/infot
         // Siin me ei anna väljakutsutavale meetodile kaasa mingeid sisendeid/infot
         // cityService.findAll() meetod on defineeritud nii, et see tagastab List<City> locations tüüpi objekti
-        // Pane tähele, et hetkel me asume business kihi service sees ja siit klassis me ei pöördu otsae repository-de vastu,
+        // Pane tähele, et hetkel me asume business kihi service sees ja siit klassis me ei pöördu otse repository-de vastu,
         // vaid läheme läbi domain kihis asuva service
         // Ehk siis me lähme toome info ära
         //      MingiÄriController -> MingiÄriService -> MingiEntityService -> MingiEntityRepository ja saam kätte info kätte entiry objektidena
@@ -114,7 +114,7 @@ public class BankAtmService {
         // millega me soovime siis seal meetodi sees kuidagi toimetada.
         // Seega kuna meil on siin mingeid andmeid, mida mida väljakutsutav meetod vajab, siis me peame väljakutsumisel need kenasti kaasa andma.
         // locationService.findLocationsBy() meetod on defineeritud nii, et see tagastab List<Location> locations tüüpi objekti
-        // Pane tähele, et hetkel me asume business kihi service sees ja siit klassis me ei pöördu otsae repository-de vastu,
+        // Pane tähele, et hetkel me asume business kihi service sees ja siit klassis me ei pöördu otse repository-de vastu,
         // vaid läheme läbi domain kihis asuva service
         // Ehk siis me lähme toome info ära
         //      MingiÄriController -> MingiÄriService -> MingiEntityService -> MingiEntityRepository ja saam kätte info kätte entiry objektidena
@@ -135,6 +135,132 @@ public class BankAtmService {
         return locationDtos;
     }
 
+
+    // See meetod on defineeritud nii, et ta võtab sisse AtmRequest objekti
+    // See on selleks vajalik, et me saaksime siin meetodis selle objekti andmetega kuidagi toimetada.
+    // See meetod peab tagastama AtmRequest tüüpi objekti
+    // Kui meetodite teema on veel endiselt segane, siis palun vaata uuesti "Meetodid", "Meetodite signatuurid" ja "Public ja Private meetodid":
+    // https://youtu.be/EI3XfkdPBc4
+    // https://youtu.be/GvP68LBZiUA
+    // https://youtu.be/4ZkvNfu9kNw
+    public void addAtm(AtmRequest request) {
+        // Võtame addAtm() signatuuri parameetris sisse AccountRequest tüüpi objekti
+        // Siin signatuuris antakse sellele objekti muutujale nimeks 'request'
+
+        // (Entity -> Dto)
+        // Siin vaatleme kõigepealt paremat poolt. Kutsutakse välja meetod toEntity(), mis on defineeritud AtmMapper klassis
+        // toEntity() on põhimõtteliselt mäpper meetod "Entity -> Dto"
+        // toEntity võtab parameetrina Entity (andmebaasi tabeli jaoks mõeldud klass) klassi tüüpi objekti
+        // ja tagastab -> Dto (Data Transfer Object - andmete liigutamiseks mõeldud klass)
+        // toEntity() poolt tagastatud tulemus tagastatakse returniga
+        // vaata ka kommentaare selle 'atmMapper.toEntity()' meetodi sees
+        Atm atm = atmMapper.toEntity(request);
+
+        // Kutsume välja meie poolt defineeritud meetodi locationService.findById()
+        // See meetod on meil ära defineeritud LocationService klassis
+        // locationService.findById() on meil selliselt defineeritud, et see võtab sisse parameetritena: Integer tüüpi objekti
+        // Parameetrid on selleks vajalikud, et me saaksime meetodisse kaasa anda mingi objekti (andmed),
+        // millega me soovime siis seal meetodi sees kuidagi toimetada.
+        // Seega kuna meil on siin mingeid andmeid, mida mida väljakutsutav meetod vajab, siis me peame väljakutsumisel need kenasti kaasa andma.
+        // locationService.findById() meetod on defineeritud nii, et see tagastab Location tüüpi objekti
+        // Pane tähele, et hetkel me asume business kihi service sees ja siit klassis me ei pöördu otse repository-de vastu,
+        // vaid läheme läbi domain kihis asuva service
+        // Ehk siis me lähme toome info ära
+        //      MingiÄriController -> MingiÄriService -> MingiEntityService -> MingiEntityRepository ja saam kätte info kätte entiry objektidena
+        // Kui 3 kihiline arhidektuuri teema on veel endiselt segane, siis palun vaata uuesti "GetMapping-Resource-Service-JSON" video.
+        // NB! Seal videos veidi triviaalsem näide ja pole seda MingiEntityService osa.
+        // https://youtu.be/2tB5ybhPGgk
+        // vaata ka kommentaare selle 'locationService.findById()' meetodi sees
+        // Tulemus pannakse locations objekti sisse.
+        Location location = locationService.findById(request.getLocationId());
+
+        // Setter meetodi abil siis väärtustatakse objekti väljasid.
+        // Siin siis pannakse atm objekti väljale "location" külge varasemalt saadud tulemus
+        // Kui getterite ja setterite teema on veel endiselt segane, siis palun vaata uuesti "Kasutaja poolt loodavad klassid":
+        // https://youtu.be/2kZn9_03two
+        atm.setLocation(location);
+
+
+        // Kutsume välja meie poolt defineeritud meetodi atmService.addAtm()
+        // See meetod on meil ära defineeritud AtmService klassis
+        // atmService.addAtm() on meil selliselt defineeritud, et see võtab sisse parameetritena: Integer tüüpi objekti
+        // Parameetrid on selleks vajalikud, et me saaksime meetodisse kaasa anda mingi objekti (andmed),
+        // millega me soovime siis seal meetodi sees kuidagi toimetada.
+        // Seega kuna meil on siin mingeid andmeid, mida mida väljakutsutav meetod vajab, siis me peame väljakutsumisel need kenasti kaasa andma.
+        // atmService.addAtm() meetod on defineeritud nii, et see tagastab Location tüüpi objekti
+        // Pane tähele, et hetkel me asume business kihi service sees ja siit klassis me ei pöördu otse repository-de vastu,
+        // vaid läheme läbi domain kihis asuva service
+        // Ehk siis me lähme toome info ära
+        //      MingiÄriController -> MingiÄriService -> MingiEntityService -> MingiEntityRepository ja saam kätte info kätte entiry objektidena
+        // Kui 3 kihiline arhidektuuri teema on veel endiselt segane, siis palun vaata uuesti "GetMapping-Resource-Service-JSON" video.
+        // NB! Seal videos veidi triviaalsem näide ja pole seda MingiEntityService osa.
+        // https://youtu.be/2tB5ybhPGgk
+        // vaata ka kommentaare selle 'atmService.addAtm()' meetodi sees
+        // Tulemus pannakse locations objekti sisse.
+        atmService.addAtm(atm);
+
+        // Getter meetodi abil võtame objekti väljast väärtuse välja.
+        // Kui getterite ja setterite teema on veel endiselt segane, siis palun vaata uuesti "Kasutaja poolt loodavad klassid":
+        // https://youtu.be/2kZn9_03two
+        List<OptionDto> options = request.getOptions();
+
+        // Teeme for tsükkli kõikide asukohtade kohta ('options'), mis on Listis
+        // Kui Listide for tsükli teema on veel endiselt segane, siis palun vaata uuesti "FOR tsükkel List":
+        // https://youtu.be/aR5hP8dXvZ8
+        // Käime kõik asukohad läbi ('locationDtos') ja lisame igal tsükklil ühe objekti 'option' muutujasse
+        for (OptionDto option : options) {
+
+            // Kui 'option' objekti field/väli 'isSelected' (saadakse getteri abil) on 'true',
+            // siis minnakse if koodibloki sisse
+            if (option.getIsSelected()) {
+
+                // Getter meetodi abil võtame objekti väljast väärtuse välja.
+                Integer optionId = option.getOptionId();
+
+                // Kutsume välja meie poolt defineeritud meetodi locationService.findById()
+                // See meetod on meil ära defineeritud OptionService klassis
+                // optionService.findById() on meil selliselt defineeritud, et see võtab sisse parameetritena: Integer tüüpi objekti
+                // Parameetrid on selleks vajalikud, et me saaksime meetodisse kaasa anda mingi objekti (andmed),
+                // millega me soovime siis seal meetodi sees kuidagi toimetada.
+                // Seega kuna meil on siin mingeid andmeid, mida mida väljakutsutav meetod vajab, siis me peame väljakutsumisel need kenasti kaasa andma.
+                // optionService.findById() meetod on defineeritud nii, et see tagastab Location tüüpi objekti
+                // Pane tähele, et hetkel me asume business kihi service sees ja siit klassis me ei pöördu otse repository-de vastu,
+                // vaid läheme läbi domain kihis asuva service
+                // Ehk siis me lähme toome info ära
+                //      MingiÄriController -> MingiÄriService -> MingiEntityService -> MingiEntityRepository ja saam kätte info kätte entiry objektidena
+                // Kui 3 kihiline arhidektuuri teema on veel endiselt segane, siis palun vaata uuesti "GetMapping-Resource-Service-JSON" video.
+                // NB! Seal videos veidi triviaalsem näide ja pole seda MingiEntityService osa.
+                // https://youtu.be/2tB5ybhPGgk
+                // vaata ka kommentaare selle 'optionService.findById()' meetodi sees
+                // Tulemus pannakse locations objekti sisse.
+                Option optionEntity = optionService.findById(optionId);
+
+                // Teeme ühe tühja Entity objetki ja paneme Setteritega vastavad objektid külge
+                AtmOption atmOption = new AtmOption();
+                atmOption.setAtm(atm);
+                atmOption.setOption(optionEntity);
+
+                // Kutsume välja meie poolt defineeritud meetodi atmOptionService.addAtmOption()
+                // See meetod on meil ära defineeritud AtmOptionService klassis
+                // atmOptionService.addAtmOption() on meil selliselt defineeritud, et see võtab sisse parameetritena: Integer tüüpi objekti
+                // Parameetrid on selleks vajalikud, et me saaksime meetodisse kaasa anda mingi objekti (andmed),
+                // millega me soovime siis seal meetodi sees kuidagi toimetada.
+                // Seega kuna meil on siin mingeid andmeid, mida mida väljakutsutav meetod vajab, siis me peame väljakutsumisel need kenasti kaasa andma.
+                // atmOptionService.addAtmOption() meetod on defineeritud nii, et see tagastab Location tüüpi objekti
+                // Pane tähele, et hetkel me asume business kihi service sees ja siit klassis me ei pöördu otse repository-de vastu,
+                // vaid läheme läbi domain kihis asuva service
+                // Ehk siis me lähme toome info ära
+                //      MingiÄriController -> MingiÄriService -> MingiEntityService -> MingiEntityRepository ja saam kätte info kätte entiry objektidena
+                // Kui 3 kihiline arhidektuuri teema on veel endiselt segane, siis palun vaata uuesti "GetMapping-Resource-Service-JSON" video.
+                // NB! Seal videos veidi triviaalsem näide ja pole seda MingiEntityService osa.
+                // https://youtu.be/2tB5ybhPGgk
+                // vaata ka kommentaare selle 'atmOptionService.addAtmOption()' meetodi sees
+                // Tulemus pannakse locations objekti sisse.
+                atmOptionService.addAtmOption(atmOption);
+            }
+        }
+    }
+
     public List<LocationDto> getAllAtmLocations() {
         List<Location> locations = locationService.findAll();
         List<LocationDto> locationDtos = createLocationDtos(locations);
@@ -148,28 +274,6 @@ public class BankAtmService {
 
     }
 
-
-    public void addAtm(AtmRequest request) {
-        Atm atm = atmMapper.toEntity(request);
-        Location location = locationService.findById(request.getLocationId());
-        atm.setLocation(location);
-        atmService.addAtm(atm);
-
-        List<OptionDto> options = request.getOptions();
-        for (OptionDto option : options) {
-            if (option.getIsSelected()) {
-                Integer optionId = option.getOptionId();
-                Option optionEntity = optionService.findById(optionId);
-                AtmOption atmOption = new AtmOption();
-                atmOption.setAtm(atm);
-                atmOption.setOption(optionEntity);
-                atmOptionService.addAtmOption(atmOption);
-            }
-        }
-
-
-        System.out.println();
-    }
 
     // Siin kutstakse välja meetod mis asub siin selles samas klassis.
     // See selle klassi meetod on tehtud selleks, et saaksime panna mingi funktsionaalsuse elama konkreetsesse meetodisse.
@@ -241,7 +345,7 @@ public class BankAtmService {
         // millega me soovime siis seal meetodi sees kuidagi toimetada.
         // Seega kuna meil on siin mingid andmeid, mida mida väljakutsutav meetod vajab, siis me peame väljakutsumisel need kenasti kaasa andma.
         // atmOptionService.findOptionsBy() meetod on defineeritud nii, et see tagastab List<Option> options tüüpi objekti
-        // Pane tähele, et hetkel me asume business kihi service sees ja siit klassis me ei pöördu otsae repository-de vastu,
+        // Pane tähele, et hetkel me asume business kihi service sees ja siit klassis me ei pöördu otse repository-de vastu,
         // vaid läheme läbi domain kihis asuva service
         // Ehk siis me lähme toome info ära
         //      MingiÄriController -> MingiÄriService -> MingiEntityService -> MingiEntityRepository ja saam kätte info kätte entiry objektidena
