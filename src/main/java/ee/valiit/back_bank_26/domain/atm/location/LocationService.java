@@ -22,7 +22,7 @@ public class LocationService {
 
     // See meetod on defineeritud nii, et ta võtab sisse Integer tüüpi objekti
     // See on selleks vajalik, et me saaksime siin meetodis selle objekti andmetega kuidagi toimetada.
-    // See meetod peab tagastamaList<Location> tüüpi objekti
+    // See meetod peab tagastama List<Location> tüüpi objekti
     // Kui meetodite teema on veel endiselt segane, siis palun vaata uuesti "Meetodid", "Meetodite signatuurid" ja "Public ja Private meetodid":
     // https://youtu.be/EI3XfkdPBc4
     // https://youtu.be/GvP68LBZiUA
@@ -34,9 +34,10 @@ public class LocationService {
         // Kaasa anname  konkreetse linna id (cityId) ehk 'location' tabeli veeru 'id' väärtuse.
         // repository tagastab antud 'id'le kuuluva location objekti (andmebaasi mõttes tagastatakse antud kliendi andmetega rida)
         // Tulemus pannakse omakorda "List" klassi locations objekti sisse
+        // Vaata ka kommentaare selle meetodi sees.
         List<Location> locations = locationRepository.findLocationsBy(cityId);
 
-        // RETURN'iga tagastatakse tulemus
+        // RETURN'iga tagastatakse tulemus sinna kohta, kust see meetod välja kutsutakse
         return locations;
     }
 

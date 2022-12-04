@@ -107,6 +107,12 @@ public class BankAtmController {
         return result;
     }
 
+    @PostMapping()
+    @Operation(summary = "Pangaautomaadi lisamine asukohta")
+    public void addAtm(@RequestBody @Valid AtmRequest request) {
+        bankAtmService.addAtm(request);
+    }
+
 
     @GetMapping("/option")
     @Operation(summary = "Leiab kõik automaatide võimalikud valikud (sularaha välja, sulraha sisse, jne)")
@@ -122,11 +128,6 @@ public class BankAtmController {
         return result;
     }
 
-    @PostMapping()
-    @Operation(summary = "Pangaautomaadi lisamine asukohta")
-    public void addAtm(@RequestBody @Valid AtmRequest request) {
-        bankAtmService.addAtm(request);
-    }
 
 
 }
