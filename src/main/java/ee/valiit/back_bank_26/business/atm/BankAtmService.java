@@ -55,6 +55,12 @@ public class BankAtmService {
     private OptionMapper optionMapper;
 
 
+    public List<CityDto> getAllCities() {
+        List<City> allEntities = cityService.findAll();
+        List<CityDto> allDtos = cityMapper.citiesToCityDtos(allEntities);
+        return allDtos;
+    }
+
     public List<LocationDto> getAllAtmLocations() {
         List<Location> locations = locationService.findAll();
         List<LocationDto> locationDtos = createLocationDtos(locations);
@@ -67,31 +73,8 @@ public class BankAtmService {
         return locationDtos;
     }
 
-    // See meetod on defineeritud nii, et ta võtab sisse Integer tüüpi objekti
-    // See on selleks vajalik, et me saaksime siin meetodis selle objekti andmetega kuidagi toimetada.
-    // See meetod peab tagastama List<LocationDto> tüüpi objekti
-    // Kui meetodite teema on veel endiselt segane, siis palun vaata uuesti "Meetodid", "Meetodite signatuurid" ja "Public ja Private meetodid":
-    // https://youtu.be/EI3XfkdPBc4
-    // https://youtu.be/GvP68LBZiUA
-    // https://youtu.be/4ZkvNfu9kNw
     public List<LocationDto> getAtmLocationsByCityId(Integer cityId) {
-        // Võtame getAtmLocationsByCityId() signatuuri parameetris sisse Integer tüüpi objekti
-        // Siin signatuuris antakse sellele objekti muutujale nimeks 'cityId'
-
-        // Kutsume välja meie poolt defineeritud meetodi customerService.addCustomer()
-        // See meetod on meil ära defineeritud CustomerService klassis
-        // customerService.addCustomer() on meil selliselt defineeritud, et see võtab sisse parameetritena: CustomerRequest tüüpi objekti
-        // See on selleks vajalik, et me saaksime sellesse meetodisse kaasa anda objekti (andmed),
-        // millega me soovime siis seal meetodi sees kuidagi toimetada.
-        // customerService.addCustomer() meetod on defineeritud nii, et see tagastab CustomerResponse tüüpi objekti
-        // RETURN'iga tagastatakse tulemus
-        // Kui meetodite teema on veel endiselt segane, siis palun vaata uuesti "Meetodid", "Meetodite signatuurid" ja "Public ja Private meetodid":
-        // https://youtu.be/EI3XfkdPBc4
-        // https://youtu.be/GvP68LBZiUA
-        // https://youtu.be/4ZkvNfu9kNw
-        // vaata ka kommentaare selle 'customerService.addCustomer()' meetodi sees
         List<Location> locations = locationService.findLocationsBy(cityId);
-
         List<LocationDto> locationDtos = createLocationDtos(locations);
         return locationDtos;
     }
@@ -102,25 +85,6 @@ public class BankAtmService {
         return optionDtos;
 
     }
-
-    public List<CityDto> getAllCities() {
-        List<City> allEntities = cityService.findAll();
-        List<CityDto> allDtos = cityMapper.citiesToCityDtos(allEntities);
-        return allDtos;
-    }
-
-    private void addAtmOptions(List<LocationDto> locationDtos) {
-        for (LocationDto dto : locationDtos) {
-            addAtmOptionsToLocationDto(dto);
-        }
-    }
-
-    private void addAtmOptionsToLocationDto(LocationDto dto) {
-        List<Option> options = atmOptionService.findOptionsBy(dto.getLocationId());
-        List<AtmOptionDto> atmOptionDtos = optionMapper.toAtmOptionDtos(options);
-        dto.setOptions(atmOptionDtos);
-    }
-
 
     public void addAtm(AtmRequest request) {
         Atm atm = atmMapper.toEntity(request);
@@ -143,4 +107,18 @@ public class BankAtmService {
 
         System.out.println();
     }
+
+
+    private void addAtmOptions(List<LocationDto> locationDtos) {
+        for (LocationDto dto : locationDtos) {
+            addAtmOptionsToLocationDto(dto);
+        }
+    }
+
+    private void addAtmOptionsToLocationDto(LocationDto dto) {
+        List<Option> options = atmOptionService.findOptionsBy(dto.getLocationId());
+        List<AtmOptionDto> atmOptionDtos = optionMapper.toAtmOptionDtos(options);
+        dto.setOptions(atmOptionDtos);
+    }
+
 }
