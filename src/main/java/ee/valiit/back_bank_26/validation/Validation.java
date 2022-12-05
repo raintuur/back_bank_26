@@ -1,6 +1,6 @@
 package ee.valiit.back_bank_26.validation;
 
-import ee.valiit.back_bank_26.domain.userrole.user.User;
+import ee.valiit.back_bank_26.domain.customer.user.User;
 import ee.valiit.back_bank_26.infrastructure.exception.BusinessException;
 
 import java.util.Optional;

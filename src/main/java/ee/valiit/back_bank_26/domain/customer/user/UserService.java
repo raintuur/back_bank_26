@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26.domain.userrole.user;
+package ee.valiit.back_bank_26.domain.customer.user;
 
 import ee.valiit.back_bank_26.validation.Validation;
 import org.springframework.stereotype.Service;

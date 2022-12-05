@@ -1,4 +1,4 @@
-package ee.valiit.back_bank_26.domain.userrole.user;
+package ee.valiit.back_bank_26.domain.customer.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

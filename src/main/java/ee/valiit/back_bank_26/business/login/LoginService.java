@@ -1,8 +1,8 @@
 package ee.valiit.back_bank_26.business.login;
 
-import ee.valiit.back_bank_26.domain.userrole.user.User;
-import ee.valiit.back_bank_26.domain.userrole.user.UserMapper;
-import ee.valiit.back_bank_26.domain.userrole.user.UserService;
+import ee.valiit.back_bank_26.domain.customer.user.User;
+import ee.valiit.back_bank_26.domain.customer.user.UserMapper;
+import ee.valiit.back_bank_26.domain.customer.user.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

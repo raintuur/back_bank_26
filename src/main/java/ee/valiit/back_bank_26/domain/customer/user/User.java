@@ -1,6 +1,6 @@
-package ee.valiit.back_bank_26.domain.userrole.user;
+package ee.valiit.back_bank_26.domain.customer.user;
 
-import ee.valiit.back_bank_26.domain.userrole.role.Role;
+import ee.valiit.back_bank_26.domain.customer.role.Role;
 import lombok.Getter;
 import lombok.Setter;
 
