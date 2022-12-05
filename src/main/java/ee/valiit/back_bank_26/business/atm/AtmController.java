@@ -45,6 +45,7 @@ public class AtmController {
         return result;
     }
 
+
     @PostMapping()
     @Operation(summary = "Pangaautomaadi lisamine asukohta")
     public void addAtm(@RequestBody @Valid AtmRequest request) {
