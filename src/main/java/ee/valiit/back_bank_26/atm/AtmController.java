@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -45,7 +46,8 @@ public class AtmController {
     }
 
     @PostMapping()
-    public void addAtm(@RequestBody AtmRequest request) {
+    @Operation(summary = "Uue pangaautomaadi lisamine valitud asukohta")
+    public void addAtm(@RequestBody @Valid AtmRequest request) {
         atmService.addAtm(request);
     }
 

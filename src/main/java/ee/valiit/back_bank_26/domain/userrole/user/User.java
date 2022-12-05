@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.ByteArrayInputStream;
 
 @Getter
 @Setter
@@ -32,5 +33,8 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
+
+    @Column(name = "picture_data")
+    private byte[] pictureData;
 
 }

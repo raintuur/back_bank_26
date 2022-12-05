@@ -246,4 +246,3 @@ ALTER TABLE "user"
 ;
 
 -- End of file.
-
