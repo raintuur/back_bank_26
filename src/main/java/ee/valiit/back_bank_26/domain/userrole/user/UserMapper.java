@@ -14,7 +14,7 @@ public interface UserMapper {
     LoginResponse toLoginResponse(User user);
 
     @Mapping(source = "id", target = "userId")
-    @Mapping(source = "picture_data", target = "pictureData", qualifiedByName = "byteArrayToString")
+    @Mapping(source = "getPictureData", target = "pictureData", qualifiedByName = "byteArrayToString")
     PhotoDto userToPhotoDto (User user);
 
     @Named("byteArrayToString")
@@ -22,7 +22,6 @@ public interface UserMapper {
         if (pictureDataAsByteArray == null) {
             return null;
         }
-
         String pictureAsString = new String(pictureDataAsByteArray);
         return pictureAsString;
     }

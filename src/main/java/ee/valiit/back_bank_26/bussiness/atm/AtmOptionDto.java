@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AtmOptionDto {
-    private String OptionName;
+    private String optionName;
 }

@@ -34,6 +34,6 @@ public class User {
     private String password;
 
     @Column(name = "picture_data")
-    private byte[] picture_data;
+    private byte[] pictureData;
 
 }

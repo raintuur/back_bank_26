@@ -17,7 +17,7 @@ public class PhotoService {
 
     public void addPhoto(PictureRequest request) {
         User user = userService.getUserBy(request.getUserId());
-        user.setPicture_data(request.getPictureData().getBytes(StandardCharsets.UTF_8));
+        user.setPictureData(request.getPictureData().getBytes(StandardCharsets.UTF_8));
         userService.addUserPhoto(user);
     }
 
