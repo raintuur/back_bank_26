@@ -13,4 +13,10 @@ public class Validation {
                     BankError.INCORRECT_CREDENTIALS.getErrorCode());
         }
     }
+    public static void validateUser(Optional<User> userOptional) {
+        if (userOptional.isEmpty()) {
+            throw new BusinessException(BankError.USER_NOT_FOUND.getMessage(),
+                    BankError.USER_NOT_FOUND.getErrorCode());
+        }
+    }
 }

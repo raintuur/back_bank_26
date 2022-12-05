@@ -18,8 +18,13 @@ public interface UserMapper {
     PhotoDto userToPhotoDto (User user);
 
     @Named("byteArrayToString")
-    static String byteArrayToString(byte[] pictureData) {
-        return new String(pictureData);
+    static String byteArrayToString(byte[] pictureDataAsByteArray) {
+        if (pictureDataAsByteArray == null) {
+            return null;
+        }
+
+        String pictureAsString = new String(pictureDataAsByteArray);
+        return pictureAsString;
     }
 
 }

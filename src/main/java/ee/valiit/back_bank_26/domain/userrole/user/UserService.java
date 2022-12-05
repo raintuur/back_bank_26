@@ -20,6 +20,7 @@ public class UserService {
 
     public User getUserBy(Integer userId) {
         Optional<User> userOptional = userRepository.findById(userId);
+       Validation.validateUser(userOptional);
         return userOptional.get();
     }
 

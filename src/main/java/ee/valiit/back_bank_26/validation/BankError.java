@@ -6,6 +6,7 @@ import lombok.Getter;
 public enum BankError {
     INCORRECT_CREDENTIALS("Sellist kasutajanime või parooli ei leitud","666"),
     INSUFFICIENT_FUNDS("Ebapiisavad vahendid","000" ),
+    USER_NOT_FOUND("Sellist kasutajat ei ole andmebaasis","001" ),
     ;
 
     private final String message;
