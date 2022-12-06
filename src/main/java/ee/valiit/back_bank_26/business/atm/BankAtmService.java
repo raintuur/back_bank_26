@@ -22,6 +22,7 @@ import ee.valiit.back_bank_26.domain.city.CityService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -86,12 +87,16 @@ public class BankAtmService {
 
     }
 
+    @Transactional()
     public void addAtm(AtmRequest request) {
         Atm atm = atmMapper.toEntity(request);
         Location location = locationService.findById(request.getLocationId());
         atm.setLocation(location);
         atmService.addAtm(atm);
+        addAtmOptions(request, atm);
+    }
 
+    private void addAtmOptions(AtmRequest request, Atm atm) {
         List<OptionDto> options = request.getOptions();
         for (OptionDto option : options) {
             if (option.getIsSelected()) {
@@ -103,9 +108,6 @@ public class BankAtmService {
                 atmOptionService.addAtmOption(atmOption);
             }
         }
-
-
-        System.out.println();
     }
 
 
