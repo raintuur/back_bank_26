@@ -73,6 +73,21 @@ public class BankAtmService {
         return locationDtos;
     }
 
+    private void addAtmOptions(List<LocationDto> locationDtos) {
+        for (LocationDto dto : locationDtos) {
+            addAtmOptionsToLocationDto(dto);
+        }
+    }
+
+    private void addAtmOptionsToLocationDto(LocationDto dto) {
+        List<Option> options = atmOptionService.findOptionsBy(dto.getLocationId());
+        List<AtmOptionDto> atmOptionDtos = optionMapper.toAtmOptionDtos(options);
+        dto.setOptions(atmOptionDtos);
+    }
+
+
+
+
     public List<LocationDto> getAtmLocationsByCityId(Integer cityId) {
         List<Location> locations = locationService.findLocationsBy(cityId);
         List<LocationDto> locationDtos = createLocationDtos(locations);
@@ -103,22 +118,7 @@ public class BankAtmService {
                 atmOptionService.addAtmOption(atmOption);
             }
         }
-
-
         System.out.println();
-    }
-
-
-    private void addAtmOptions(List<LocationDto> locationDtos) {
-        for (LocationDto dto : locationDtos) {
-            addAtmOptionsToLocationDto(dto);
-        }
-    }
-
-    private void addAtmOptionsToLocationDto(LocationDto dto) {
-        List<Option> options = atmOptionService.findOptionsBy(dto.getLocationId());
-        List<AtmOptionDto> atmOptionDtos = optionMapper.toAtmOptionDtos(options);
-        dto.setOptions(atmOptionDtos);
     }
 
 }
