@@ -123,4 +123,9 @@ public class BankAtmService {
         dto.setOptions(atmOptionDtos);
     }
 
+    public void updateLocation(Integer locationId, LocationUpdate locationUpdate) {
+        Location location = locationService.findById(locationId);
+        locationMapper.updateLocation(locationUpdate, location);
+        locationService.save(location);
+    }
 }

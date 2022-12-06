@@ -1,5 +1,6 @@
 package ee.valiit.back_bank_26.domain.atm.location;
 
+import ee.valiit.back_bank_26.business.atm.LocationUpdate;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -14,5 +15,10 @@ public interface LocationMapper {
     LocationDto toDto(Location location);
 
     List<LocationDto> toDtos(List<Location> locations);
+
+
+    @Mapping(source = "locationName", target = "name")
+    @Mapping(source = "locationStatus", target = "status")
+    void updateLocation(LocationUpdate locationUpdate, @MappingTarget Location location);
 
 }

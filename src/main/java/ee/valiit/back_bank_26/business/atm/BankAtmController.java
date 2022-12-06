@@ -20,7 +20,6 @@ public class BankAtmController {
     private BankAtmService bankAtmService;
 
 
-
     @GetMapping("/city")
     @Operation(summary = "Selle teenusega saad kätte kõik linnad", description = "Mingi pikem jutt rohkem mula")
     public List<CityDto> getAllCities() {
@@ -56,5 +55,11 @@ public class BankAtmController {
         bankAtmService.addAtm(request);
     }
 
+
+    @PutMapping()
+    @Operation(summary = "Asukoha muutmine")
+    public void updateLocation(@RequestParam Integer locationId, @RequestBody LocationUpdate request) {
+        bankAtmService.updateLocation(locationId, request);
+    }
 
 }
